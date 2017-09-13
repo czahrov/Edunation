@@ -1,0 +1,244 @@
+#rezerwacja{
+	margin: 100px 0 150px;
+	
+	& > .popup{
+		position: fixed;
+		padding: 50px 20px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 10;
+		background-color: transparentize( $color-dark, 0.2 );
+		
+		& > .box{
+			position: relative;
+			padding: 10px;
+			
+			& > .close{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 40px;
+				height: 40px;
+				
+			}
+			
+			& > .head{
+				margin: 20px 0 30px;
+				font-size: 30px;
+				
+			}
+			
+			& > .body{
+				
+				& > .pora{
+					padding: 0 10px;
+					
+					& > .title{
+						
+					}
+					
+					& > .item{
+						margin-top: 10px;
+						padding: 5px 0;
+						border: solid 1px $color-dark;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		&:not(.open){
+			display: none;
+			
+		}
+		
+	}
+	
+	& > .top{
+		font-size: 30px;
+		margin-bottom: 50px;
+		
+	}
+	
+	& > .bot{
+		position: relative;
+		
+		& > .view{
+			padding-right: 20px;
+			
+			& > .etap{
+				
+				& > .head{
+					
+					& > .today{
+						width: 140px;
+						font-size: 20px;
+						
+					}
+					
+					& > .button{
+						height: 42px;
+						padding: 0 20px;
+						border-radius: 21px;
+						font-size: 12px;
+						
+					}
+					
+					& > .month{
+						
+						& > .nav{
+							height: 30px;
+							padding: 0 20px;
+							
+							& > .icon{
+								
+							}
+							
+							&.prev{
+								border-radius: 20px 0 0 20px;
+								
+							}
+							
+							&.next{
+								border-radius: 0 20px 20px 0;
+								
+							}
+							
+						}
+						
+						& > .name{
+							padding: 0 20px;
+							min-width: 230px;
+							font-size: 26px;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .body{
+					
+					.tcell{
+						height: 64px;
+						
+					}
+					
+					& > .thead{
+						
+						& > .tcell{
+							padding-bottom: 10px;
+							
+						}
+						
+					}
+					
+					& > .tbody{
+						
+						& > .tcell{
+							padding: 12px 0 0 12px;
+							border: solid 1px;
+							border-color: $color-gray;
+							transition: border .3s linear;
+							
+							&.disable{
+								cursor: no-drop;
+								
+								& > .text{
+									cursor: inherit;
+									opacity: 0.4;
+									
+								}
+								
+							}
+							
+							&:not( .disable ){
+								
+								&, & *{
+									cursor: pointer;
+									
+								}
+								
+							}
+							
+							&:not( .disable ):hover{
+								border-color: $color-blue-dark;
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .side{
+			padding: 26px 30px 50px;
+			
+			& > .segment{
+				min-width: 294px;
+				padding: 0 20px;
+				
+			}
+			
+			& > .top{
+				height: 140px;
+				margin-bottom: 20px;
+				
+				& > .title{
+					line-height: 33px;
+					font-size: 22px;
+					
+				}
+				
+				& > .cena{
+					margin-top: 13px;
+					font-size: 16px;
+				}
+				
+			}
+			
+			& > .bot{
+				height: 100px;
+				margin-bottom: 50px;
+				
+				& > .text{
+					line-height: 34px;
+					
+				}
+				
+			}
+			
+			& > .button{
+				min-width: 194px;
+				height: 44px;
+				padding: 0 35px;
+				border-radius: 22px;
+				line-height: 24px;
+				font-size: 16px;
+				
+				& > .title{
+					
+				}
+				
+				& > .icon{
+					font-size: 30px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

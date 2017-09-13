@@ -1,0 +1,108 @@
+// ustawienia i predef
+*{
+	
+}
+
+body{
+	
+	&.spaceTop{
+		padding-top: 90px;
+		
+		&.admin{
+			padding-top: 136px;
+			
+			@media(min-width: 783px){
+				padding-top: 122px;
+				
+			}
+			
+		}
+		
+	}
+	
+	&.admin{
+		
+		.main-nav{
+			margin-top: 46px;
+			
+			@media(min-width: 783px){
+				margin-top: 32px;
+				
+			}
+			
+		}		
+		
+	}
+	
+}
+
+.main-nav{
+	top: 0;
+	
+}
+
+.grid{
+	max-width: 1240px;
+	padding: 0 20px;
+	
+}
+
+.hitbox{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+}
+
+.regular{
+	font-family: 'Raleway-Regular';
+	
+	&.alt{
+		font-family: 'Montserrat-Regular';
+		
+	}
+	
+}
+
+.medium{
+	font-family: 'Raleway-Medium';
+	
+	&.alt{
+		font-family: 'Montserrat-Medium';
+		
+	}
+	
+}
+
+
+.bold{
+	font-family: 'Raleway-Bold';
+	
+	&.alt{
+		font-family: 'Montserrat-Bold';
+		
+	}
+	
+}
+
+.extraBold{
+	font-family: 'Raleway-ExtraBold';
+	
+	&.alt{
+		font-family: 'Montserrat-ExtraBold';
+		
+	}
+	
+}
+
+.pointer{
+	&, & *{
+		cursor: pointer;
+		
+	}
+	
+}
+
+

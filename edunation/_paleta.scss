@@ -1,0 +1,25 @@
+// paleta kolorów
+$color-light: #fff;
+$color-dark: #000;
+$color-blue-dark: #080d35;
+$color-gray: #e8e6e7;
+
+$generator:(
+	light: $color-light,
+	dark: $color-dark,
+	blue-dark: $color-blue-dark,
+	gray: $color-gray
+);
+
+@each $color, $val in $generator{
+	.font-#{$color}{
+		color: $val;
+		
+	}
+	
+	.bg-#{$color}{
+		background-color: $val;
+		
+	}
+	
+}
