@@ -133,8 +133,8 @@
 				Grafik online
 			</div>
 			<div class='bot flex flex-justify-end'>
-				<div class='view grow'>
-					<div class='etap data base1 no-shrink flex flex-column'>
+				<div class='view grow flex'>
+					<div class='etap data hide base1 no-shrink flex flex-column'>
 						<div class='head flex flex-items-center flex-justify-start'>
 							<div class='today regular alt'>
 								<?php echo date( 'd.m.Y' ); ?>
@@ -183,6 +183,71 @@
 						</div>
 						
 					</div>
+					<div class='etap form base1 no-shrink flex flex-column'>
+						<div class='title flex flex-items-center flex-justify-start'>
+							Podaj swoje informacje kontaktowe
+						</div>
+						<form class='form flex flex-column'>
+							<div class='label'>
+								Imię i nazwisko*
+							</div>
+							<input class='input bold imie' type='text' name='imie'/>
+							<div class='label'>
+								E-mail*
+							</div>
+							<input class='input bold mail' type='email' name='mail'/>
+							<div class='label'>
+								Numer telefonu*
+							</div>
+							<input class='input bold tel' type='tel' name='tel'/>
+							<div class='label'>
+								Możesz zostawić nam wiadomość
+							</div>
+							<textarea class='textarea bold msg' name='msg'></textarea>
+							
+						</form>
+						
+					</div>
+					<div class='etap summary base1 no-shrink flex flex-column flex-items-center'>
+						<div class='title'>
+							Wspaniale! Rezerwacja została przyjęta.
+						</div>
+						<div class='subtitle'>
+							E-mail z potwierdzeniem jest już w drodze
+						</div>
+						<div class='table flex flex-items-center flex-justify-around'>
+							<div class='tcell left text-center base3 flex flex-column'>
+								<div class='title bold'>
+									3 stycznia
+								</div>
+								<div class='subtitle'>
+									czwartek 16.00
+								</div>
+								
+							</div>
+							<div class='tcell right text-center grow flex flex-column'>
+								<div class='title bold'>
+									Busines 1:1 Skype
+								</div>
+								<div class='subtitle'>
+									45 minut | 50 zł
+								</div>
+								<div class='subtitle'>
+									online
+								</div>
+								<div class='button bold pointer uppercase bg-blue-dark font-light flex-self-center flex flex-items-center'>
+									Dodaj do kalendarza Google
+								</div>
+								
+							</div>
+							
+						</div>
+						<a class='button bg-blue-dark font-light bold uppercase flex flex-items-center'>
+							Sprawdź inne usługi
+						</a>
+						
+					</div>
+					
 				</div>
 				<div class='side bg-blue-dark font-dark flex flex-column flex-items-center flex-self-start'>
 					<div class='segment top bg-light flex flex-column flex-items-center flex-justify-center'>
@@ -203,9 +268,16 @@
 						</div>
 						
 					</div>
-					<div class='button pointer bold bg-light font-dark flex flex-items-center'>
+					<div class='button form pointer bold bg-light font-dark flex flex-items-center'>
 						<div class='title grow text-center'>
 							Następny
+						</div>
+						<div class='icon fa fa-angle-right'></div>
+						
+					</div>
+					<div class='button register pointer bold bg-light font-dark flex flex-items-center'>
+						<div class='title grow text-center'>
+							Rezerwuj
 						</div>
 						<div class='icon fa fa-angle-right'></div>
 						

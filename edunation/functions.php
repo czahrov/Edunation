@@ -53,4 +53,7 @@ add_action( 'print_page_title', function( $arg ){
 	
 } );
 
-
+class DateManager{
+	
+	
+}

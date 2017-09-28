@@ -69,52 +69,133 @@
 		position: relative;
 		
 		& > .view{
-			padding-right: 20px;
+			margin-right: 20px;
+			overflow: hidden;
 			
 			& > .etap{
 				
-				& > .head{
+				&.data{
 					
-					& > .today{
-						width: 140px;
-						font-size: 20px;
+					& > .head{
 						
-					}
-					
-					& > .button{
-						height: 42px;
-						padding: 0 20px;
-						border-radius: 21px;
-						font-size: 12px;
+						& > .today{
+							width: 140px;
+							font-size: 20px;
+							
+						}
 						
-					}
-					
-					& > .month{
-						
-						& > .nav{
-							height: 30px;
+						& > .button{
+							height: 42px;
 							padding: 0 20px;
+							border-radius: 21px;
+							font-size: 12px;
 							
-							& > .icon{
+						}
+						
+						& > .month{
+							
+							& > .nav{
+								height: 30px;
+								padding: 0 20px;
+								
+								& > .icon{
+									
+								}
+								
+								&.prev{
+									border-radius: 20px 0 0 20px;
+									
+								}
+								
+								&.next{
+									border-radius: 0 20px 20px 0;
+									
+								}
 								
 							}
 							
-							&.prev{
-								border-radius: 20px 0 0 20px;
-								
-							}
-							
-							&.next{
-								border-radius: 0 20px 20px 0;
+							& > .name{
+								padding: 0 20px;
+								min-width: 230px;
+								font-size: 26px;
 								
 							}
 							
 						}
 						
-						& > .name{
-							padding: 0 20px;
-							min-width: 230px;
-							font-size: 26px;
+					}
+					
+					& > .body{
+						
+						.tcell{
+							height: 64px;
+							
+						}
+						
+						& > .thead{
+							
+							& > .tcell{
+								padding-bottom: 10px;
+								
+							}
+							
+						}
+						
+						& > .tbody{
+							
+							& > .tcell{
+								padding: 12px 0 0 12px;
+								border: solid 1px;
+								border-color: $color-gray;
+								transition: border .3s linear;
+								
+								&.disable{
+									cursor: no-drop;
+									
+									& > .text{
+										cursor: inherit;
+										opacity: 0.4;
+										
+									}
+									
+								}
+								
+								&:not( .disable ){
+									
+									&, & *{
+										cursor: pointer;
+										
+									}
+									
+								}
+								
+								&:not( .disable ):hover{
+									border-color: $color-blue-dark;
+									
+								}
+								
+								&.today{
+									
+									& > .text{
+										position: relative;
+										
+										&::after{
+											content: '';
+											position: absolute;
+											margin-top: 3px;
+											width: 17px;
+											height: 2px;
+											top: 100%;
+											left: 0;
+											background-color: $color-blue-dark;
+											
+										}
+										
+									}
+									
+								}
+								
+							}
 							
 						}
 						
@@ -122,56 +203,96 @@
 					
 				}
 				
-				& > .body{
+				&.form{
 					
-					.tcell{
-						height: 64px;
+					& > .title{
+						margin-bottom: 38px;
+						font-size: 22px;
 						
 					}
 					
-					& > .thead{
+					& > form.form{
+						max-width: 640px;
 						
-						& > .tcell{
-							padding-bottom: 10px;
+						& > .label{
+							margin: 16px 0;
+							font-size: 16px;
+						}
+						
+						& > .input{
+							margin-bottom: 10px;
+							padding: 0 28px;
+							height: 46px;
+							font-size: 14px;
+							border: solid 1px $color-gray;
+							
+						}
+						
+						& > .textarea{
+							padding: 30px 20px;
+							height: 170px;
+							border: solid 1px $color-gray;
+							line-height: 26px;
+							resize: none;
 							
 						}
 						
 					}
 					
-					& > .tbody{
+				}
+				
+				&.summary{
+					
+					.button{
+						height: 46px;
+						padding: 0 46px;
+						border-radius: 23px;
+						
+					}
+					
+					& > .title{
+						margin-bottom: 20px;
+						font-size: 34px;
+						
+					}
+					
+					& > .subtitle{
+						margin-bottom: 80px;
+						font-size: 25px;
+						
+					}
+					
+					& > .table{
+						padding: 32px;
+						width: 100%;
+						max-width: 720px;
+						border: solid 1px $color-gray;
+						
+						.title{
+							margin-bottom: 20px;
+							font-size: 22px;
+							
+						}
+						
+						.subtitle{
+							margin-bottom: 20px;
+							font-size: 16px;
+							
+						}
 						
 						& > .tcell{
-							padding: 12px 0 0 12px;
-							border: solid 1px;
-							border-color: $color-gray;
-							transition: border .3s linear;
 							
-							&.disable{
-								cursor: no-drop;
-								
-								& > .text{
-									cursor: inherit;
-									opacity: 0.4;
-									
-								}
-								
-							}
-							
-							&:not( .disable ){
-								
-								&, & *{
-									cursor: pointer;
-									
-								}
-								
-							}
-							
-							&:not( .disable ):hover{
-								border-color: $color-blue-dark;
+							&.right{
+								border-left: solid 1px $color-gray;
 								
 							}
 							
 						}
+						
+					}
+					
+					& > .button{
+						margin-top: 70px;
 						
 					}
 					

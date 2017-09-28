@@ -146,58 +146,130 @@ body.admin .main-nav {
   position: relative;
 }
 #rezerwacja > .bot > .view {
-  padding-right: 20px;
+  margin-right: 20px;
+  overflow: hidden;
 }
-#rezerwacja > .bot > .view > .etap > .head > .today {
+#rezerwacja > .bot > .view > .etap.data > .head > .today {
   width: 140px;
   font-size: 20px;
 }
-#rezerwacja > .bot > .view > .etap > .head > .button {
+#rezerwacja > .bot > .view > .etap.data > .head > .button {
   height: 42px;
   padding: 0 20px;
   border-radius: 21px;
   font-size: 12px;
 }
-#rezerwacja > .bot > .view > .etap > .head > .month > .nav {
+#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav {
   height: 30px;
   padding: 0 20px;
 }
-#rezerwacja > .bot > .view > .etap > .head > .month > .nav.prev {
+#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.prev {
   border-radius: 20px 0 0 20px;
 }
-#rezerwacja > .bot > .view > .etap > .head > .month > .nav.next {
+#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.next {
   border-radius: 0 20px 20px 0;
 }
-#rezerwacja > .bot > .view > .etap > .head > .month > .name {
+#rezerwacja > .bot > .view > .etap.data > .head > .month > .name {
   padding: 0 20px;
   min-width: 230px;
   font-size: 26px;
 }
-#rezerwacja > .bot > .view > .etap > .body .tcell {
+#rezerwacja > .bot > .view > .etap.data > .body .tcell {
   height: 64px;
 }
-#rezerwacja > .bot > .view > .etap > .body > .thead > .tcell {
+#rezerwacja > .bot > .view > .etap.data > .body > .thead > .tcell {
   padding-bottom: 10px;
 }
-#rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell {
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell {
   padding: 12px 0 0 12px;
   border: solid 1px;
   border-color: #e8e6e7;
   -webkit-transition: border .3s linear;
   transition: border .3s linear;
 }
-#rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell.disable {
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable {
   cursor: no-drop;
 }
-#rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell.disable > .text {
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable > .text {
   cursor: inherit;
   opacity: 0.4;
 }
-#rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell:not(.disable), #rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell:not(.disable) * {
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable), #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable) * {
   cursor: pointer;
 }
-#rezerwacja > .bot > .view > .etap > .body > .tbody > .tcell:not(.disable):hover {
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable):hover {
   border-color: #080d35;
+}
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text {
+  position: relative;
+}
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text::after {
+  content: '';
+  position: absolute;
+  margin-top: 3px;
+  width: 17px;
+  height: 2px;
+  top: 100%;
+  left: 0;
+  background-color: #080d35;
+}
+#rezerwacja > .bot > .view > .etap.form > .title {
+  margin-bottom: 38px;
+  font-size: 22px;
+}
+#rezerwacja > .bot > .view > .etap.form > form.form {
+  max-width: 640px;
+}
+#rezerwacja > .bot > .view > .etap.form > form.form > .label {
+  margin: 16px 0;
+  font-size: 16px;
+}
+#rezerwacja > .bot > .view > .etap.form > form.form > .input {
+  margin-bottom: 10px;
+  padding: 0 28px;
+  height: 46px;
+  font-size: 14px;
+  border: solid 1px #e8e6e7;
+}
+#rezerwacja > .bot > .view > .etap.form > form.form > .textarea {
+  padding: 30px 20px;
+  height: 170px;
+  border: solid 1px #e8e6e7;
+  line-height: 26px;
+  resize: none;
+}
+#rezerwacja > .bot > .view > .etap.summary .button {
+  height: 46px;
+  padding: 0 46px;
+  border-radius: 23px;
+}
+#rezerwacja > .bot > .view > .etap.summary > .title {
+  margin-bottom: 20px;
+  font-size: 34px;
+}
+#rezerwacja > .bot > .view > .etap.summary > .subtitle {
+  margin-bottom: 80px;
+  font-size: 25px;
+}
+#rezerwacja > .bot > .view > .etap.summary > .table {
+  padding: 32px;
+  width: 100%;
+  max-width: 720px;
+  border: solid 1px #e8e6e7;
+}
+#rezerwacja > .bot > .view > .etap.summary > .table .title {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+#rezerwacja > .bot > .view > .etap.summary > .table .subtitle {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+#rezerwacja > .bot > .view > .etap.summary > .table > .tcell.right {
+  border-left: solid 1px #e8e6e7;
+}
+#rezerwacja > .bot > .view > .etap.summary > .button {
+  margin-top: 70px;
 }
 #rezerwacja > .bot > .side {
   padding: 26px 30px 50px;

@@ -175,13 +175,110 @@
 		rezerwacja: function(){
 			var addon = root.addon;
 			var logger = addon.isLogger();
+			var tout = null;
+			var meeting = {};
 			
 			if(logger) console.log('page.rezerwacja()');
 			
+			/* przełączanie etapów rejestracji */
+			(function( view, buttonForm, buttonRegister, side ){
+				var current = 0;
+				var lock = false;
+				var itemWidth = function(){
+					return $( view ).children( '.etap:first' ).outerWidth( true ) * current;
+					
+				};
+				
+				view.on({
+					set: function( e ){
+						if( current < 0 ) current = view.children( '.etap' ).length - 1;
+						current %= view.children( '.etap' ).length;
+						new TimelineLite({
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								.3,
+								{
+									scrollLeft: itemWidth(),
+									ease: Power2.easeInOut,
+								}
+							), 'start'
+						);
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							view.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							view.triggerHandler( 'set' );
+							
+						}
+					},
+					
+				});
+				
+				buttonForm.click( function( e ){
+					view.triggerHandler( 'next' );
+					$(this).hide();
+					
+				} );
+				
+				buttonRegister.click( function( e ){
+					var form = $( '#rezerwacja .bot .etap.form form' );
+					if( form.triggerHandler( 'test' ) === true ){
+						$.post(
+							root.bazar.basePath + '/register?meeting',
+							{
+								data: meeting,
+								form: form.serializeArray(),
+							},
+							function( data, status ){
+								console.log( data );
+								side.hide();
+								view.triggerHandler( 'next' );
+								
+							}
+						);
+						
+					}
+					
+				} );
+				
+				$( window ).resize( function(){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						view.triggerHandler( 'set' );
+						
+					}, 200);
+					
+				} );
+				
+			})
+			( $( '#rezerwacja .bot > .view' ),
+			$( '#rezerwacja .side > .button.form' ),
+			$( '#rezerwacja .side > .button.register' ),
+			$( '#rezerwacja .side' ) );
+			
 			/* kalendarz */
-			(function( cal, days, monthReset, monthBar, meetingTyp, meetingInfo, meetingDay, meetingTime, meetingButton, popup ){
+			(function( cal, days, monthReset, monthBar, meetingTyp, meetingInfo, meetingDay, meetingTime, meetingButton, registerButton, popup, popupTime ){
 				/* informacje o wybranym szkoleniu */
-				var meeting = {
+				meeting = {
 					type: meetingTyp.text().trim(),
 					price: parseFloat( meetingInfo.text().match( /(\d+(?:,\d+)?)\s*zł/ )[1] ),
 					duration:  parseInt( meetingInfo.text().match( /(\d+)\s*min/ )[1] ),
@@ -190,7 +287,7 @@
 				
 				/* bieżąca data */
 				var now = new Date();
-				/* uproszczona bieżąca data */
+				/* uproszczona data początku obecnego miesiąca */
 				var nowDay = new Date( now.getFullYear(), now.getMonth() );
 				/* data do manipulowania */
 				var customDate = new Date( now.getFullYear(), now.getMonth() );
@@ -199,6 +296,7 @@
 				
 				meetingDay.parent().hide();
 				meetingButton.hide();
+				registerButton.hide();
 				
 				cal.on({
 					fill: function( e ){
@@ -215,7 +313,7 @@
 						} );
 						
 						/* czyszczenie klas */
-						days.removeClass( 'prev next current disable' );
+						days.removeClass( 'prev next current disable today' );
 						
 						/* określanie zakresu aktualnie wyświetlanego miesiąca */
 						var range = {
@@ -259,6 +357,9 @@
 							
 						}
 						
+						/* oznaczanie dnia obecnego */
+						days.filter( '[d='+ now.getDate() +'][m='+ now.getMonth() +'][y='+ now.getFullYear() +']' ).addClass( 'today' );
+						
 					},
 					next: function( e ){
 						customDate.setMonth( customDate.getMonth() + 1 );
@@ -277,6 +378,23 @@
 					},
 					time: function( e, mode ){
 						if( mode === 'open' ){
+							popupTime
+							.show();
+							
+							/* wyłączanie minionych godzin dla dnia obecnego */
+							if( meeting.date.year == now.getFullYear() && meeting.date.month == now.getMonth() && meeting.date.day == now.getDate() ){
+								
+								var start = popupTime
+								.filter( '[h='+ now.getHours() +'][m='+ Math.ceil( now.getMinutes() / 30 ) * 30 +']' );
+								
+								start
+								.prevAll( '.item' )
+								.add( start.parent().prevAll( '.pora' ).children( '.item' ) )
+								.hide();
+								
+								
+							}
+							
 							popup.addClass( 'open' );
 							
 						}
@@ -301,7 +419,7 @@
 					
 				} );
 				
-				cal.find( '.tbody' ).on( 'click', '.tcell.current', function( e ){
+				cal.find( '.tbody' ).on( 'click', '.tcell.current:not(.disable)', function( e ){
 					meeting.date = {
 						day: $(this).attr( 'd' ),
 						month: $(this).attr( 'm' ),
@@ -333,9 +451,12 @@
 					items.click( function( e ){
 						meeting.date.hour = $(this).attr( 'h' );
 						meeting.date.minute = $(this).attr( 'm' );
+						var sDay = meeting.date.day.toString().length < 2?( "0" + meeting.date.day ):( meeting.date.day );
+						var sHour = meeting.date.hour.toString().length < 2?( "0" + meeting.date.hour ):( meeting.date.hour );
+						var sMinute = meeting.date.minute.toString().length < 2?( "0" + meeting.date.minute ):( meeting.date.minute );
 						
-						meetingDay.text( 'Termin: ' + meeting.date.day + ' ' + nazwy[ meeting.date.month ] );
-						meetingTime.text( 'Godzina: ' + meeting.date.hour + '.' + meeting.date.minute );
+						meetingDay.text( 'Termin: ' + sDay + ' ' + nazwy[ meeting.date.month ] );
+						meetingTime.text( 'Godzina: ' + sHour + '.' + sMinute );
 						
 						cal.triggerHandler( 'time', [ 'close' ] );
 						meetingDay.parent().slideDown();
@@ -374,8 +495,71 @@
 			$( '#rezerwacja .side > .top > .cena' ), 
 			$( '#rezerwacja .side > .bot > .dzien' ),  
 			$( '#rezerwacja .side > .bot > .godzina' ),  
-			$( '#rezerwacja .side > .button' ), 
-			$( '#rezerwacja > .popup' ) );
+			$( '#rezerwacja .side > .button.form' ),
+			$( '#rezerwacja .side > .button.register' ),
+			$( '#rezerwacja > .popup' ), 
+			$( '#rezerwacja > .popup .body .item' ) );
+			
+			/* walidacja formularza rejestracji */
+			(function( form, inputs, buttonRegister ){
+				var myForm = [
+					{
+						name: 'imie',
+						item: form.find( '.imie' ),
+						filterName: 'imie',
+					},
+					{
+						name: 'mail',
+						item: form.find( '.mail' ),
+						filterName: 'mail',
+					},
+					{
+						name: 'tel',
+						item: form.find( '.tel' ),
+						filterName: 'telefon',
+					},
+					{
+						name: 'msg',
+						item: form.find( '.msg' ),
+						filterName: 'tekst',
+					},
+					
+				];
+				
+				form
+				.on({
+					test: function( e ){
+						var test = addon.form.verify( myForm );
+						if( test === true ){
+							buttonRegister.show();
+							
+						}
+						else{
+							buttonRegister.hide();
+							
+						}
+						
+						return test;
+					},
+					
+				});
+				
+				inputs.blur( function( e ){
+					form.triggerHandler( 'test' );
+					
+				} );
+				
+			})
+			( $( '#rezerwacja .bot .etap.form form' ), 
+			$( '#rezerwacja .bot .etap.form form' ).find( 'input, textarea' ), 
+			$( '#rezerwacja .bot > .side > .button.register' ) );
+			
+			/* ekran podsumowanie */
+			(function( summary ){
+				
+				
+			})
+			( $( '#rezerwacja .bot .etap.summary' ) );
 			
 		},
 		
