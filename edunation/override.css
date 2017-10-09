@@ -22,6 +22,46 @@
   background-color: #080d35;
 }
 
+.font-blue-dark2 {
+  color: #0e1235;
+}
+
+.bg-blue-dark2 {
+  background-color: #0e1235;
+}
+
+.font-violet {
+  color: #2f3083;
+}
+
+.bg-violet {
+  background-color: #2f3083;
+}
+
+.font-violet-light {
+  color: #5056a4;
+}
+
+.bg-violet-light {
+  background-color: #5056a4;
+}
+
+.font-pink {
+  color: #ed1e4a;
+}
+
+.bg-pink {
+  background-color: #ed1e4a;
+}
+
+.font-green {
+  color: #35b896;
+}
+
+.bg-green {
+  background-color: #35b896;
+}
+
 .font-gray {
   color: #e8e6e7;
 }
@@ -314,4 +354,51 @@ body.admin .main-nav {
 }
 #blog > .inner > .wrapper > .element > .box > .button {
   position: absolute;
+}
+
+#spotkania {
+  margin-top: 60px;
+  padding: 50px 0;
+}
+#spotkania > .kafelki > .item > .box {
+  padding: 50px;
+}
+#spotkania > .kafelki > .item > .box > .head {
+  padding: 40px 20px;
+  height: 365px;
+}
+#spotkania > .kafelki > .item > .box > .head > .title {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+#spotkania > .kafelki > .item > .box > .head > .subtitle {
+  margin-bottom: 56px;
+  font-size: 24px;
+}
+#spotkania > .kafelki > .item > .box > .head > .box {
+  width: 160px;
+  height: 50px;
+  border: solid 2px #5056a4;
+  font-size: 24px;
+}
+#spotkania > .kafelki > .item > .box > .body > .line {
+  padding: 0 30px;
+  min-height: 60px;
+  font-size: 14px;
+}
+#spotkania > .kafelki > .item > .box > .body > .line > * {
+  line-height: 30px;
+}
+#spotkania > .kafelki > .item > .box > .body > .line:nth-child(even) {
+  border: solid 2px #ededed;
+  background-color: #f6f6f8;
+}
+#spotkania > .kafelki > .item > .box > .foot {
+  margin: 15px 0;
+}
+#spotkania > .kafelki > .item > .box > .foot > .button {
+  margin: 15px 0;
+  padding: 0 30px;
+  height: 50px;
+  border-radius: 25px;
 }

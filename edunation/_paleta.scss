@@ -2,12 +2,24 @@
 $color-light: #fff;
 $color-dark: #000;
 $color-blue-dark: #080d35;
+$color-blue-dark2: #0e1235;
+$color-violet: #2f3083;
+$color-violet-light: #5056a4;
+$color-pink: #ed1e4a;
+$color-green: #35b896;
 $color-gray: #e8e6e7;
+$color-gray-light: #f6f6f8;
+$color-gray-light2: #ededed;
 
 $generator:(
 	light: $color-light,
 	dark: $color-dark,
 	blue-dark: $color-blue-dark,
+	blue-dark2: $color-blue-dark2,
+	violet: $color-violet,
+	violet-light: $color-violet-light,
+	pink: $color-pink,
+	green: $color-green,
 	gray: $color-gray
 );
 

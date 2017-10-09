@@ -1,0 +1,79 @@
+#spotkania{
+	margin-top: 60px;
+	padding: 50px 0;
+	
+	& > .kafelki{
+		
+		& > .item{
+			
+			& > .box{
+				padding: 50px;
+				
+				& > .head{
+					padding: 40px 20px;
+					height: 365px;
+					
+					& > .title{
+						margin-bottom: 20px;
+						font-size: 32px;
+						
+					}
+					
+					& > .subtitle{
+						margin-bottom: 56px;
+						font-size: 24px;
+						
+					}
+					
+					& > .box{
+						width: 160px;
+						height: 50px;
+						border: solid 2px $color-violet-light;
+						font-size: 24px;
+						
+					}
+					
+				}
+				
+				& > .body{
+					
+					& > .line{
+						padding: 0 30px;
+						min-height: 60px;
+						font-size: 14px;
+						
+						& > *{
+							line-height: 30px;
+							
+						}
+						
+						&:nth-child(even){
+							border: solid 2px $color-gray-light2;
+							background-color: $color-gray-light;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .foot{
+					margin: 15px 0;
+					
+					& > .button{
+						margin: 15px 0;
+						padding: 0 30px;
+						height: 50px;
+						border-radius: 25px;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

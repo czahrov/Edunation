@@ -37,93 +37,28 @@
 						Wybierz godzinę
 					</div>
 					<div class='body grow flex flex-items-start text-center'>
-						<?php
-							$dataTime = array(
-								'rano' => array(
-									array(
-										'h' => 10,
-										'm' => 0,
-									),
-									array(
-										'h' => 10,
-										'm' => 30,
-									),
-									array(
-										'h' => 11,
-										'm' => 0,
-									),
-									array(
-										'h' => 11,
-										'm' => 30,
-									),
-									
-								),
-								'po południu' => array(
-									array(
-										'h' => 12,
-										'm' => 0,
-									),
-									array(
-										'h' => 12,
-										'm' => 30,
-									),
-									array(
-										'h' => 13,
-										'm' => 0,
-									),
-									array(
-										'h' => 13,
-										'm' => 30,
-									),
-									array(
-										'h' => 14,
-										'm' => 0,
-									),
-									array(
-										'h' => 14,
-										'm' => 30,
-									),
-									array(
-										'h' => 15,
-										'm' => 0,
-									),
-									array(
-										'h' => 15,
-										'm' => 30,
-									),
-									array(
-										'h' => 16,
-										'm' => 0,
-									),
-									array(
-										'h' => 16,
-										'm' => 30,
-									),
-									
-								),
-								'wieczorem' => array(
-									array(
-										'h' => 17,
-										'm' => 00,
-									),
-									
-								),
-								
-							);
-							
-							foreach( $dataTime as $pora => $godziny ):
-						?>
-						<div class='pora base3'>
+						<div class='pora rano base3'>
 							<div class='title bold'>
-								<?php echo $pora; ?>
+								Rano
 							</div>
-							<?php foreach( $godziny as $godzina ): ?>
-								<div class='item pointer' h='<?php echo $godzina[ 'h' ]; ?>' m='<?php echo $godzina[ 'm' ] ?>'>
-									<?php printf( "%s:%'02s", $godzina[ 'h' ], $godzina[ 'm' ] ); ?>
-								</div>
-							<?php endforeach; ?>
+							<div class='item pointer hide' h='' m=''></div>
+							
 						</div>
-						<?php endforeach; ?>
+						<div class='pora popoludnie base3'>
+							<div class='title bold'>
+								Po południu
+							</div>
+							<div class='item pointer hide' h='' m=''></div>
+							
+						</div>
+						<div class='pora wieczor base3'>
+							<div class='title bold'>
+								Wieczorem
+							</div>
+							<div class='item pointer hide' h='' m=''></div>
+							
+						</div>
+						
 					</div>
 					
 				</div>
@@ -235,14 +170,14 @@
 								<div class='subtitle'>
 									online
 								</div>
-								<div class='button bold pointer uppercase bg-blue-dark font-light flex-self-center flex flex-items-center'>
+								<div id='authorize-button' class='button bold pointer uppercase bg-blue-dark font-light flex-self-center flex flex-items-center'>
 									Dodaj do kalendarza Google
 								</div>
 								
 							</div>
 							
 						</div>
-						<a class='button bg-blue-dark font-light bold uppercase flex flex-items-center'>
+						<a class='button bg-blue-dark font-light bold uppercase flex flex-items-center' href='<?php echo home_url(); ?>'>
 							Sprawdź inne usługi
 						</a>
 						

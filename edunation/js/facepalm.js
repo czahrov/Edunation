@@ -242,16 +242,30 @@
 				buttonRegister.click( function( e ){
 					var form = $( '#rezerwacja .bot .etap.form form' );
 					if( form.triggerHandler( 'test' ) === true ){
+						var form_data = {};
+						
+						$.each( form.serializeArray(), function( num, item ){
+							form_data[ item.name ] = item.value;
+							
+						} );
+						
+						window.meeting_data = {
+							meeting: meeting,
+							form: form_data,
+							
+						};
+						
 						$.post(
 							root.bazar.basePath + '/register?meeting',
 							{
 								data: meeting,
-								form: form.serializeArray(),
+								form: form_data,
 							},
 							function( data, status ){
 								console.log( data );
 								side.hide();
 								view.triggerHandler( 'next' );
+								$.getScript( root.bazar.basePath + '/wp-content/themes/edunation/js/googlecal.min.js' );
 								
 							}
 						);
@@ -276,7 +290,7 @@
 			$( '#rezerwacja .side' ) );
 			
 			/* kalendarz */
-			(function( cal, days, monthReset, monthBar, meetingTyp, meetingInfo, meetingDay, meetingTime, meetingButton, registerButton, popup, popupTime ){
+			(function( cal, days, monthReset, monthBar, meetingTyp, meetingInfo, meetingDay, meetingTime, meetingButton, registerButton, popup, popupPora, popupTime ){
 				/* informacje o wybranym szkoleniu */
 				meeting = {
 					type: meetingTyp.text().trim(),
@@ -378,27 +392,73 @@
 					},
 					time: function( e, mode ){
 						if( mode === 'open' ){
-							popupTime
-							.show();
+
+							/* pobieranie dostępnych godzin */
+							$.get(
+								'../register?slots=' + [ meeting.date.day, parseInt( meeting.date.month )+1, meeting.date.year, meeting.duration ].join( ';' ),
+								function( data ){
+									try{
+										// console.log( data );
+										var slots = JSON.parse( data );
+										// console.log( slots );
+										
+										$.each( slots, function( index, value ){
+											var t = new Date( value * 1000 );
+											var th = t.getHours();
+											var tm = t.getMinutes();
+											var pora;
+											
+											if( th < 12 ){
+												pora = 'rano';
+												
+											}
+											else if( th < 17){
+												pora = 'popoludnie';
+												
+											}
+											else{
+												pora = 'wieczor';
+												
+											}
+											
+											var proto = popupPora
+											.filter( '[class*="'+ pora +'"]' )
+											.children( '.hide' );
+											
+											proto
+											.clone()
+											.attr({
+												h: th,
+												m: tm,
+												
+											})
+											.html( function(){
+												var p1 = th.toString().length < 2?( '0' + th ):( th );
+												var p2 = tm.toString().length < 2?( '0' + tm ):( tm );
+												return p1 + ':' + p2;
+												
+											} )
+											.removeClass( 'hide' )
+											.appendTo( proto.parent() );
+											
+										} );
+										
+										popup.addClass( 'open' );
+										
+									}
+									catch( err ){
+										
+									}
+								}
+							);
 							
-							/* wyłączanie minionych godzin dla dnia obecnego */
-							if( meeting.date.year == now.getFullYear() && meeting.date.month == now.getMonth() && meeting.date.day == now.getDate() ){
-								
-								var start = popupTime
-								.filter( '[h='+ now.getHours() +'][m='+ Math.ceil( now.getMinutes() / 30 ) * 30 +']' );
-								
-								start
-								.prevAll( '.item' )
-								.add( start.parent().prevAll( '.pora' ).children( '.item' ) )
-								.hide();
-								
-								
-							}
-							
-							popup.addClass( 'open' );
 							
 						}
 						else if( mode === 'close' ){
+							popup
+							.find( '.body .item:not(.hide)' )
+							.remove();
+							
 							popup.removeClass( 'open' );
 							
 						}
@@ -429,7 +489,7 @@
 					
 					cal.triggerHandler( 'time', [ 'open' ] );
 					
-					console.log( meeting );
+					// console.log( meeting );
 					
 				} );
 				
@@ -447,25 +507,23 @@
 				});
 				
 				/* ustawianie godziny */
-				(function( items ){
-					items.click( function( e ){
-						meeting.date.hour = $(this).attr( 'h' );
-						meeting.date.minute = $(this).attr( 'm' );
-						var sDay = meeting.date.day.toString().length < 2?( "0" + meeting.date.day ):( meeting.date.day );
-						var sHour = meeting.date.hour.toString().length < 2?( "0" + meeting.date.hour ):( meeting.date.hour );
-						var sMinute = meeting.date.minute.toString().length < 2?( "0" + meeting.date.minute ):( meeting.date.minute );
-						
-						meetingDay.text( 'Termin: ' + sDay + ' ' + nazwy[ meeting.date.month ] );
-						meetingTime.text( 'Godzina: ' + sHour + '.' + sMinute );
-						
-						cal.triggerHandler( 'time', [ 'close' ] );
-						meetingDay.parent().slideDown();
-						meetingButton.slideDown();
-						
-					} );
+				popup
+				.find( '.box .body' )
+				.on( 'click', '.item:not(.hide)', function( e ){
+					meeting.date.hour = $(this).attr( 'h' );
+					meeting.date.minute = $(this).attr( 'm' );
+					var sDay = meeting.date.day.toString().length < 2?( "0" + meeting.date.day ):( meeting.date.day );
+					var sHour = meeting.date.hour.toString().length < 2?( "0" + meeting.date.hour ):( meeting.date.hour );
+					var sMinute = meeting.date.minute.toString().length < 2?( "0" + meeting.date.minute ):( meeting.date.minute );
 					
-				})
-				( popup.find( '.box > .body .item' ) );
+					meetingDay.text( 'Termin: ' + sDay + ' ' + nazwy[ meeting.date.month ] );
+					meetingTime.text( 'Godzina: ' + sHour + '.' + sMinute );
+					
+					cal.triggerHandler( 'time', [ 'close' ] );
+					meetingDay.parent().slideDown();
+					meetingButton.slideDown();
+					
+				} );
 				
 				/* obsługa przycisków przewijania miesięcy */
 				monthBar.children( '.nav' ).click( function( e ){
@@ -498,6 +556,7 @@
 			$( '#rezerwacja .side > .button.form' ),
 			$( '#rezerwacja .side > .button.register' ),
 			$( '#rezerwacja > .popup' ), 
+			$( '#rezerwacja > .popup .body > .pora' ), 
 			$( '#rezerwacja > .popup .body .item' ) );
 			
 			/* walidacja formularza rejestracji */
@@ -555,11 +614,32 @@
 			$( '#rezerwacja .bot > .side > .button.register' ) );
 			
 			/* ekran podsumowanie */
-			(function( summary ){
+			(function( summary, title, subtitle, data, data_alt, name, info, google ){
 				
+				google.click( function( e ){
+					$.getScript( 'https://apis.google.com/js/api.js', function( data, status ){
+						if( status === 'success' ) handleClientLoad();
+						
+					} );
+					
+				} );
 				
 			})
-			( $( '#rezerwacja .bot .etap.summary' ) );
+			( $( '#rezerwacja .bot .etap.summary' ), 
+			$( '#rezerwacja .bot .etap.summary > .title' ), 
+			$( '#rezerwacja .bot .etap.summary > .subtitle' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .left > .title' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .left > .subtitle' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .right > .title' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .right > .subtitle' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .right > .button' ) );
+			
+		},
+		spotkania: function(){
+			var addon = root.addon;
+			var logger = addon.isLogger();
+			
+			if(logger) console.log('page.spotkania()');
 			
 		},
 		
