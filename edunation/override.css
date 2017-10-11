@@ -360,12 +360,28 @@ body.admin .main-nav {
   margin-top: 60px;
   padding: 50px 0;
 }
+#spotkania > .kafelki {
+  min-height: 1000px;
+  padding: 0;
+}
 #spotkania > .kafelki > .item > .box {
   padding: 50px;
 }
 #spotkania > .kafelki > .item > .box > .head {
+  position: relative;
   padding: 40px 20px;
   height: 365px;
+}
+#spotkania > .kafelki > .item > .box > .head > .status {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+}
+#spotkania > .kafelki > .item > .box > .head > .status > .icon:not(.wait) {
+  display: none;
 }
 #spotkania > .kafelki > .item > .box > .head > .title {
   margin-bottom: 20px;
@@ -378,12 +394,13 @@ body.admin .main-nav {
 #spotkania > .kafelki > .item > .box > .head > .box {
   width: 160px;
   height: 50px;
-  border: solid 2px #5056a4;
+  border: solid 2px rgba(255, 255, 255, 0.5);
   font-size: 24px;
 }
 #spotkania > .kafelki > .item > .box > .body > .line {
-  padding: 0 30px;
+  padding: 10px 30px;
   min-height: 60px;
+  height: initial;
   font-size: 14px;
 }
 #spotkania > .kafelki > .item > .box > .body > .line > * {
@@ -401,4 +418,13 @@ body.admin .main-nav {
   padding: 0 30px;
   height: 50px;
   border-radius: 25px;
+}
+#spotkania > .kafelki > .item.accepted > .box > .head {
+  background-color: #35b896;
+}
+#spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon {
+  display: block;
+}
+#spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon:not(.accept) {
+  display: none;
 }

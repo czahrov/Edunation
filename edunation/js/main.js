@@ -26,13 +26,13 @@ $(document).ready(function(){
 	
 	// linkowanie
 	
-	var $root = $('html, body');
+	/* var $root = $('html, body');
 	$('a').click(function() {
 		$root.animate({
 			scrollTop: $( $.attr(this, 'href') ).offset().top
 		}, 700);
 		return false;
-	});
+	}); */
 	
 	
 	// Wyswietlanie filmow w tle

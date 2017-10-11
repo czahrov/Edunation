@@ -144,29 +144,17 @@
 						
 					</div>
 					<div class='etap summary base1 no-shrink flex flex-column flex-items-center'>
-						<div class='title'>
-							Wspaniale! Rezerwacja została przyjęta.
-						</div>
-						<div class='subtitle'>
-							E-mail z potwierdzeniem jest już w drodze
-						</div>
+						<div class='title text-center'></div>
+						<div class='subtitle text-center'></div>
 						<div class='table flex flex-items-center flex-justify-around'>
 							<div class='tcell left text-center base3 flex flex-column'>
-								<div class='title bold'>
-									3 stycznia
-								</div>
-								<div class='subtitle'>
-									czwartek 16.00
-								</div>
+								<div class='title bold'></div>
+								<div class='subtitle'></div>
 								
 							</div>
 							<div class='tcell right text-center grow flex flex-column'>
-								<div class='title bold'>
-									Busines 1:1 Skype
-								</div>
-								<div class='subtitle'>
-									45 minut | 50 zł
-								</div>
+								<div class='title bold'></div>
+								<div class='subtitle'></div>
 								<div class='subtitle'>
 									online
 								</div>

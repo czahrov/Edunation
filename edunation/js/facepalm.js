@@ -262,10 +262,19 @@
 								form: form_data,
 							},
 							function( data, status ){
-								console.log( data );
-								side.hide();
-								view.triggerHandler( 'next' );
-								$.getScript( root.bazar.basePath + '/wp-content/themes/edunation/js/googlecal.min.js' );
+								try{
+									console.log( data );
+									var resp = JSON.parse( data);
+									side.hide();
+									view.triggerHandler( 'next' );
+									$.getScript( root.bazar.basePath + '/wp-content/themes/edunation/js/googlecal.min.js' );
+									$( '#rezerwacja .bot .etap.summary' ).triggerHandler( 'fill', [ resp.status, resp.msg ] )
+									
+								}
+								catch( err ){
+									console.error( err );
+									
+								}
 								
 							}
 						);
@@ -400,7 +409,7 @@
 									try{
 										// console.log( data );
 										var slots = JSON.parse( data );
-										// console.log( slots );
+										console.log( slots );
 										
 										$.each( slots, function( index, value ){
 											var t = new Date( value * 1000 );
@@ -614,7 +623,36 @@
 			$( '#rezerwacja .bot > .side > .button.register' ) );
 			
 			/* ekran podsumowanie */
-			(function( summary, title, subtitle, data, data_alt, name, info, google ){
+			(function( summary, title, subtitle, table, data, data_alt, name, info, google ){
+				
+				summary
+				.on({
+					fill: function( e, result, msg ){
+						var meeting = window.meeting_data;
+						var month_name = [ 'stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia' ];
+						var day_name = [ 'niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota' ];
+						var t_date = new Date( meeting.meeting.date.year, meeting.meeting.date.month, meeting.meeting.date.day, meeting.meeting.date.hour, meeting.meeting.date.minute );
+						
+						if( result === 'ok' ){
+							table.show();
+							title.text( 'Wspaniale '+ meeting.form.imie +'! Twoje zgłoszenie zostało pomyślnie dodane.' );
+							subtitle.text( 'Otrzymasz potwierdzenie drogą mailową, czy termin spotkania został zaakceptowany.' );
+							data.text( meeting.meeting.date.day + ' ' + month_name[ t_date.getDay() ] );
+							data_alt.text( day_name[ t_date.getDay() ] + ' ' + t_date.getHours() + ':' + t_date.getMinutes() );
+							name.text( meeting.meeting.type );
+							info.text( meeting.meeting.duration + ' | ' + meeting.meeting.price + ' zł' );
+							
+						}
+						else{
+							table.hide();
+							title.text( 'Twoje zgłoszenie zostało odrzucone przez serwer.' );
+							subtitle.text( 'Powód: ' + msg );
+							
+						}
+						
+					},
+					
+				});
 				
 				google.click( function( e ){
 					$.getScript( 'https://apis.google.com/js/api.js', function( data, status ){
@@ -628,10 +666,11 @@
 			( $( '#rezerwacja .bot .etap.summary' ), 
 			$( '#rezerwacja .bot .etap.summary > .title' ), 
 			$( '#rezerwacja .bot .etap.summary > .subtitle' ), 
+			$( '#rezerwacja .bot .etap.summary > .table' ), 
 			$( '#rezerwacja .bot .etap.summary > .table > .left > .title' ), 
 			$( '#rezerwacja .bot .etap.summary > .table > .left > .subtitle' ), 
 			$( '#rezerwacja .bot .etap.summary > .table > .right > .title' ), 
-			$( '#rezerwacja .bot .etap.summary > .table > .right > .subtitle' ), 
+			$( '#rezerwacja .bot .etap.summary > .table > .right > .subtitle:first' ), 
 			$( '#rezerwacja .bot .etap.summary > .table > .right > .button' ) );
 			
 		},
@@ -640,6 +679,56 @@
 			var logger = addon.isLogger();
 			
 			if(logger) console.log('page.spotkania()');
+			
+			/* spotkania - kafelki */
+			(function( kafelki, body, foot, btn_accept, btn_cancel, btn_remove ){
+				body.add( foot ).hide();
+				
+				kafelki
+				.on({
+					mouseenter: function( e ){
+						$(this)
+						.find( '.body, .foot' )
+						.slideDown();
+						
+					},
+					mouseleave: function( e ){
+						$(this)
+						.find( '.body, .foot' )
+						.slideUp();
+						
+					},
+					
+				});
+				
+				btn_accept.click( function( e ){
+					e.preventDefault();
+					var id = $(this).parents( '.item:first' ).attr( 'item' );
+					window.meeting_selected = window.meetings[ id ];
+					window.meeting_btn = $(this)[0];
+					window.meeting_url = $(this).attr( 'href' );
+					
+					$.getScript( root.bazar.basePath + '/wp-content/themes/edunation/js/googlecal_meeting.min.js', function( data, status ){
+						if( status === 'success' ){
+							$.getScript( 'https://apis.google.com/js/api.js', function( data, status ){
+								if( status === 'success' ) handleClientLoad();
+								
+							} );
+							
+						}
+						
+					} );
+					
+					
+				} );
+				
+			})
+			( $( '#spotkania > .kafelki > .item' ), 
+			$( '#spotkania > .kafelki > .item > .box > .body' ), 
+			$( '#spotkania > .kafelki > .item > .box > .foot' ),
+			$( '#spotkania > .kafelki > .item > .box > .foot > .button.accept' ), 
+			$( '#spotkania > .kafelki > .item > .box > .foot > .button.cancel' ), 
+			$( '#spotkania > .kafelki > .item > .box > .foot > .button.remove' ) );
 			
 		},
 		

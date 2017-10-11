@@ -3,6 +3,8 @@
 	padding: 50px 0;
 	
 	& > .kafelki{
+		min-height: 1000px;
+		padding: 0;
 		
 		& > .item{
 			
@@ -10,8 +12,28 @@
 				padding: 50px;
 				
 				& > .head{
+					position: relative;
 					padding: 40px 20px;
 					height: 365px;
+					
+					& > .status{
+						position: absolute;
+						width: 40px;
+						height: 40px;
+						top: 0;
+						right: 0;
+						font-size: 30px;
+						
+						& > .icon{
+							
+							&:not(.wait){
+								display: none;
+								
+							}
+							
+						}
+						
+					}
 					
 					& > .title{
 						margin-bottom: 20px;
@@ -28,7 +50,7 @@
 					& > .box{
 						width: 160px;
 						height: 50px;
-						border: solid 2px $color-violet-light;
+						border: solid 2px rgba(255,255,255,0.5);
 						font-size: 24px;
 						
 					}
@@ -38,8 +60,9 @@
 				& > .body{
 					
 					& > .line{
-						padding: 0 30px;
+						padding: 10px 30px;
 						min-height: 60px;
+						height: initial;
 						font-size: 14px;
 						
 						& > *{
@@ -65,6 +88,33 @@
 						padding: 0 30px;
 						height: 50px;
 						border-radius: 25px;
+						
+					}
+					
+				}
+				
+			}
+			
+			&.accepted{
+				
+				& > .box{
+					
+					& > .head{
+						background-color: $color-green;
+						
+						& > .status{
+							
+							& > .icon{
+								display: block;
+								
+								&:not(.accept){
+									display: none;
+									
+								}
+								
+							}
+							
+						}
 						
 					}
 					

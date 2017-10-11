@@ -12,7 +12,7 @@
 			</div>
 		</div>
 	
-		<ul class="navigation flex flex-column flex-row-ml font-basic-medium no-shrink closed">
+		<ul class="navigation flex flex-column flex-row-ml flex-items-center-ml font-basic-medium no-shrink closed">
 			<li><a href="<?php echo home_url(''); ?>#busines-english">Business English</a></li>
 			<li><a href="<?php echo home_url(''); ?>#general-english">General English</a></li>
 			<li><a href="<?php echo home_url(''); ?>#mummy">Mummy Daddy!</a></li>

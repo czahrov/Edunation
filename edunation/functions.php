@@ -383,8 +383,9 @@ class DateManager{
 		
 	}
 	
+	/* Funkcja zwracająca, albo ustawiająca status danego spotkania */
 	public function statusDate( $timestamp = null, $status = null ){
-		if( $timestamp !== null ){
+		if( $timestamp !== null && !empty( $this->_dates[ $timestamp ] ) ){
 			if( $status === null ){
 				return $this->_dates[ $timestamp ][ 'status' ];
 				
@@ -500,4 +501,11 @@ class SingleDate{
 	
 }
 
-
+/* zwraca instancję DateManager'a */
+function DM(){
+	static $DM = null;
+	
+	if( $DM === null ) $DM = new DateManager( get_template_directory() . "/php/meetings.json" );
+	
+	return $DM;
+}

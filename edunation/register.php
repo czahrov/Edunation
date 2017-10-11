@@ -16,7 +16,8 @@ if( empty( $_SESSION[ 'temp' ] ) ){
 	
 }
 
-$meeting_uri = get_template_directory() . "/php/meetings.json";
+// $meeting_uri = get_template_directory() . "/php/meetings.json";
+$DM = DM();
 
 if( isset( $_GET[ 'meeting' ] ) ){
 	$_SESSION[ 'temp' ] = array_merge( $_SESSION[ 'temp' ], $_POST );
@@ -24,7 +25,7 @@ if( isset( $_GET[ 'meeting' ] ) ){
 	
 	$info = array_merge( $_SESSION[ 'temp' ][ 'data' ], $_SESSION[ 'temp' ][ 'form' ] );
 	
-	$DM = new DateManager( $meeting_uri );
+	// $DM = new DateManager( $meeting_uri );
 	$DM->setMail( $info[ 'mail' ] );
 	
 	$date = $DM->createDate();
@@ -51,8 +52,8 @@ if( isset( $_GET[ 'meeting' ] ) ){
 }
 elseif( !empty( $_GET[ 'slots' ] ) ){
 	// echo $_GET[ 'slots' ];
-	sscanf( $_GET[ 'slots' ], "%u;%u;%u%u", $day, $month, $year, $duration );
-	$DM = new DateManager( $meeting_uri );
+	sscanf( $_GET[ 'slots' ], "%u;%u;%u;%u", $day, $month, $year, $duration );
+	// $DM = new DateManager( $meeting_uri );
 	echo json_encode( $DM->getSlots( $year, $month, $day, $duration ) );
 	
 }

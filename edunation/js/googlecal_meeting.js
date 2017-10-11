@@ -8,8 +8,9 @@ var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/calendar";
 
-var authorizeButton = document.getElementById('authorize-button');
-var signoutButton = document.getElementById('signout-button');
+// var authorizeButton = document.getElementById('authorize-button');
+var authorizeButton = window.meeting_btn;
+// var signoutButton = document.getElementById('signout-button');
 
 /**
 *  On load, called to load the auth2 library and API client library.
@@ -75,9 +76,9 @@ function handleSignoutClick(event) {
 
 
 function addCustomEvent(){
-	var date = meeting_data.meeting.date;
-	var startTime = new Date( date.year, date.month, date.day, date.hour, date.minute );
-	var endTime = new Date( startTime.getTime() + meeting_data.meeting.duration * 60 * 1000 );
+	var date = window.meeting_selected;
+	var startTime = new Date( date.time * 1000 );
+	var endTime = new Date( startTime.getTime() + date.duration * 60 * 1000 );
 	
 	var event = {
 		"start": {
@@ -90,9 +91,10 @@ function addCustomEvent(){
 			// "dateTime": "2017-09-27T13:00:00.000Z",
 			"dateTime": endTime.toISOString(),
 		},
-		"summary": meeting_data.meeting.type,
+		"summary": date.name,
 		// "location": "dom",
 		// "description": "spotkanie na skype!",
+		"description": [ date.client.name, date.client.tel, date.client.mail, date.client.msg ].join( '<br>' ),
 		"colorId": "11",
 		"reminders": {
 			"overrides": [
@@ -116,7 +118,8 @@ function addCustomEvent(){
 	})
 	.then(function( response ){
 		console.info( response );
-		authorizeButton.style.display = 'none';
+		// authorizeButton.style.display = 'none';
+		window.location.href = window.meeting_url;
 		
 	});
 	
