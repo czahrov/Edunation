@@ -128,17 +128,23 @@ class DateManager{
 			'client' => $SD->getClient(),
 			
 		);
+		/* początek planowanego spotkania */
 		$start = (int)$item[ 'time' ];		// timestamp
+		/* koniec planowanego spotkania */
 		$end = $start + (int)$item[ 'duration' ] * 60;
 		$conflict = false;
+		$conflict_item = null;
 		
-		/* sprawdzanie czy podany termin jest wolny */
+		/* odczyt kolejny zapisanych spotkań i sprawdzanie kolizji */
 		foreach( $this->_dates as $time => $date ){
+			/* początek porównywanego spotkania */
 			$check_start = (int)$time;
+			/* koniec porównywanego spotkania */
 			$check_end = $check_start + (int)$date[ 'duration' ] * 60;
 			
-			if( ( $start >= $check_start && $start <= $check_end ) or ( $end >= $check_start && $end <= $check_end ) ){
+			if( ( $start >= $check_start && $start < $check_end ) or ( $end > $check_start && $end <= $check_end ) ){
 				$conflict = true;
+				$conflict_item = $date;
 				break;
 				
 			}
@@ -161,6 +167,9 @@ class DateManager{
 		else return json_encode( array(
 			'status' => 'fail',
 			'msg' => 'Ten termin został już zarezerwowany',
+			'plan_start' => $start,
+			'plan_end' => $end,
+			'item' => $conflict_item,
 			
 		) );
 		
@@ -335,6 +344,7 @@ class DateManager{
 		$step = (int)$this->_work[ 'step' ] * 60;
 		$possible = array();
 		
+		/* Generuje "sloty" */
 		for( $i = 0; $i <= ( $endTime - $startTime ) / $step; $i++ ){
 			$t = $startTime + $step * $i;
 			// $possible[] = $t;
@@ -361,12 +371,38 @@ class DateManager{
         )
 		*/
 		
+		/* usuwa zajęte sloty */
 		foreach( $this->_dates as $timestamp => $date ){
+			/* czy data znajduej się między datą pierwszego i ostatniego możliwego slotu */
 			if( $timestamp >= $startTime && $timestamp <= $endTime ){
+				/* sprawdza czy podany termin jest już zarezerwowany i pobiera jego index z tablicy */
 				$index = array_search( $timestamp, $possible );
+				/* usuwanie slotów zajmowanych przez znaleziony wpis */
 				if( $index !== false ){
-					// array_splice( $possible, $index, ceil( (int)$date[ 'duration' ] * 60 / $step ) );
-					array_splice( $possible, $index, ceil( (int)$duration * 60 / $step ) );
+					/* ilość usuwanych wpisów */
+					/* array_splice( $possible, $index, ceil( (int)$duration / $step ) ); */
+					
+					/* usuwanie slotów */
+					foreach( $possible as $num => $time ){
+						/*
+							$timestamp - zapisany wpis, czas startu, ( timestamp )
+							$date[ 'duration' ] - zapisany wpis, czas trwania, ( minuty )
+							$time - testowany slot ( timestamp )
+							$step - slot, czas trwania, ( minuty )
+							$duration - dodawane spotkanie, czas trwania, ( minuty )
+							
+							start:	czas startu wpisu - czas dodawanego spotkania
+							end:		czas startu wpisu + czas trwania wpisu
+						*/
+						$tStart = $timestamp - $duration * 60;
+						$tStop = $timestamp + (int)$date[ 'duration' ] * 60;
+						
+						if( $time > $tStart && $time <= $tStop ){
+							unset( $possible[ $num ] );
+							
+						}
+						
+					}
 					
 				}
 				

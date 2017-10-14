@@ -1,9 +1,3 @@
-<?php
-	/*
-	Template Name: Blog
-	*/
-	get_header();
-?>
 <!--NAVIGATION -->
 <body id="blog">
 	<header>
@@ -22,6 +16,7 @@
 				<?php
 				$posts = get_posts( array(
 					'numberposts' => -1,
+					'category_name' => 'oferta',
 					
 				) );
 					
@@ -34,9 +29,9 @@
 					$cena = $meta[ 'cena' ][0];
 					$duration = $meta[ 'czas_trwania' ][0];
 					$motywator = $meta[ 'motywator' ][0];
-					$url = get_permalink( $post->ID );
-					$img_alt = 'https://placeimg.com/100/100/person';
 					$img = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' );
+					$img_alt = 'https://placeimg.com/100/100/person';
+					$url = get_permalink( $post->ID );
 					
 				?>
 				
@@ -72,6 +67,3 @@
 	
 	
 	<div class="line"></div>
-
-<!-- FOOTER -->
-<?php get_footer();?>

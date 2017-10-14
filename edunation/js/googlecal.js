@@ -116,7 +116,11 @@ function addCustomEvent(){
 	})
 	.then(function( response ){
 		console.info( response );
-		authorizeButton.style.display = 'none';
+		if( response.result.status === 'confirmed' ){
+			authorizeButton.style.display = 'none';
+			window.alert( 'Wydarzenie zostało dodane do Twojego kalendarza google' );
+			
+		}
 		
 	});
 	

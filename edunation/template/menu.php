@@ -17,7 +17,6 @@
 			<li><a href="<?php echo home_url(''); ?>#general-english">General English</a></li>
 			<li><a href="<?php echo home_url(''); ?>#mummy">Mummy Daddy!</a></li>
 			<li><a href="<?php echo home_url(''); ?>#sessions">1:1 sessions</a></li>
-			<li><a href="<?php echo home_url('blog'); ?>">Blog</a></li>
 			<li><a href="<?php echo home_url('rezerwacja'); ?>" class="font-secondary-bold">Rezerwuj online</a></li>
 		</ul>
 	</div>

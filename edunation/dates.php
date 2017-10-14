@@ -61,6 +61,7 @@ echo "-->";
 <div id='spotkania' class='bg-blue-dark2'>
 	<div class='kafelki grid flex flex-items-start flex-wrap'>
 		<?php
+			$now = date_create()->getTimestamp();
 			foreach( $items as $timestamp => $date ):
 			/*
 			time => array( 
@@ -78,12 +79,13 @@ echo "-->";
 			)
 		*/
 		?>
-		<div class='item base1 base2-mm base3-dm <?php echo $date[ 'status' ]; ?>' item='<?php echo $timestamp; ?>'>
+		<div class='item base1 base2-mm base3-dm <?php echo $date[ 'status' ]; echo $timestamp < $now?( ' outdate ' ):( '' ); ?>' item='<?php echo $timestamp; ?>'>
 			<div class='box flex flex-column'>
 				<div class='head font-light bg-violet text-center flex flex-column flex-items-center flex-justify-end'>
 					<div class='status flex flex-items-center flex-justify-center'>
-						<div class='icon wait fa fa-clock-o'></div>
-						<div class='icon accept fa fa-check'></div>
+						<div class='icon wait fa fa-clock-o' title='Spotkanie oczekuje decyzję'></div>
+						<div class='icon accept fa fa-check' title='Spotkanie zostało zaakceptowane'></div>
+						<div class='icon outdate fa fa-calendar-times-o' title='Termin spotkania już minął'></div>
 						
 					</div>
 					<div class='title bold'>

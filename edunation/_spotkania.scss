@@ -18,13 +18,13 @@
 					
 					& > .status{
 						position: absolute;
-						width: 40px;
 						height: 40px;
 						top: 0;
 						right: 0;
 						font-size: 30px;
 						
 						& > .icon{
+							padding: 0 10px;
 							
 							&:not(.wait){
 								display: none;
@@ -115,6 +115,20 @@
 							}
 							
 						}
+						
+					}
+					
+				}
+				
+			}
+			
+			&.outdate{
+				
+				& > .box > .head{
+					background-color: $color-gray2;
+					
+					& > .status > .icon.outdate{
+						display: block;
 						
 					}
 					

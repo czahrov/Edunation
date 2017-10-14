@@ -374,11 +374,13 @@ body.admin .main-nav {
 }
 #spotkania > .kafelki > .item > .box > .head > .status {
   position: absolute;
-  width: 40px;
   height: 40px;
   top: 0;
   right: 0;
   font-size: 30px;
+}
+#spotkania > .kafelki > .item > .box > .head > .status > .icon {
+  padding: 0 10px;
 }
 #spotkania > .kafelki > .item > .box > .head > .status > .icon:not(.wait) {
   display: none;
@@ -427,4 +429,10 @@ body.admin .main-nav {
 }
 #spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon:not(.accept) {
   display: none;
+}
+#spotkania > .kafelki > .item.outdate > .box > .head {
+  background-color: #848494;
+}
+#spotkania > .kafelki > .item.outdate > .box > .head > .status > .icon.outdate {
+  display: block;
 }
