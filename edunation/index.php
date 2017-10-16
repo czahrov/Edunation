@@ -20,85 +20,102 @@
 	</header>
 <!-- Business -->
 	<div class="business" id="busines-english">
+		<?php
+		$data = homeSection( 'business-english' );
+			echo "<!--";
+			// print_r( $data );
+			echo "-->";
+		?>
 		<div class="business-content grid padding flex flex-column flex-justify-center">
-			<div class="title1 font-basic-regular">Business English</div>
-			<div class="title2 font-basic-bold">Bo dobry English to Twój biznes.</div>
+			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
+			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#business-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down"><img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png"></a>
+		<a href="#business-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
+		</a>
 	</div>
 <!-- TRAINING -->
 	<div class="training" id="business-training">
 		<div class="wrapper flex no-wrap">
+			<?php foreach( $data[ 'items' ] as $item ): ?>
 			<div class="box flex no-shrink base1 base3-ml">
 				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/1.png"></div>
-					<div class="title font-secondary-bold">Szkolenia grupowe <span class="block">business</span></div>
-					<div class="text">Twoja kadra profesjonalna <span class="block">w każdym calu.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/2.png"></div>
-					<div class="title font-secondary-bold">Business 1:1 <span class="block">w firmie</span></div>
-					<div class="text">Zaprojektujmy wspólnie Twój <span class="block">profesjonalny wizerunek w biznesie.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/3.png"></div>
-					<div class="title font-secondary-bold">Business 1:1 <span class="block">w firmie</span></div>
-					<div class="text">Idealne dopasowanie do <span class="block">Twojego rytmu dnia.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-secondary-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-
-			<div class="pagination">
-				<div class="pager active"></div>
-				<div class="pager"></div>
-				<div class="pager"></div>
-			</div>
-		</div>
-	</div>
-<!-- REVIEWS -->
-	<div class="reviews">
-		<div class="inner grid padding">
-			<div class="title font-secondary-bold">Power your business<span class="block">with edunation</span></div>
-			<div class="sub-title">Współpracują ze mną w 2017</div>
-			
-			<div class="container flex flex-items-center flex-justify-center">
-				<div class="arrow flex flex-items-center flex-justify-center no-shrink"><i class="fa fa-angle-left fa-angle-thin fa-3x" aria-hidden="true"></i></div>
-				<div class="wrapper grow flex flex-nowrap">
-					<div class="box base1 no-shrink flex flex-column flex-items-center">
-						<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/domus.png" alt="domus"></div>
-						<div class="quote font-basic-medium">"Ekspert, motywator, łączący solidne wykształcenie z finezją prowadzenia sesji szkoleniowych."</div>
-						<ul class="author">
-							<li>Kinga Kurkowska</li>
-							<li>Senior KAM Pfizer</li>
-							<li>k.kurkowska@pfizer.eu</li>
-						</ul>
+					<div class="icon">
+						<img src="<?php echo $item[ 'icon' ]; ?>">
 					</div>
-				
-					
-					<div class="box base1 no-shrink"></div>
-					<div class="box base1 no-shrink"></div>
-				
+					<div class="title font-secondary-bold">
+						<?php echo $item[ 'title' ]; ?>
+					</div>
+					<div class="text">
+						<?php echo $item[ 'subtitle' ]; ?>
+					</div>
+					<a href="<?php echo $item[ 'url' ]; ?>" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
 				</div>
-				<div class="avatar" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/ikony/avatar.png);"></div>
-				
-				
-				<div class="arrow arrow-right flex flex-items-center flex-justify-center no-shrink"><i class="fa fa-angle-right fa-angle-thin fa-3x" aria-hidden="true"></i></div>
+				<div class="cover" style="background-image: url(<?php echo $item[ 'img' ]; ?>);"></div>
 			</div>
+			<?php endforeach; ?>
+			
 		</div>
-		<div class="pagination">
-			<div class="pager active"></div>
-			<div class="pager"></div>
-			<div class="pager"></div>
+		
+		<div class="pagin flex flex-justify-center hide-ml">
+			<?php foreach( $data[ 'items' ] as $num => $item ): ?>
+			<div class="item pointer <?php echo $num === 0?( ' active ' ):( '' ); ?>"></div>
+			<?php endforeach; ?>
+			
 		</div>
+		
+	</div>
+	<div class='referencje bg-gray-light font-gray-dark'>
+		<?php
+			echo "<!--";
+			// print_r( sliderReferencje() );
+			echo "-->";
+		?>
+		<div class='box grid text-center'>
+			<div class='title uppercase bold alt'>
+				Power your business with Edunation
+			</div>
+			<div class='subtitle'>
+				Współpracują ze mną w 2017
+			</div>
+			<div class='slider'>
+				<div class='view flex'>
+					<?php foreach( sliderReferencje() as $item ): ?>
+					<div class='slide bg-light base1 no-shrink flex flex-column flex-justify-between'>
+						<?php if( !empty( $item[ 'logo' ] ) ): ?>
+						<div class='logo bgimg contain' style='background-image:url(<?php echo $item[ 'logo' ]; ?>);'></div>
+						<?php endif; ?>
+						<div class='text'>
+							<?php echo $item[ 'content' ]; ?>
+						</div>
+						<div class='author'>
+							<?php echo implode( "<br>", array( $item[ 'person' ], $item[ 'position' ], $item[ 'contact' ] ) ); ?>
+						</div>
+						<div class='img bgimg full' style='background-image:url(<?php echo empty( $item[ 'img' ] )?( $item[ 'img_alt' ] ):( $item[ 'img' ] ); ?>);'></div>
+						
+					</div>
+					<?php endforeach; ?>
+					
+				</div>
+				<div class='nav prev pointer hide block-mm'>
+					<span class='icon fa fa-angle-left flex flex-items-center flex-justify-center'></span>
+					
+				</div>
+				<div class='nav next pointer hide block-mm'>
+					<span class='icon fa fa-angle-right flex flex-items-center flex-justify-center'></span>
+					
+				</div>
+				<div class='pagin flex flex-items-center flex-justify-center hide-mm'>
+					<?php foreach( sliderReferencje() as $num => $item ): ?>
+					<div class='item pointer <?php if( $num === 0 ) echo 'active'; ?>'></div>
+					<?php endforeach; ?>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
 	</div>
 <!-- Information -->
 	<div class="information">
@@ -116,49 +133,49 @@
 	</div>
 <!-- Business -->
 	<div class="business"  id="general-english">
+		<?php
+		$data = homeSection( 'general-english' );
+			echo "<!--";
+			// print_r( $data );
+			echo "-->";
+		?>
 		<div class="business-content grid padding flex flex-column flex-justify-center">
-			<div class="title1 font-basic-regular">General English</div>
-			<div class="title2 font-basic-bold">Bo chcemy sobie zawsze poradzić.</div>
+			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
+			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down"><img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png"></a>
+		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
+		</a>
 	</div>
 <!-- TRAINING -->
 	<div class="training training2" id="general-training">
 		<div class="wrapper flex no-wrap">
+			<?php foreach( $data[ 'items' ] as $item ): ?>
 			<div class="box flex no-shrink base1 base3-ml">
 				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/4.png"></div>
-					<div class="title font-secondary-bold">Kariera za granicą</div>
-					<div class="text">Wszyscy chcemy pewności siebie. <span class="block">Zbudujmy ją razem.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
+					<div class="icon">
+						<img src="<?php echo $item[ 'icon' ]; ?>">
+					</div>
+					<div class="title font-secondary-bold">
+						<?php echo $item[ 'title' ]; ?>
+					</div>
+					<div class="text">
+						<?php echo $item[ 'subtitle' ]; ?>
+					</div>
+					<a href="<?php echo $item[ 'url' ]; ?>" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
 				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
+				<div class="cover" style="background-image: url(<?php echo $item[ 'img' ]; ?>);"></div>
 			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/5.png"></div>
-					<div class="title font-secondary-bold">Podróżowanie</div>
-					<div class="text">Świadomość poradzenia sobie <span class="block">w każdej sytuacji. Bezcenne.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/6.png"></div>
-					<div class="title font-secondary-bold">AB ...CV</div>
-					<div class="text">Przygotuję Twój profesjonalny wizerunek<span class="block">w przyszłej pracy.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-secondary-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-
-			<div class="pagination">
-				<div class="pager active"></div>
-				<div class="pager"></div>
-				<div class="pager"></div>
-			</div>
+			<?php endforeach; ?>
+			
 		</div>
+		<div class="pagin flex flex-justify-center hide-ml">
+			<?php foreach( $data[ 'items' ] as $num => $item ): ?>
+			<div class="item pointer <?php echo $num === 0?( ' active ' ):( '' ); ?>"></div>
+			<?php endforeach; ?>
+			
+		</div>
+			
 	</div>
 <!-- POSTER -->
 	<div class="poster">
@@ -183,6 +200,8 @@
 	<div class="poster">
 		<div class="pic">
 			<div class="video-viewport">
+				<!--
+				-->
 				<video width="1920" height="1280" autoplay muted loop>
 					<source src="<?php echo get_template_directory_uri(); ?>/media/peron.webm" type="video/webm" />
 					<source src="<?php echo get_template_directory_uri(); ?>/media/peron.mp4" type="video/mp4" />
@@ -196,50 +215,51 @@
 	
 	
 	<!-- Business Sessions-->
-	<div class="business">
-		<div class="business-content grid padding flex flex-column flex-justify-center" id="sessions">
-			<div class="title1 font-basic-regular">1:1 Sessions</div>
-			<div class="title2 font-basic-bold">Bo razem podnosimy poprzeczkę.</div>
+	<div class="business" id='sessions'>
+		<?php
+		$data = homeSection( '11-sessions' );
+			echo "<!--";
+			// print_r( $data );
+			echo "-->";
+		?>
+		<div class="business-content grid padding flex flex-column flex-justify-center">
+			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
+			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#sessions-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down"><img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png"></a>
+		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
+		</a>
+		
 	</div>
 <!-- TRAINING -->
 	<div class="training training2" id="sessions-training">
 		<div class="wrapper flex no-wrap">
+			<?php foreach( $data[ 'items' ] as $item ): ?>
 			<div class="box flex no-shrink base1 base3-ml">
 				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/7.png"></div>
-					<div class="title font-secondary-bold">100% Target</div>
-					<div class="text">Moje 100% uwagi, Twój cel <span class="block">nasz wspólny wynik.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">Zobacz Film</a>
+					<div class="icon">
+						<img src="<?php echo $item[ 'icon' ]; ?>">
+					</div>
+					<div class="title font-secondary-bold">
+						<?php echo $item[ 'title' ]; ?>
+					</div>
+					<div class="text">
+						<?php echo $item[ 'subtitle' ]; ?>
+					</div>
+					<a href="<?php echo $item[ 'url' ]; ?>" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
 				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
+				<div class="cover" style="background-image: url(<?php echo $item[ 'img' ]; ?>);"></div>
 			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/8.png"></div>
-					<div class="title font-secondary-bold">Ready steady talk!</div>
-					<div class="text">Mówisz od pierwszych zajęć.</div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">Sprawdź</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-			<div class="box flex no-shrink base1 base3-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/9.png"></div>
-					<div class="title font-secondary-bold">Aim: Exam</div>
-					<div class="text">Najszybsza i najskuteczniejsza <span class="block">droga do Twojego celu.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-secondary-bold">zaczynajmy</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-
-			<div class="pagination">
-				<div class="pager active"></div>
-				<div class="pager"></div>
-				<div class="pager"></div>
-			</div>
+			<?php endforeach; ?>
+			
 		</div>
+		<div class="pagin flex flex-justify-center hide-ml">
+			<?php foreach( $data[ 'items' ] as $num => $item ): ?>
+			<div class="item pointer <?php echo $num === 0?( ' active ' ):( '' ); ?>"></div>
+			<?php endforeach; ?>
+			
+		</div>
+			
 	</div>	
 <!-- POSTER -->
 	<div class="poster">
@@ -260,44 +280,57 @@
 			<div class="pic" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/poster5.jpg);"></div>
 	</div>
 <!-- Business MUMMY -->
-	<div class="business">
-		<div class="business-content grid padding flex flex-column flex-justify-center" id="mummy">
-			<div class="title1 font-basic-regular">Mummy, Daddy I can speak English!</div>
-			<div class="title2 font-basic-bold">Bo im szybciej, tym płynniej.</div>
+	<div class="business" id='mummy'>
+		<?php
+		$data = homeSection( 'mummy-daddy' );
+			echo "<!--";
+			// print_r( $data );
+			echo "-->";
+		?>
+		<div class="business-content grid padding flex flex-column flex-justify-center">
+			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
+			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#mummy-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down"><img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png"></a>
+		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
+		</a>
+		
 	</div>
 <!-- TRAINING -->
 	<div class="training training2" id="mummy-training">
 		<div class="wrapper flex no-wrap">
+			<?php foreach( $data[ 'items' ] as $item ): ?>
 			<div class="box flex no-shrink base1 base2-ml">
 				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/10.png"></div>
-					<div class="title font-secondary-bold">Power kid 1:1</div>
-					<div class="text">Angielski dla dzieci + <span class="block">100% zanurzenia w języku.</span></div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">Zobacz naszą pracę</a>
+					<div class="icon">
+						<img src="<?php echo $item[ 'icon' ]; ?>">
+					</div>
+					<div class="title font-secondary-bold">
+						<?php echo $item[ 'title' ]; ?>
+					</div>
+					<div class="text">
+						<?php echo $item[ 'subtitle' ]; ?>
+					</div>
+					<a href="<?php echo $item[ 'url' ]; ?>" class="button flex flex-items-center flex-justify-center font-basic-bold">zaczynajmy</a>
 				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
+				<div class="cover" style="background-image: url(<?php echo $item[ 'img' ]; ?>);"></div>
 			</div>
-			<div class="box flex no-shrink base1 base2-ml">
-				<div class="inner flex flex-column flex-items-center">
-					<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/11.png"></div>
-					<div class="title font-secondary-bold">Power kid Skype</div>
-					<div class="text">Twoje dziecko + tablet = Mission Possible.</div>
-					<a href="single.html" class="button flex flex-items-center flex-justify-center font-basic-bold">Sprawdź</a>
-				</div>
-				<div class="cover" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/1-Business.jpg);"></div>
-			</div>
-
-			<div class="pagination">
-				<div class="pager active"></div>
-				<div class="pager"></div>
-			</div>
+			<?php endforeach; ?>
+			
 		</div>
+		<div class="pagin flex flex-justify-center hide-ml">
+			<?php foreach( $data[ 'items' ] as $num => $item ): ?>
+			<div class="item pointer <?php echo $num === 0?( ' active ' ):( '' ); ?>"></div>
+			<?php endforeach; ?>
+			
+		</div>
+		
 	</div>
 <!-- POSTER -->
 	<div class="poster">
 		<div class="pic">
+			<!--
+			-->
 			<div class="video-viewport">
 				<video width="1920" height="1280" autoplay muted loop>
 					<source src="<?php echo get_template_directory_uri(); ?>/media/peron.webm" type="video/webm" />
@@ -307,40 +340,55 @@
 		</div>
 	</div>	
 	
-<!-- REVIEWS -->
-	<div class="reviews reviews2">
-		<div class="inner grid padding">
-			<div class="title font-secondary-bold">Przeczytaj opinie<span class="block">rodziców</span></div>
-			
-			<div class="container flex flex-items-center flex-justify-center">
-				<div class="arrow flex flex-items-center flex-justify-center no-shrink"><i class="fa fa-angle-left fa-angle-thin fa-3x" aria-hidden="true"></i></div>
-				<div class="wrapper grow flex flex-nowrap">
-					<div class="box base1 no-shrink flex flex-column flex-items-center">
-						<div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/skype.png" alt="skype"></div>
-						<div class="quote font-basic-medium">"Wow!<br>Nadia jest zachwycona.<br> Świetne zajęcia<br> w nowoczesnej oprawie."</div>
-						<ul class="author">
-							<li>Kinga</li>
-							<li>mama 7-letniej Nadii</li>
-						</ul>
+<div class='opinie bg-gray-light font-gray-dark'>
+	<?php
+		echo "<!--";
+		// print_r( sliderOpinie() );
+		echo "-->";
+	?>
+	<div class='box grid text-center'>
+		<div class='title uppercase bold alt'>
+			Przeczytaj opinie rodziców
+		</div>
+		<div class='slider'>
+			<div class='view flex'>
+				<?php foreach( sliderOpinie() as $item ): ?>
+				<div class='slide bg-light base1 no-shrink flex flex-column flex-justify-between'>
+					<?php if( !empty( $item[ 'logo' ] ) ): ?>
+					<div class='logo bgimg contain' style='background-image:url(<?php echo $item[ 'logo' ]; ?>);'></div>
+					<?php endif; ?>
+					<div class='text'>
+						<?php echo $item[ 'content' ]; ?>
 					</div>
-				
+					<div class='author'>
+						<?php echo implode( "<br>", array( $item[ 'person' ], $item[ 'description' ] ) ); ?>
+					</div>
+					<div class='img bgimg full' style='background-image:url(<?php echo empty( $item[ 'img' ] )?( $item[ 'img_alt' ] ):( $item[ 'img' ] ); ?>);'></div>
 					
-					<div class="box base1 no-shrink"></div>
-					<div class="box base1 no-shrink"></div>
-				
 				</div>
-				<div class="avatar" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/ikony/avatar.png);"></div>
+				<?php endforeach; ?>
 				
-				
-				<div class="arrow arrow-right flex flex-items-center flex-justify-center no-shrink"><i class="fa fa-angle-right fa-angle-thin fa-3x" aria-hidden="true"></i></div>
 			</div>
+			<div class='nav prev pointer hide block-mm'>
+				<span class='icon fa fa-angle-left flex flex-items-center flex-justify-center'></span>
+				
+			</div>
+			<div class='nav next pointer hide block-mm'>
+				<span class='icon fa fa-angle-right flex flex-items-center flex-justify-center'></span>
+				
+			</div>
+			<div class='pagin flex flex-items-center flex-justify-center hide-mm'>
+				<?php foreach( sliderReferencje() as $num => $item ): ?>
+				<div class='item pointer <?php if( $num === 0 ) echo 'active'; ?>'></div>
+				<?php endforeach; ?>
+				
+			</div>
+			
 		</div>
-		<div class="pagination">
-			<div class="pager active"></div>
-			<div class="pager"></div>
-			<div class="pager"></div>
-		</div>
+		
 	</div>
+	
+</div>
 <!-- Information -->
 	<div class="information">
 		<div class="inner grid padding flex flex-column flex-items-center">
@@ -371,17 +419,25 @@
 		<div class="inner grid padding flex flex-column flex-items-center">
 			<div class="title font-basic-extrabold">Tell <span class="pretty">me</span></div>
 			<div class="text font-secondary-medium">Masz pytania? Mam odpowiedzi!</div>
-			<form>
+			<form id='contact'>
 				<div class="wrapper flex flex-wrap flex-justify-center">
 					<div class="personal base1 base2-mm no-shrink">
-						<input type="text" id="name" name="name" placeholder="Imię">
+						<input type="text" id="name" name="imie" placeholder="Imię">
 						<input type="email" id="email" name="email" placeholder="E-mail">
 						<input type="text" id="subject" name="subject" placeholder="Temat">
 					</div>
 					<div class="message base1 base2-mm no-shrink">
-						<textarea placeholder="Wiadomość"></textarea>
+						<textarea placeholder="Wiadomość" name='msg'></textarea>
 					</div>
-					<button class="font-secondary-bold">wyślij</button>
+					<div class="font-secondary-bold send uppercase pointer flex flex-items-center flex-justify-center">wyślij</div>
+					<div class='status flex flex-items-center'>
+						<div class='icon ok fa fa-check-circle'></div>
+						<div class='icon info fa fa-info-circle'></div>
+						<div class='icon fail fa fa-times-circle'></div>
+						<div class='text'></div>
+						
+					</div>
+					
 				</div>
 			</form>
 		</div>

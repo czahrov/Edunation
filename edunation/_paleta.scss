@@ -3,14 +3,17 @@ $color-light: #fff;
 $color-dark: #000;
 $color-blue-dark: #080d35;
 $color-blue-dark2: #0e1235;
+$color-blue-dark3: #223d4e;
 $color-violet: #2f3083;
 $color-violet-light: #5056a4;
 $color-pink: #ed1e4a;
 $color-green: #35b896;
+$color-green2: #34E0CA;
 $color-gray: #e8e6e7;
 $color-gray2: #848494;
 $color-gray-light: #f6f6f8;
 $color-gray-light2: #ededed;
+$color-gray-dark: #3d3d3d;
 
 $generator:(
 	light: $color-light,
@@ -21,7 +24,10 @@ $generator:(
 	violet-light: $color-violet-light,
 	pink: $color-pink,
 	green: $color-green,
-	gray: $color-gray
+	gray: $color-gray,
+	gray-light: $color-gray-light2,
+	gray-dark: $color-gray-dark
+	
 );
 
 @each $color, $val in $generator{

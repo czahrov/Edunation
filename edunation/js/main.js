@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 
 	// paginacja
-	(function( ball ){
+	/* (function( ball ){
 		ball
 		.click(function( e ){
 			$(this)
@@ -22,7 +22,7 @@ $(document).ready(function(){
 			
 		});
 		
-	})( $('.pagination > .pager') );
+	})( $('.pagination > .pager') ); */
 	
 	// linkowanie
 	
@@ -74,28 +74,28 @@ $(document).ready(function(){
 	
 	// pop up movie
 	
-  	var src = $('#videoplayer').children('iframe').attr('src');
+  	// var src = $('#videoplayer').children('iframe').attr('src');
 
   	// when object with class open-popup is clicked...
-  	$('.pops').click(function(e) {
+  	/* $('.pops').click(function(e) {
   		e.preventDefault();
   		// change the src value of the video
   		$('#videoplayer').children('iframe').attr('src', src);
   		$('.pop-container').fadeIn(300);
-  	});
+  	}); */
 
   	// when object with class close-popup is clicked...
-  	$(".pop-container > .pop-up > .cross").click(function(e) {
+  	/* $(".pop-container > .pop-up > .cross").click(function(e) {
   		e.preventDefault();
   		$('#videoplayer').children('iframe').attr('src', '');
   		$('.pop-container').fadeOut(300);
-  	});
+  	}); */
 
 	//div as a link
 	
-	$('.blog > .inner > .wrapper > .element > a > .button').on('click', function() {
-    location.href ='http://poligon.scepter.pl/PiotrM/wp_edunation/rezerwacja/'
-	});
+	/* $('.blog > .inner > .wrapper > .element > a > .button').on('click', function() {
+		location.href ='http://poligon.scepter.pl/PiotrM/wp_edunation/rezerwacja/'
+	}); */
 	
 	
 });

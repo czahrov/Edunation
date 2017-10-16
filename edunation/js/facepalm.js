@@ -157,6 +157,38 @@
 				console.log('page.default()');
 			}
 			
+			/* przewijanie strony */
+			(function( link ){
+				
+				link.click( function( e ){
+					var hash = $(this).attr( 'href' ).match( /#(.+)/ );
+					var menu_h = $( 'body .main-nav' ).first().outerHeight( true );
+					
+					if( hash !== null ){
+						var item = $( '[id="'+ hash[1] +'"]' );
+						
+						if( item.length > 0 ){
+							e.preventDefault();
+							var posY = item.first().offset().top - menu_h;
+							
+							TweenLite.to(
+								$( 'html' ),
+								.5,
+								{
+									scrollTop: posY,
+									ease: Power2.easeInOut,
+								}
+							);
+							
+						}
+						
+					}
+					
+				} );
+				
+			})
+			( $( 'ul.navigation > li > a' ) );
+			
 		},
 		alternate: function(){
 			var addon = root.addon;
@@ -170,6 +202,1013 @@
 			var logger = addon.isLogger();
 			
 			if(logger) console.log('page.index()');
+			
+			/* slider referencje */
+			(function( slider, nav, pagin, view, slides ){
+				var current = 0;
+				var lock = false;
+				var delay = 3000;
+				var duration = .5;
+				var itrv;
+				var tout;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						slider.triggerHandler( 'start' );
+						$( window ).resize( function( e ){
+							window.clearTimeout( tout );
+							tout = window.setTimeout( function(){
+								slider.triggerHandler( 'set' );
+								
+							}, 300 );
+							
+						} );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						itrv = window.setInterval( function(){
+							slider.triggerHandler( 'next' );
+							
+						}, delay );
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						slider.triggerHandler( 'start' );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var pos = $(this).index();
+					if( pos !== current ){
+						current = pos;
+						slider.triggerHandler( 'set' );
+					}
+					
+				} );
+				
+				nav.click( function( e ){
+					if( $(this).hasClass( 'next' ) ){
+						slider.triggerHandler( 'next' );
+						
+					}
+					else if( $(this).hasClass( 'prev' ) ){
+						slider.triggerHandler( 'prev' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#home > .referencje .slider' ), 
+			$( '#home > .referencje .slider > .nav' ), 
+			$( '#home > .referencje .slider > .pagin > .item' ), 
+			$( '#home > .referencje .slider > .view' ), 
+			$( '#home > .referencje .slider > .view > .slide' ) );
+			
+			/* slider opinie */
+			(function( slider, nav, pagin, view, slides ){
+				var current = 0;
+				var lock = false;
+				var delay = 3000;
+				var duration = .5;
+				var itrv;
+				var tout;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						slider.triggerHandler( 'start' );
+						$( window ).resize( function( e ){
+							window.clearTimeout( tout );
+							tout = window.setTimeout( function(){
+								slider.triggerHandler( 'set' );
+								
+							}, 300 );
+							
+						} );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						itrv = window.setInterval( function(){
+							slider.triggerHandler( 'next' );
+							
+						}, delay );
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						slider.triggerHandler( 'start' );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var pos = $(this).index();
+					if( pos !== current ){
+						current = pos;
+						slider.triggerHandler( 'set' );
+					}
+					
+				} );
+				
+				nav.click( function( e ){
+					if( $(this).hasClass( 'next' ) ){
+						slider.triggerHandler( 'next' );
+						
+					}
+					else if( $(this).hasClass( 'prev' ) ){
+						slider.triggerHandler( 'prev' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#home > .opinie .slider' ), 
+			$( '#home > .opinie .slider > .nav' ), 
+			$( '#home > .opinie .slider > .pagin > .item' ), 
+			$( '#home > .opinie .slider > .view' ), 
+			$( '#home > .opinie .slider > .view > .slide' ) );
+			
+			/* business english slider */
+			(function( slider, view, slides, pagin){
+				var current = 0;
+				var lock = false;
+				var itrv;
+				var delay = 3000;
+				var duration = 0.3;
+				var active = false;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						$( window ).resize( function( e ){
+							slider.triggerHandler( 'check' );
+							
+						} );
+						
+						slider.triggerHandler( 'check' );
+						
+					},
+					check: function( e ){
+						if( window.innerWidth >= 1024 ){
+							slider.triggerHandler( 'off' );
+							
+						}
+						else if( !active ){
+							slider.triggerHandler( 'on' );
+							
+						}
+						
+					},
+					on: function( e ){
+						active = true;
+						slider.triggerHandler( 'reset' );
+						slider.triggerHandler( 'start' );
+						
+					},
+					off: function( e ){
+						active = false;
+						slider.triggerHandler( 'stop' );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					reset: function( e ){
+						// slider.triggerHandler( 'stop' );
+						current = 0;
+						slider.triggerHandler( 'set' );
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						if( active ){
+							itrv = window.setInterval( function(){
+								slider.triggerHandler( 'next' );
+								
+							}, delay );
+							
+						}
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						if( active ){
+							slider.triggerHandler( 'start' );
+							
+						}
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var index = $(this).index();
+					if( current !== index ){
+						current = index;
+						slider.triggerHandler( 'set' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#business-training' ), 
+			$( '#business-training > .wrapper' ), 
+			$( '#business-training > .wrapper > .box' ), 
+			$( '#business-training > .pagin > .item' ) );
+			
+			/* general english slider */
+			(function( slider, view, slides, pagin){
+				var current = 0;
+				var lock = false;
+				var itrv;
+				var delay = 3000;
+				var duration = 0.3;
+				var active = false;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						$( window ).resize( function( e ){
+							slider.triggerHandler( 'check' );
+							
+						} );
+						
+						slider.triggerHandler( 'check' );
+						
+					},
+					check: function( e ){
+						if( window.innerWidth >= 1024 ){
+							slider.triggerHandler( 'off' );
+							
+						}
+						else if( !active ){
+							slider.triggerHandler( 'on' );
+							
+						}
+						
+					},
+					on: function( e ){
+						active = true;
+						slider.triggerHandler( 'reset' );
+						slider.triggerHandler( 'start' );
+						
+					},
+					off: function( e ){
+						active = false;
+						slider.triggerHandler( 'stop' );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					reset: function( e ){
+						// slider.triggerHandler( 'stop' );
+						current = 0;
+						slider.triggerHandler( 'set' );
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						if( active ){
+							itrv = window.setInterval( function(){
+								slider.triggerHandler( 'next' );
+								
+							}, delay );
+							
+						}
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						if( active ){
+							slider.triggerHandler( 'start' );
+							
+						}
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var index = $(this).index();
+					if( current !== index ){
+						current = index;
+						slider.triggerHandler( 'set' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#general-training' ), 
+			$( '#general-training > .wrapper' ), 
+			$( '#general-training > .wrapper > .box' ), 
+			$( '#general-training > .pagin > .item' ) );
+			
+			/* 1:1 sessions slider */
+			(function( slider, view, slides, pagin){
+				var current = 0;
+				var lock = false;
+				var itrv;
+				var delay = 3000;
+				var duration = 0.3;
+				var active = false;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						$( window ).resize( function( e ){
+							slider.triggerHandler( 'check' );
+							
+						} );
+						
+						slider.triggerHandler( 'check' );
+						
+					},
+					check: function( e ){
+						if( window.innerWidth >= 1024 ){
+							slider.triggerHandler( 'off' );
+							
+						}
+						else if( !active ){
+							slider.triggerHandler( 'on' );
+							
+						}
+						
+					},
+					on: function( e ){
+						active = true;
+						slider.triggerHandler( 'reset' );
+						slider.triggerHandler( 'start' );
+						
+					},
+					off: function( e ){
+						active = false;
+						slider.triggerHandler( 'stop' );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					reset: function( e ){
+						// slider.triggerHandler( 'stop' );
+						current = 0;
+						slider.triggerHandler( 'set' );
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						if( active ){
+							itrv = window.setInterval( function(){
+								slider.triggerHandler( 'next' );
+								
+							}, delay );
+							
+						}
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						if( active ){
+							slider.triggerHandler( 'start' );
+							
+						}
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var index = $(this).index();
+					if( current !== index ){
+						current = index;
+						slider.triggerHandler( 'set' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#sessions-training' ), 
+			$( '#sessions-training > .wrapper' ), 
+			$( '#sessions-training > .wrapper > .box' ), 
+			$( '#sessions-training > .pagin > .item' ) );
+			
+			/* mummy, daddy slider */
+			(function( slider, view, slides, pagin){
+				var current = 0;
+				var lock = false;
+				var itrv;
+				var delay = 3000;
+				var duration = 0.3;
+				var active = false;
+				var distance = function(){
+					return slides.first().outerWidth( true );
+					
+				};
+				
+				slider
+				.on({
+					init: function( e ){
+						$( window ).resize( function( e ){
+							slider.triggerHandler( 'check' );
+							
+						} );
+						
+						slider.triggerHandler( 'check' );
+						
+					},
+					check: function( e ){
+						if( window.innerWidth >= 1024 ){
+							slider.triggerHandler( 'off' );
+							
+						}
+						else if( !active ){
+							slider.triggerHandler( 'on' );
+							
+						}
+						
+					},
+					on: function( e ){
+						active = true;
+						slider.triggerHandler( 'reset' );
+						slider.triggerHandler( 'start' );
+						
+					},
+					off: function( e ){
+						active = false;
+						slider.triggerHandler( 'stop' );
+						
+					},
+					set: function( e ){
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onStart: function(){
+								pagin
+								.eq( current )
+								.addClass( 'active' )
+								.siblings()
+								.removeClass( 'active' );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								duration,
+								{
+									scrollLeft: distance() * current,
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					reset: function( e ){
+						// slider.triggerHandler( 'stop' );
+						current = 0;
+						slider.triggerHandler( 'set' );
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							lock = true;
+							current++;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							lock = true;
+							current--;
+							slider.triggerHandler( 'set' );
+							
+						}
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						if( active ){
+							itrv = window.setInterval( function(){
+								slider.triggerHandler( 'next' );
+								
+							}, delay );
+							
+						}
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						if( active ){
+							slider.triggerHandler( 'start' );
+							
+						}
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				pagin.click( function( e ){
+					var index = $(this).index();
+					if( current !== index ){
+						current = index;
+						slider.triggerHandler( 'set' );
+						
+					}
+					
+				} );
+				
+				slider.triggerHandler( 'init' );
+				
+			})
+			( $( '#mummy-training' ), 
+			$( '#mummy-training > .wrapper' ), 
+			$( '#mummy-training > .wrapper > .box' ), 
+			$( '#mummy-training > .pagin > .item' ) );
+			
+			/* formularz kontaktowy */
+			(function( form, name, email, subject, msg, send, info ){
+				var lock = false;
+				
+				form
+				.on({
+					send: function( e ){
+						if( lock ) return false;
+						lock = true;
+						var formData = form.serializeArray();
+						// console.log( formData );
+						
+						$.ajax({
+							type: 'POST',
+							url: 'contact-form',
+							data: formData,
+							// contentType: false,
+							// processData: false,
+							success: function( data, status ){
+								try{
+									var resp = JSON.parse( data );
+									// console.log( resp );
+									form.triggerHandler( 'status', [ resp.status, resp.msg ] );
+									if( resp.status === 'ok' ){
+										form.trigger( 'reset' );
+										
+									}
+									
+								}
+								catch( err ){
+									form.triggerHandler( 'status', [ 'fail', 'Błąd odpowiedzi serwera<br>Spróbuj ponowie za kilka minut' ] );
+									console.error( err );
+									console.log( data );
+									
+								}
+								finally{
+									lock = false;
+									
+								}
+								
+							},
+							error: function( xhr, status, error ){
+								form.triggerHandler( 'status', [ 'fail', 'Błąd połączenia z serwerem' ] );
+								console.error( {xhr: xhr, status: status, error: error} );
+							},
+							complete: function(){
+								lock = false;
+							},
+							
+						})
+						
+					},
+					status: function( e, status, msg ){
+						info
+						.removeClass( 'ok info fail' )
+						.addClass( status )
+						.children( '.text' )
+						.html( msg );
+						
+					},
+					
+				});
+				
+				send.click( function( e ){
+					form.triggerHandler( 'send' );
+					
+				} );
+				
+			})
+			( $( '#contact' ), 
+			$( '#contact #name' ), 
+			$( '#contact #email' ), 
+			$( '#contact #subject' ), 
+			$( '#contact .message' ), 
+			$( '#contact .send' ), 
+			$( '#contact .status' ) );
 			
 		},
 		rezerwacja: function(){

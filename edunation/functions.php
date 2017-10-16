@@ -15,6 +15,7 @@ if( !is_admin() ){
 	wp_enqueue_script( "CSSPlugin", get_template_directory_uri() . "/js/CSSPlugin.min.js" );
 	wp_enqueue_script( "ScrollTo", get_template_directory_uri() . "/js/ScrollToPlugin.min.js" );
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
+	wp_enqueue_script( "JQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
 	wp_enqueue_script( "main", get_template_directory_uri() . "/js/main.js" );
 	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm.js" );
 
@@ -545,3 +546,125 @@ function DM(){
 	
 	return $DM;
 }
+
+/* funkcja generująca dane do sekcji english na stronie głównej */
+function homeSection( $cat_slug = null ){
+	/*
+	array(
+		'head' => array(
+			'title' => null,
+			'subtitle' => null,
+			
+		),
+		'items' => array(
+			array(
+				'title' => null,
+				'subtitle' => null,
+				'img' => null,
+				'icon' => null,
+				'url' => null,
+				
+			),
+			
+		),
+		
+	);
+	*/
+	
+	$ret = array();
+	
+	$head = get_posts( array(
+		'numberposts' => 1,
+		'category_name' => $cat_slug,
+		'category__and' => array(
+			get_category_by_slug( 'sekcja-naglowek' )->cat_ID,
+		),
+		
+	) );
+	
+	$ret[ 'head' ][ 'title' ] = $head[0]->post_title;
+	$ret[ 'head' ][ 'subtitle' ] = $head[0]->post_content;
+	
+	$items = get_posts( array(
+		'numberposts' => 3,
+		'category_name' => $cat_slug,
+		'category__and' => array(
+			get_category_by_slug( 'kafelki-na-stronie-glownej' )->cat_ID,
+		),
+		
+	) );
+	
+	foreach( $items as $item ){
+		$ret[ 'items' ][] = array(
+			'title' => $item->post_title,
+			'subtitle' => $item->post_excerpt,
+			'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $item->ID ), 'full' ),
+			'img_alt' => 'https://placeimg.com/100/100',
+			'icon' => wp_get_attachment_image_url( get_post_meta( $item->ID, 'ikonka', true ), 'full' ),
+			'url' => get_the_permalink( $item->ID ),
+			
+		);
+		
+	}
+	
+	return $ret;
+	
+}
+
+/* funkcja generująca dane do slajdera referencji */
+function sliderReferencje(){
+	static $ret = array();
+	
+	if( empty( $ret ) ){
+		$posts = get_posts( array(
+			'numberposts' => -1,
+			'category_name' => 'slajder-referencje',
+		) );
+		
+		foreach( $posts as $post ){
+			$ret[] = array(
+				'logo' => wp_get_attachment_image_url( get_post_meta( $post->ID, 'logo', true ), 'full' ),
+				'content' => $post->post_content,
+				'person' => get_post_meta( $post->ID, 'osoba', true ),
+				'position' => get_post_meta( $post->ID, 'stanowisko', true ),
+				'contact' => get_post_meta( $post->ID, 'kontakt', true ),
+				'img' => get_the_post_thumbnail_url( $post->ID ),
+				'img_alt' => 'https://placeimg.com/100/100/person',
+				
+			);
+			
+		}
+		
+	}
+		
+	return $ret;
+}
+
+/* funkcja generująca dane do slajdera opinii */
+function sliderOpinie(){
+	static $ret = array();
+	
+	if( empty( $ret ) ){
+		$posts = get_posts( array(
+			'numberposts' => -1,
+			'category_name' => 'slajder-opinie',
+		) );
+		
+		foreach( $posts as $post ){
+			$ret[] = array(
+				'logo' => wp_get_attachment_image_url( get_post_meta( $post->ID, 'logo', true ), 'full' ),
+				'content' => $post->post_content,
+				'person' => get_post_meta( $post->ID, 'osoba', true ),
+				'description' => get_post_meta( $post->ID, 'dziecko', true ),
+				'img' => get_the_post_thumbnail_url( $post->ID ),
+				'img_alt' => 'https://placeimg.com/100/100/person',
+				
+			);
+			
+		}
+		
+	}
+		
+	return $ret;
+}
+
