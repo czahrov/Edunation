@@ -4,7 +4,7 @@ add_theme_support('post-thumbnails');
 if( !is_admin() ){
 	wp_enqueue_style( "fonts", get_template_directory_uri() . "/css/fonts.css", array() );
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
-	wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.css", array() );
+	wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
 	wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array() );
 	wp_enqueue_style( "override", get_template_directory_uri() . "/override.css", array() );
 	

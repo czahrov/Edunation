@@ -144,10 +144,13 @@
 						& > .tbody{
 							
 							& > .tcell{
-								padding: 12px 0 0 12px;
-								border: solid 1px;
-								border-color: $color-gray;
+								box-shadow: 0 0 0 1px $color-gray inset;
 								transition: border .3s linear;
+								
+								& > .text{
+									margin: 12px 0 0 12px;
+									
+								}
 								
 								&.disable{
 									cursor: no-drop;
@@ -252,12 +255,14 @@
 					
 					& > .title{
 						margin-bottom: 20px;
+						max-width: 100%;
 						font-size: 34px;
 						
 					}
 					
 					& > .subtitle{
 						margin-bottom: 80px;
+						max-width: 100%;
 						font-size: 25px;
 						
 					}

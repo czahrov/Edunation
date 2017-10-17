@@ -180,7 +180,7 @@ body.admin .main-nav {
 #home > .referencje > .box > .slider > .view > .slide, #home > .opinie > .box > .slider > .view > .slide {
   position: relative;
   margin-bottom: 70px;
-  padding: 30px 20px 0;
+  padding: 30px 0 0;
   cursor: -webkit-grab;
 }
 #home > .referencje > .box > .slider > .view > .slide > .logo, #home > .opinie > .box > .slider > .view > .slide > .logo {
@@ -189,12 +189,14 @@ body.admin .main-nav {
   cursor: inherit;
 }
 #home > .referencje > .box > .slider > .view > .slide > .text, #home > .opinie > .box > .slider > .view > .slide > .text {
+  padding: 0 20px;
   margin-bottom: 50px;
   font-style: italic;
   font-size: 16px;
   line-height: 1.7em;
 }
 #home > .referencje > .box > .slider > .view > .slide > .author, #home > .opinie > .box > .slider > .view > .slide > .author {
+  padding: 0 20px;
   margin-bottom: 100px;
   font-size: 15px;
   line-height: 1.7em;
@@ -211,11 +213,6 @@ body.admin .main-nav {
   -webkit-box-shadow: 0 0 0 2px #ededed;
           box-shadow: 0 0 0 2px #ededed;
   background-color: #ededed;
-}
-@media (min-width: 768px) {
-  #home > .referencje > .box > .slider > .view > .slide, #home > .opinie > .box > .slider > .view > .slide {
-    padding: 30px 50px 0;
-  }
 }
 #home > .referencje > .box > .slider > .nav, #home > .opinie > .box > .slider > .nav {
   position: absolute;
@@ -271,6 +268,9 @@ body.admin .main-nav {
 #home #business-training, #home #general-training, #home #sessions-training, #home #mummy-training {
   position: relative;
 }
+#home #business-training > .wrapper > .box > .inner > *, #home #general-training > .wrapper > .box > .inner > *, #home #sessions-training > .wrapper > .box > .inner > *, #home #mummy-training > .wrapper > .box > .inner > * {
+  max-width: 100%;
+}
 #home #business-training > .pagin, #home #general-training > .pagin, #home #sessions-training > .pagin, #home #mummy-training > .pagin {
   position: absolute;
   left: 0;
@@ -291,6 +291,9 @@ body.admin .main-nav {
 }
 #home #business-training > .pagin > .item.active, #home #general-training > .pagin > .item.active, #home #sessions-training > .pagin > .item.active, #home #mummy-training > .pagin > .item.active {
   background-color: #000;
+}
+#home #contact {
+  width: 100%;
 }
 #home #contact .status {
   margin: 20px 0;
@@ -425,11 +428,13 @@ body.admin .main-nav {
   padding-bottom: 10px;
 }
 #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell {
-  padding: 12px 0 0 12px;
-  border: solid 1px;
-  border-color: #e8e6e7;
+  -webkit-box-shadow: 0 0 0 1px #e8e6e7 inset;
+          box-shadow: 0 0 0 1px #e8e6e7 inset;
   -webkit-transition: border .3s linear;
   transition: border .3s linear;
+}
+#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell > .text {
+  margin: 12px 0 0 12px;
 }
 #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable {
   cursor: no-drop;
@@ -489,10 +494,12 @@ body.admin .main-nav {
 }
 #rezerwacja > .bot > .view > .etap.summary > .title {
   margin-bottom: 20px;
+  max-width: 100%;
   font-size: 34px;
 }
 #rezerwacja > .bot > .view > .etap.summary > .subtitle {
   margin-bottom: 80px;
+  max-width: 100%;
   font-size: 25px;
 }
 #rezerwacja > .bot > .view > .etap.summary > .table {
@@ -555,6 +562,15 @@ body.admin .main-nav {
 
 #blog > .inner > .wrapper > .element {
   position: relative;
+  padding: 0;
+}
+#blog > .inner > .wrapper > .element > .box {
+  width: initial;
+  margin: 0 10px;
+  padding: 10px 20px 0;
+}
+#blog > .inner > .wrapper > .element > .box > .pic {
+  background-position: top;
 }
 #blog > .inner > .wrapper > .element > .box > .button {
   position: absolute;
@@ -639,4 +655,45 @@ body.admin .main-nav {
 }
 #spotkania > .kafelki > .item.outdate > .box > .head > .status > .icon.outdate {
   display: block;
+}
+
+#single > .single > .inner > .wrapper > .box > .desc {
+  padding-left: 80px;
+}
+#single > .single > .inner > .wrapper > .box:nth-child(1) {
+  padding: 0;
+}
+#single > .single > .inner > .wrapper2 > .element {
+  padding: 0;
+}
+#single > .single > .inner > .wrapper2 > .element > .box {
+  width: auto;
+  margin: 20px 10px;
+  padding: 10px 18px;
+}
+#single > .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+#single > .popup:not(.open) {
+  display: none;
+}
+#single > .popup > .box {
+  margin: 50px;
+}
+#single > .popup > .box > .top {
+  margin-bottom: 20px;
+}
+#single > .popup > .box > .top > .close {
+  width: 40px;
+  height: 40px;
+}
+#single > .popup > .box > .mid {
+  width: 100%;
 }

@@ -35,7 +35,7 @@
 					
 				?>
 				
-				<div class="element base1 base3-ml no-shrink">
+				<div class="element base1 base2-mm base3-ml no-shrink">
 					<div class="box flex flex-column flex-items-center">
 						<div class="pic bgimg full" style="background-image: url('<?php echo empty( $img )?( $img_alt ):( $img ); ?>');"></div>
 						<div class="title font-secondary-bold">

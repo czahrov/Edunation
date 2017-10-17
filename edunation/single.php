@@ -25,7 +25,7 @@
 	<div class="inner grid padding">
 		<div class="wrapper flex flex-wrap">
 			<div class="box base1 base2-mm no-shrink">
-				<div class="movie pops">
+				<div class="movie pops" video='<?php echo $meta[ 'filmik' ][0]; ?>'>
 					<div class="cover" style="background-image: url(<?php echo get_the_post_thumbnail_url( $post_id, 'full' ); ?>);"></div>
 					<div class="box">
 						<div class="play flex flex-items-center flex-justify-center">
@@ -118,13 +118,19 @@
 
 
 <!-- POP UP -->
-<div class="pop-container">
-	<div class="pop-up flex flex-column">
-		<div class="cross font-basic-bold flex flex-justify-end">x</div>
-		<div class="content grow" id="videoplayer">
-			<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="100%" height="360" type="text/html" src="<?php echo $meta[ 'filmik' ][0]; ?>"></iframe>
+<div class="popup flex">
+	<div class='box grow flex flex-column'>
+		<div class='top flex flex-justify-end'>
+			<div class='close pointer bg-blue-dark font-light flex flex-items-center flex-justify-center'>
+				<span class='icon fa fa-times'></span>
+				
+			</div>
+			
 		</div>
+		<iframe class='mid bg-light grow'></iframe>
+		
 	</div>
+	
 </div>
 
 <!-- FOOTER -->

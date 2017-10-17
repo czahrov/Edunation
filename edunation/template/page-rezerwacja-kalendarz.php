@@ -24,7 +24,7 @@
 		?>
 		<div id='rezerwacja' class='flex flex-column'>
 			<div class='popup flex flex-items-center flex-justify-center'>
-				<div class='box bg-light flex flex-wrap'>
+				<div class='box bg-light flex flex-wrap grow'>
 					<div class='close pointer bg-blue-dark font-light flex flex-items-center flex-justify-center'>
 						<div class='icon fa fa-times'></div>
 						

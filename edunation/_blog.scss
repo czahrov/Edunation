@@ -10,10 +10,15 @@
 			
 			& > .element{
 				position: relative;
+				padding: 0;
 				
 				& > .box{
+					width: initial;
+					margin: 0 10px;
+					padding: 10px 20px 0;
 					
 					& > .pic{
+						background-position: top;
 						
 					}
 					

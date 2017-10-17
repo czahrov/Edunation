@@ -48,12 +48,12 @@
 		youtube: function(arg){
 			/*
 				arg = {
-					ID*			// ID filmu video na YT
-					iframe*		// element jQuery albo selektor iframe do odtwarzania filmu
-					autoplay	// automatyczne odtwarzanie filmu [1/0]
-					loop		// zapętlanie filmu [1/0]
-					controls	// kontrolki filmu [1/0]
-					beforePlay	// funkcja wywoływana przed rozpoczęciem odtwarzania filmu
+					ID*				// ID filmu video na YT
+					iframe*			// element jQuery albo selektor iframe do odtwarzania filmu
+					autoplay		// automatyczne odtwarzanie filmu [1/0]
+					loop				// zapętlanie filmu [1/0]
+					controls			// kontrolki filmu [1/0]
+					beforePlay		// funkcja wywoływana przed rozpoczęciem odtwarzania filmu
 					onClose		// funkcja wywoływana przy zamykaniu filmu
 					
 				}
@@ -188,6 +188,124 @@
 				
 			})
 			( $( 'ul.navigation > li > a' ) );
+			
+			/* single page */
+			if( $( 'body#single' ).length > 0 ){
+				
+				/* popup movie */
+				(function( root, play, popup, box, close, iframe ){
+					var duration = .5;
+					var vid_handle;
+					
+					root
+					.on({
+						open: function( e ){
+							new TimelineLite({
+								onStart: function(){
+									popup.addClass( 'open' );
+									
+								},
+								onComplete: function(){
+									var vid = root.attr( 'video' ).match( /v=(\w+)/ );
+									
+									if( vid.length > 1 ){
+										vid_handle = addon.youtube({
+											ID: vid[1],
+											iframe: iframe,
+											autoplay: 1,
+											controls: 0,
+										});
+										
+										vid_handle.open();
+										
+									}
+								},
+								
+							})
+							.add( 'start', 0 )
+							.add(
+								TweenLite.fromTo(
+									popup,
+									duration,
+									{
+										opacity: 0,
+									},
+									{
+										opacity: 1,
+										
+									}
+								), 'start'
+							)
+							.add(
+								TweenLite.fromTo(
+									box,
+									duration,
+									{
+										yPercent: -100,
+									},
+									{
+										yPercent: 0,
+										
+									}
+								), 'start+=' + duration
+							);
+							
+						},
+						close: function( e ){
+							new TimelineLite({
+								onStart: function(){
+									vid_handle.close();
+									
+								},
+								onComplete: function(){
+									popup.removeClass( 'open' );
+									
+								},
+								
+							})
+							.add( 'start', 0 )
+							.add(
+								TweenLite.to(
+									box,
+									duration,
+									{
+										yPercent: -100,
+									}
+								), 'start'
+							)
+							.add(
+								TweenLite.to(
+									popup,
+									duration,
+									{
+										opacity: 0,
+									}
+								), 'start+=' + duration
+							);
+							
+						},
+						
+					});
+					
+					box.click( function( e ){
+						root.triggerHandler( 'close' );
+						e.stopPropagation();
+						
+					} );
+					
+					play.click( function( e ){ root.triggerHandler( 'open' ); } );
+					
+					close.click( function( e ){ root.triggerHandler( 'close' ); } );
+					
+				})
+				( $( '#single .movie.pops' ), 
+				$( '#single .movie.pops > .box > .play' ), 
+				$( '#single > .popup' ), 
+				$( '#single > .popup > .box' ), 
+				$( '#single > .popup > .box > .top > .close' ), 
+				$( '#single > .popup > .box > .mid' ) );
+				
+			}
 			
 		},
 		alternate: function(){
@@ -1209,6 +1327,36 @@
 			$( '#contact .message' ), 
 			$( '#contact .send' ), 
 			$( '#contact .status' ) );
+			
+			/* roll-down */
+			(function( item ){
+				item.click( function( e ){
+					var hash = $(this).attr( 'href' ).match( /#(.+)$/ );
+					var menubar = $( '.main-nav' ).first();
+					var found;
+					
+					if( hash.length > 1 ){
+						found = $( '[id="'+ hash[1] +'"]' ).first();
+						if( found.length > 0 ){
+							e.preventDefault();
+							
+							TweenLite.to(
+								$( 'html, body' ),
+								.5,
+								{
+									scrollTop: found.offset().top - menubar.outerHeight( true ),
+									ease: Power2.easeInOut,
+								}
+							);
+							
+						}
+						
+					}
+					
+				} );
+				
+			})
+			( $( '.roll-down' ) );
 			
 		},
 		rezerwacja: function(){

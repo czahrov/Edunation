@@ -30,7 +30,7 @@
 			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
 			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#business-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+		<a href="#business-training" class="roll-down flex flex-items-center flex-justify-center pointer arrow-box-down">
 			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
 		</a>
 	</div>
@@ -143,7 +143,7 @@
 			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
 			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer arrow-box-down">
 			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
 		</a>
 	</div>
@@ -226,7 +226,7 @@
 			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
 			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+		<a href="#sessions-training" class="roll-down flex flex-items-center flex-justify-center pointer arrow-box-down">
 			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
 		</a>
 		
@@ -291,7 +291,7 @@
 			<div class="title1 font-basic-regular"><?php echo $data[ 'head' ][ 'title' ]; ?></div>
 			<div class="title2 font-basic-bold"><?php echo $data[ 'head' ][ 'subtitle' ]; ?></div>
 		</div>
-		<a href="#general-training" class="roll-down flex flex-items-center flex-justify-center pointer-inner arrow-box-down">
+		<a href="#mummy-training" class="roll-down flex flex-items-center flex-justify-center pointer arrow-box-down">
 			<img class="arrow-img-down" src="<?php echo get_template_directory_uri(); ?>/img/arrow_small.png">
 		</a>
 		
