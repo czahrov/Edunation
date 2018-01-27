@@ -1176,7 +1176,7 @@ ul.navigation > li > a::after {
 	padding-top: 250px;
 }
 .img-box {
-	margin-top: 90px;
+	/* margin-top: 90px; */
 }
 	.header-img {
 	float: initial;
