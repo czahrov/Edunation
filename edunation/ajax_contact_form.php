@@ -51,8 +51,8 @@ else{
 	$mailer->setLanguage( 'pl' );
 	
 	$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Formularz kontaktowy Edunation' );
-	// $mailer->addAddress( 'lucas@edunation.pl' );
-	$mailer->addAddress( $mail );
+	$mailer->addAddress( 'lucas@edunation.pl' );
+	// $mailer->addAddress( $mail );
 	$mailer->addReplyTo( $mail );
 	$mailer->Subject = sprintf( "%s przesyła nową wiadomość", $name );
 	$mailer->Body = sprintf( "%s <%s>\r\nPrzesyła wiadomość na temat: %s\r\nO treści:\r\n%s\r\n\r\n---\r\nWiadomość wygenerowana automatycznie na stronie %s", 

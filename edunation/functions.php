@@ -6,7 +6,7 @@ if( !is_admin() ){
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
 	wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
 	wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array() );
-	wp_enqueue_style( "override", get_template_directory_uri() . "/override.css", array() );
+	wp_enqueue_style( "override", get_template_directory_uri() . "/override.css", array(), time() );
 	
 	wp_enqueue_script( "jQ", get_template_directory_uri() . "/js/jquery.js" );
 	wp_enqueue_script( "jQGSAP", get_template_directory_uri() . "/js/jquery.gsap.min.js" );
@@ -17,7 +17,7 @@ if( !is_admin() ){
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
 	wp_enqueue_script( "JQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
 	wp_enqueue_script( "main", get_template_directory_uri() . "/js/main.js" );
-	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm.js" );
+	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm.js", array(), time() );
 
 }
 
@@ -227,8 +227,8 @@ class DateManager{
 		
 		if( $mode === 'new' ){
 			$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Formularz www' );
-			$mailer->addAddress( $this->_mail );
-			$mailer->addReplyTo( $this->_mail );
+			$mailer->addAddress( 'lucas@edunation.pl' );
+			$mailer->addReplyTo( $date[ 'client' ][ 'mail' ] );
 			$mailer->Subject = sprintf( "%s rezerwuje szkolenie", $date[ 'client' ][ 'name' ] );
 			$mailer->Body = sprintf( "Klient: %s <%s> ( tel: %s )\r\nNazwa szkolenia: %s\r\nData rozpoczęcia: %s\r\nCzas trwania szkolenia: ( %s minut )\r\nNależność: %.2f PLN\r\nWiadomość dodatkowa:\r\n%s\r\n\r\n---\r\nWiadomość została wygenerowana automatycznie na %s",
 				$date[ 'client' ][ 'name' ],
