@@ -1,7 +1,7 @@
 <nav class="main-nav">
 	<div class="navigation-bar grid padding flex flex-justify-between flex-items-center">
 		<a class="logo;" href="<?php echo home_url(''); ?>">
-			<img src="<?php echo get_template_directory_uri(); ?>/img/logo_edunation.jpg" alt="Edunation" class="logo-img">
+			<img src="/img/logo_edunation.png" alt="Edunation" class="logo-img">
 		</a>
 		
 		<div class="ham-box hide-ml">

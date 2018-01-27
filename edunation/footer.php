@@ -2,7 +2,7 @@
 	<div class="footer">
 		<div class="inner grid padding flex flex-wrap flex-items-center-ml">
 			<div class="box base1 base3-ml no-shrink flex flex-justify-center flex-justify-start-ml">
-				<a href="<?php echo home_url(''); ?>" class="footer-logo"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/logo_footer.png" alt="Edunation"></a>
+				<a href="<?php echo home_url(''); ?>" class="footer-logo"><img src="/img/logo_edunation_alt.png" alt="Edunation"></a>
 			</div>
 			<div class="box base1 base3-ml no-shrink flex flex-justify-center">
 				<div class="copy font-basic-medium">
@@ -11,7 +11,7 @@
 			</div>
 			<div class="box base1 base3-ml no-shrink flex-justify-center flex-justify-end-ml">
 				<a href="http:\\www.scepter.pl" target="_blank" class="author font-basic-medium">
-					Realizacja: <img src="<?php echo get_template_directory_uri(); ?>/img/ikony/scepter_color.png" alt="Scepter Agencja Interaktywna" class="block-ml">
+					Realizacja: <img src="/img/logo_scepter.png" alt="Scepter Agencja Interaktywna" class="block-ml">
 				</a>
 			</div>
 		</div>

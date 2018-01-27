@@ -44,8 +44,8 @@ body {
 .logo-img {
 	display: block;
 	max-height: 100%;
-	max-width: 100%;
-	width: auto;
+	width: 300px;
+	max-width: 80%;
 	cursor: pointer;
 }
 ul.navigation {
@@ -711,6 +711,7 @@ video { display: block; width: 100%; height: auto; }
 .contact > .box > .inner > form > .wrapper > .message > textarea {
 	transition: background-color .3s linear;
 	cursor: auto;
+	font-size: 18px;
 }
 .contact > .box > .inner > form > .wrapper > .personal > input:focus,
 .contact > .box > .inner > form > .wrapper > .message > textarea:focus {
