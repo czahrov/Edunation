@@ -6,7 +6,7 @@
 
 		
 		<div class="header-main flex flex-justify-between">
-			<div class="grid padding flex">
+			<div class="grid padding flex flex-column flex-row-mm">
 				<div class="header-content flex flex-column no-shrink">
 					<h1 class="font-basic-light"><span class="underline-closking">Hello to you! </span><span>My name is Lucas.</span></h1>
 					<p class="font-basic-bold"><span>Let's design your </span> <span>English excellence.</span></p>
@@ -447,10 +447,16 @@
 			<div class="title font-basic-extrabold">Find <span class="pretty">me</span></div>
 			<div class="text font-secondary-medium">Jestem tutaj! I nieźle sobie radzę</div>
 			<div class="social flex flex-justify-between">
-				<a href="#" target="_blank" class="icon flex flex-items-center flex-juitify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/in.png" alt="in"></a>
-				<a href="#" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/fb.png" alt="facebook"></a>
-				<a href="#" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/instagram.png" alt="instagram"></a>
-				<a href="#" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/yt.png" alt="youtube"></a>
+				<?php
+					$meta = get_post_meta( get_page_by_title( 'Social' )->ID );
+					/* echo "<!--";
+					print_r( $meta );
+					echo "-->"; */
+				?>
+				<a href="<?php echo $meta[ 'linkedin' ][0]; ?>" target="_blank" class="icon flex flex-items-center flex-juitify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/in.png" alt="in"></a>
+				<a href="<?php echo $meta[ 'facebook' ][0]; ?>" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/fb.png" alt="facebook"></a>
+				<a href="<?php echo $meta[ 'instagram' ][0]; ?>" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/instagram.png" alt="instagram"></a>
+				<a href="<?php echo $meta[ 'youtube' ][0]; ?>" target="_blank" class="icon flex flex-items-center flex-justify-center"><img src="<?php echo get_template_directory_uri(); ?>/img/ikony/yt.png" alt="youtube"></a>
 			</div>
 		</div>
 	</div>
