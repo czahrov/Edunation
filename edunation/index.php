@@ -1,6 +1,6 @@
 <?php get_header();?>
 
-<body id="home">
+<body id="home" class='<?php do_action( 'body_markup' ); ?>'>
 	<header>
 		<?php get_template_part("template/menu"); ?>
 

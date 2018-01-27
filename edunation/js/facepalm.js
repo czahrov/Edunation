@@ -188,7 +188,7 @@
 				} );
 				
 			})
-			( $( 'ul.navigation > li > a' ) );
+			( $( 'ul.navigation > li:not(.call) > a' ) );
 			
 			/* single page */
 			if( $( 'body#single' ).length > 0 ){

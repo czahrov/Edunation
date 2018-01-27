@@ -1,4 +1,5 @@
-#home{
+#home
+{
 	
 	& > .referencje,
 	& > .opinie{
@@ -145,7 +146,8 @@
 		
 	}
 	
-	#business-training, #general-training, #sessions-training, #mummy-training{
+	#business-training, #general-training, #sessions-training, #mummy-training
+	{
 		position: relative;
 		
 		& > .wrapper > .box > .inner > *{
@@ -182,7 +184,8 @@
 		
 	}
 	
-	#contact{
+	#contact
+	{
 		width: 100%;
 		
 		.status{

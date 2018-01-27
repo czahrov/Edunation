@@ -50,18 +50,17 @@ body {
 }
 ul.navigation {
 	list-style: none;
-	position: fixed;
+	position: absolute;
 	background-color: #fff;
 	top: 70px;
 	left: 0;
 	right: 0;
-	bottom: 0;
 	text-align: center;
 	z-index: 3;
 }
 ul.navigation > li {
 	position: relative;
-	height: 46px;
+	min-height: 46px;
 	background-color:#fff;
 }
 ul.navigation > li > a {
@@ -74,7 +73,7 @@ ul.navigation > li > a {
 	padding: 14px 0 14px 0;
 	border-bottom: 1px solid #F0F0F0;
 }
-ul.navigation > li:last-child > a {
+ul.navigation > li.last > a {
 	font-size: 16px;
 	padding: 17px 20px 16px 20px;
 	background-color: #34E0CA;

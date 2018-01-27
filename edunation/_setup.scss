@@ -43,10 +43,49 @@ body{
 		
 	}
 	
+	&.mobile{
+		
+		.main-nav{
+			
+			.call{
+				display: block;
+				
+				& > a{
+					position: relative;
+					
+					& > .icon{
+						max-height: 40px;
+						margin-bottom: 10px;
+						
+					}
+					
+					& > .text{
+						
+						
+					}
+					
+				}
+				
+			}
+			
+			.last + .call{
+				margin-top: 30px;
+				
+			}
+			
+		}
+		
+	}
+	
 }
 
 .main-nav{
 	top: 0;
+	
+	.call{
+		display: none;
+		
+	}
 	
 }
 
