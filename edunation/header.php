@@ -1,3 +1,11 @@
+<?php
+	/* if( !isset( $_COOKIE['sprytne'] ) ){
+		include "wbudowie.php";
+		exit;
+		
+	} */
+	
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>

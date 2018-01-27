@@ -1,676 +1,677 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-light {
-  color: #fff;
-}
+  color: #fff; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-light {
-  background-color: #fff;
-}
+  background-color: #fff; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-dark {
-  color: #000;
-}
+  color: #000; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-dark {
-  background-color: #000;
-}
+  background-color: #000; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-blue-dark {
-  color: #080d35;
-}
+  color: #080d35; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-blue-dark {
-  background-color: #080d35;
-}
+  background-color: #080d35; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-blue-dark2 {
-  color: #0e1235;
-}
+  color: #0e1235; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-blue-dark2 {
-  background-color: #0e1235;
-}
+  background-color: #0e1235; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-violet {
-  color: #2f3083;
-}
+  color: #2f3083; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-violet {
-  background-color: #2f3083;
-}
+  background-color: #2f3083; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-violet-light {
-  color: #5056a4;
-}
+  color: #5056a4; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-violet-light {
-  background-color: #5056a4;
-}
+  background-color: #5056a4; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-pink {
-  color: #ed1e4a;
-}
+  color: #ed1e4a; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-pink {
-  background-color: #ed1e4a;
-}
+  background-color: #ed1e4a; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-green {
-  color: #35b896;
-}
+  color: #35b896; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-green {
-  background-color: #35b896;
-}
+  background-color: #35b896; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-gray {
-  color: #e8e6e7;
-}
+  color: #e8e6e7; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-gray {
-  background-color: #e8e6e7;
-}
+  background-color: #e8e6e7; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-gray-light {
-  color: #ededed;
-}
+  color: #ededed; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-gray-light {
-  background-color: #ededed;
-}
+  background-color: #ededed; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000334}}
 .font-gray-dark {
-  color: #3d3d3d;
-}
+  color: #3d3d3d; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_paleta\.scss}line{font-family:\0000339}}
 .bg-gray-dark {
-  background-color: #3d3d3d;
-}
+  background-color: #3d3d3d; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000317}}
 body.spaceTop {
-  padding-top: 90px;
-}
-body.spaceTop.admin {
-  padding-top: 136px;
-}
-@media (min-width: 783px) {
+  padding-top: 90px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000320}}
   body.spaceTop.admin {
-    padding-top: 122px;
-  }
-}
+    padding-top: 136px; }
+    @media (min-width: 783px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000320}}
+      body.spaceTop.admin {
+        padding-top: 122px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000334}}
 body.admin .main-nav {
-  margin-top: 46px;
-}
-@media (min-width: 783px) {
-  body.admin .main-nav {
-    margin-top: 32px;
-  }
-}
+  margin-top: 46px; }
+  @media (min-width: 783px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000334}}
+    body.admin .main-nav {
+      margin-top: 32px; } }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000348}}
 .main-nav {
-  top: 0;
-}
+  top: 0; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000353}}
 .grid {
   max-width: 1240px;
-  padding: 0 20px;
-}
+  padding: 0 20px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000359}}
 .hitbox {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-}
+  bottom: 0; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000368}}
 .regular {
-  font-family: 'Raleway-Regular';
-}
-.regular.alt {
-  font-family: 'Montserrat-Regular';
-}
+  font-family: 'Raleway-Regular'; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000371}}
+  .regular.alt {
+    font-family: 'Montserrat-Regular'; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000378}}
 .medium {
-  font-family: 'Raleway-Medium';
-}
-.medium.alt {
-  font-family: 'Montserrat-Medium';
-}
+  font-family: 'Raleway-Medium'; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000381}}
+  .medium.alt {
+    font-family: 'Montserrat-Medium'; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000388}}
 .bold {
-  font-family: 'Raleway-Bold';
-}
-.bold.alt {
-  font-family: 'Montserrat-Bold';
-}
+  font-family: 'Raleway-Bold'; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000391}}
+  .bold.alt {
+    font-family: 'Montserrat-Bold'; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\0000398}}
 .extraBold {
-  font-family: 'Raleway-ExtraBold';
-}
-.extraBold.alt {
-  font-family: 'Montserrat-ExtraBold';
-}
+  font-family: 'Raleway-ExtraBold'; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\00003101}}
+  .extraBold.alt {
+    font-family: 'Montserrat-ExtraBold'; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_setup\.scss}line{font-family:\00003109}}
 .pointer, .pointer * {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\000033}}
 #home > .referencje, #home > .opinie {
-  padding: 80px 0 110px;
-}
-#home > .referencje > .box > .title, #home > .opinie > .box > .title {
-  margin: auto;
-  margin-bottom: 35px;
-  max-width: 520px;
-  font-size: 38px;
-}
-#home > .referencje > .box > .subtitle, #home > .opinie > .box > .subtitle {
-  margin-bottom: 65px;
-  font-size: 18px;
-}
-#home > .referencje > .box > .slider, #home > .opinie > .box > .slider {
-  position: relative;
-  margin: auto;
-  padding: 0;
-  max-width: 530px;
-}
-#home > .referencje > .box > .slider > .view, #home > .opinie > .box > .slider > .view {
-  overflow: hidden;
-}
-#home > .referencje > .box > .slider > .view > .slide, #home > .opinie > .box > .slider > .view > .slide {
-  position: relative;
-  margin-bottom: 70px;
-  padding: 30px 0 0;
-  cursor: -webkit-grab;
-}
-#home > .referencje > .box > .slider > .view > .slide > .logo, #home > .opinie > .box > .slider > .view > .slide > .logo {
-  margin-bottom: 50px;
-  height: 80px;
-  cursor: inherit;
-}
-#home > .referencje > .box > .slider > .view > .slide > .text, #home > .opinie > .box > .slider > .view > .slide > .text {
-  padding: 0 20px;
-  margin-bottom: 50px;
-  font-style: italic;
-  font-size: 16px;
-  line-height: 1.7em;
-}
-#home > .referencje > .box > .slider > .view > .slide > .author, #home > .opinie > .box > .slider > .view > .slide > .author {
-  padding: 0 20px;
-  margin-bottom: 100px;
-  font-size: 15px;
-  line-height: 1.7em;
-}
-#home > .referencje > .box > .slider > .view > .slide > .img, #home > .opinie > .box > .slider > .view > .slide > .img {
-  position: absolute;
-  width: 110px;
-  height: 110px;
-  left: 50%;
-  bottom: 0;
-  -webkit-transform: translate(-50%, 50%);
-          transform: translate(-50%, 50%);
-  border-radius: 50%;
-  -webkit-box-shadow: 0 0 0 2px #ededed;
-          box-shadow: 0 0 0 2px #ededed;
-  background-color: #ededed;
-}
-#home > .referencje > .box > .slider > .nav, #home > .opinie > .box > .slider > .nav {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  -webkit-transition: -webkit-transform .3s linear;
-  transition: -webkit-transform .3s linear;
-  transition: transform .3s linear;
-  transition: transform .3s linear, -webkit-transform .3s linear;
-}
-#home > .referencje > .box > .slider > .nav > .icon, #home > .opinie > .box > .slider > .nav > .icon {
-  width: 50px;
-  height: 50px;
-  font-size: 48px;
-  color: #34E0CA;
-  border: solid 2px #34E0CA;
-  border-radius: 50%;
-}
-#home > .referencje > .box > .slider > .nav.prev, #home > .opinie > .box > .slider > .nav.prev {
-  left: 0;
-}
-#home > .referencje > .box > .slider > .nav.next, #home > .opinie > .box > .slider > .nav.next {
-  right: 0;
-}
-#home > .referencje > .box > .slider > .nav:hover, #home > .opinie > .box > .slider > .nav:hover {
-  -webkit-transform: translateY(-50%) scale(1.2);
-          transform: translateY(-50%) scale(1.2);
-}
-#home > .referencje > .box > .slider > .pagin, #home > .opinie > .box > .slider > .pagin {
-  margin-top: 20px;
-}
-#home > .referencje > .box > .slider > .pagin > .item, #home > .opinie > .box > .slider > .pagin > .item {
-  margin: 0 10px;
-  padding: 2px;
-  width: 16px;
-  height: 16px;
-  background-color: #ededed;
-  background-clip: content-box;
-  border: solid 1px #000;
-  border-radius: 50%;
-  -webkit-transition: background .3s linear;
-  transition: background .3s linear;
-}
-#home > .referencje > .box > .slider > .pagin > .item.active, #home > .opinie > .box > .slider > .pagin > .item.active {
-  background-color: #000;
-}
-@media (min-width: 768px) {
+  padding: 80px 0 110px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\000039}}
+  #home > .referencje > .box > .title, #home > .opinie > .box > .title {
+    margin: auto;
+    margin-bottom: 35px;
+    max-width: 520px;
+    font-size: 38px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000317}}
+  #home > .referencje > .box > .subtitle, #home > .opinie > .box > .subtitle {
+    margin-bottom: 65px;
+    font-size: 18px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000323}}
   #home > .referencje > .box > .slider, #home > .opinie > .box > .slider {
-    padding: 0 70px;
-  }
-}
+    position: relative;
+    margin: auto;
+    padding: 0;
+    max-width: 530px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000329}}
+    #home > .referencje > .box > .slider > .view, #home > .opinie > .box > .slider > .view {
+      overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000332}}
+      #home > .referencje > .box > .slider > .view > .slide, #home > .opinie > .box > .slider > .view > .slide {
+        position: relative;
+        margin-bottom: 70px;
+        padding: 30px 0 0;
+        cursor: -webkit-grab; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000338}}
+        #home > .referencje > .box > .slider > .view > .slide > .logo, #home > .opinie > .box > .slider > .view > .slide > .logo {
+          margin-bottom: 50px;
+          height: 80px;
+          cursor: inherit; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000345}}
+        #home > .referencje > .box > .slider > .view > .slide > .text, #home > .opinie > .box > .slider > .view > .slide > .text {
+          padding: 0 20px;
+          margin-bottom: 50px;
+          font-style: italic;
+          font-size: 16px;
+          line-height: 1.7em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000356}}
+        #home > .referencje > .box > .slider > .view > .slide > .author, #home > .opinie > .box > .slider > .view > .slide > .author {
+          padding: 0 20px;
+          margin-bottom: 100px;
+          font-size: 15px;
+          line-height: 1.7em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000364}}
+        #home > .referencje > .box > .slider > .view > .slide > .img, #home > .opinie > .box > .slider > .view > .slide > .img {
+          position: absolute;
+          width: 110px;
+          height: 110px;
+          left: 50%;
+          bottom: 0;
+          -webkit-transform: translate(-50%, 50%);
+                  transform: translate(-50%, 50%);
+          border-radius: 50%;
+          -webkit-box-shadow: 0 0 0 2px #ededed;
+                  box-shadow: 0 0 0 2px #ededed;
+          background-color: #ededed; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000381}}
+    #home > .referencje > .box > .slider > .nav, #home > .opinie > .box > .slider > .nav {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+      -webkit-transition: -webkit-transform .3s linear;
+      transition: -webkit-transform .3s linear;
+      transition: transform .3s linear;
+      transition: transform .3s linear, -webkit-transform .3s linear; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000387}}
+      #home > .referencje > .box > .slider > .nav > .icon, #home > .opinie > .box > .slider > .nav > .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 48px;
+        color: #34E0CA;
+        border: solid 2px #34E0CA;
+        border-radius: 50%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000397}}
+      #home > .referencje > .box > .slider > .nav.prev, #home > .opinie > .box > .slider > .nav.prev {
+        left: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003102}}
+      #home > .referencje > .box > .slider > .nav.next, #home > .opinie > .box > .slider > .nav.next {
+        right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003107}}
+      #home > .referencje > .box > .slider > .nav:hover, #home > .opinie > .box > .slider > .nav:hover {
+        -webkit-transform: translateY(-50%) scale(1.2);
+                transform: translateY(-50%) scale(1.2); }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003114}}
+    #home > .referencje > .box > .slider > .pagin, #home > .opinie > .box > .slider > .pagin {
+      margin-top: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003117}}
+      #home > .referencje > .box > .slider > .pagin > .item, #home > .opinie > .box > .slider > .pagin > .item {
+        margin: 0 10px;
+        padding: 2px;
+        width: 16px;
+        height: 16px;
+        background-color: #ededed;
+        background-clip: content-box;
+        border: solid 1px #000;
+        border-radius: 50%;
+        -webkit-transition: background .3s linear;
+        transition: background .3s linear; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003128}}
+        #home > .referencje > .box > .slider > .pagin > .item.active, #home > .opinie > .box > .slider > .pagin > .item.active {
+          background-color: #000; }
+    @media (min-width: 768px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\0000323}}
+      #home > .referencje > .box > .slider, #home > .opinie > .box > .slider {
+        padding: 0 70px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003148}}
 #home #business-training, #home #general-training, #home #sessions-training, #home #mummy-training {
-  position: relative;
-}
-#home #business-training > .wrapper > .box > .inner > *, #home #general-training > .wrapper > .box > .inner > *, #home #sessions-training > .wrapper > .box > .inner > *, #home #mummy-training > .wrapper > .box > .inner > * {
-  max-width: 100%;
-}
-#home #business-training > .pagin, #home #general-training > .pagin, #home #sessions-training > .pagin, #home #mummy-training > .pagin {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 50px;
-}
-#home #business-training > .pagin > .item, #home #general-training > .pagin > .item, #home #sessions-training > .pagin > .item, #home #mummy-training > .pagin > .item {
-  margin: 0 10px;
-  padding: 2px;
-  width: 16px;
-  height: 16px;
-  background-color: #ededed;
-  background-clip: content-box;
-  border: solid 1px #000;
-  border-radius: 50%;
-  -webkit-transition: background .3s linear;
-  transition: background .3s linear;
-}
-#home #business-training > .pagin > .item.active, #home #general-training > .pagin > .item.active, #home #sessions-training > .pagin > .item.active, #home #mummy-training > .pagin > .item.active {
-  background-color: #000;
-}
+  position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003151}}
+  #home #business-training > .wrapper > .box > .inner > *, #home #general-training > .wrapper > .box > .inner > *, #home #sessions-training > .wrapper > .box > .inner > *, #home #mummy-training > .wrapper > .box > .inner > * {
+    max-width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003156}}
+  #home #business-training > .pagin, #home #general-training > .pagin, #home #sessions-training > .pagin, #home #mummy-training > .pagin {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003162}}
+    #home #business-training > .pagin > .item, #home #general-training > .pagin > .item, #home #sessions-training > .pagin > .item, #home #mummy-training > .pagin > .item {
+      margin: 0 10px;
+      padding: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #ededed;
+      background-clip: content-box;
+      border: solid 1px #000;
+      border-radius: 50%;
+      -webkit-transition: background .3s linear;
+      transition: background .3s linear; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003173}}
+      #home #business-training > .pagin > .item.active, #home #general-training > .pagin > .item.active, #home #sessions-training > .pagin > .item.active, #home #mummy-training > .pagin > .item.active {
+        background-color: #000; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003185}}
 #home #contact {
-  width: 100%;
-}
-#home #contact .status {
-  margin: 20px 0;
-  padding: 0 10px;
-}
-#home #contact .status > .icon {
-  margin: 0 10px 0 0;
-  font-size: 40px;
-}
-#home #contact .status > .icon.ok {
-  color: green;
-}
-#home #contact .status > .icon.info {
-  color: blue;
-}
-#home #contact .status > .icon.fail {
-  color: red;
-}
-#home #contact .status > .text {
-  padding: 0 20px;
-  line-height: 30px;
-}
-#home #contact .status:not(.ok) > .icon.ok {
-  display: none;
-}
-#home #contact .status:not(.info) > .icon.info {
-  display: none;
-}
-#home #contact .status:not(.fail) > .icon.fail {
-  display: none;
-}
-#home #contact .send {
-  margin-bottom: 40px;
-  height: 44px;
-  width: 194px;
-  background-color: #34E0CA;
-  border: 0;
-  border-radius: 50px;
-  -webkit-box-shadow: 0 0 0 0 transparent;
-          box-shadow: 0 0 0 0 transparent;
-  color: #223d4e;
-  font-size: 12px;
-  -webkit-transition: -webkit-box-shadow .3s linear;
-  transition: -webkit-box-shadow .3s linear;
-  transition: box-shadow .3s linear;
-  transition: box-shadow .3s linear, -webkit-box-shadow .3s linear;
-}
-#home #contact .send:hover {
-  -webkit-box-shadow: 0 0 0 3px #34E0CA;
-          box-shadow: 0 0 0 3px #34E0CA;
-}
+  width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003188}}
+  #home #contact .status {
+    margin: 20px 0;
+    padding: 0 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003192}}
+    #home #contact .status > .icon {
+      margin: 0 10px 0 0;
+      font-size: 40px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003196}}
+      #home #contact .status > .icon.ok {
+        color: green; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003201}}
+      #home #contact .status > .icon.info {
+        color: blue; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003206}}
+      #home #contact .status > .icon.fail {
+        color: red; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003213}}
+    #home #contact .status > .text {
+      padding: 0 20px;
+      line-height: 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003219}}
+    #home #contact .status:not(.ok) > .icon.ok {
+      display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003224}}
+    #home #contact .status:not(.info) > .icon.info {
+      display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003229}}
+    #home #contact .status:not(.fail) > .icon.fail {
+      display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003236}}
+  #home #contact .send {
+    margin-bottom: 40px;
+    height: 44px;
+    width: 194px;
+    background-color: #34E0CA;
+    border: 0;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 0 0 0 transparent;
+            box-shadow: 0 0 0 0 transparent;
+    color: #223d4e;
+    font-size: 12px;
+    -webkit-transition: -webkit-box-shadow .3s linear;
+    transition: -webkit-box-shadow .3s linear;
+    transition: box-shadow .3s linear;
+    transition: box-shadow .3s linear, -webkit-box-shadow .3s linear; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003248}}
+    #home #contact .send:hover {
+      -webkit-box-shadow: 0 0 0 3px #34E0CA;
+              box-shadow: 0 0 0 3px #34E0CA; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_home\.scss}line{font-family:\00003257}}
+#home .contact > .box > .inner > .text {
+  font-size: 18px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\000031}}
 #rezerwacja {
-  margin: 100px 0 150px;
-}
-#rezerwacja > .popup {
-  position: fixed;
-  padding: 50px 20px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-#rezerwacja > .popup > .box {
-  position: relative;
-  padding: 10px;
-}
-#rezerwacja > .popup > .box > .close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40px;
-  height: 40px;
-}
-#rezerwacja > .popup > .box > .head {
-  margin: 20px 0 30px;
-  font-size: 30px;
-}
-#rezerwacja > .popup > .box > .body > .pora {
-  padding: 0 10px;
-}
-#rezerwacja > .popup > .box > .body > .pora > .item {
-  margin-top: 10px;
-  padding: 5px 0;
-  border: solid 1px #000;
-}
-#rezerwacja > .popup:not(.open) {
-  display: none;
-}
-#rezerwacja > .top {
-  font-size: 30px;
-  margin-bottom: 50px;
-}
-#rezerwacja > .bot {
-  position: relative;
-}
-#rezerwacja > .bot > .view {
-  margin-right: 20px;
-  overflow: hidden;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .today {
-  width: 140px;
-  font-size: 20px;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .button {
-  height: 42px;
-  padding: 0 20px;
-  border-radius: 21px;
-  font-size: 12px;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav {
-  height: 30px;
-  padding: 0 20px;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.prev {
-  border-radius: 20px 0 0 20px;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.next {
-  border-radius: 0 20px 20px 0;
-}
-#rezerwacja > .bot > .view > .etap.data > .head > .month > .name {
-  padding: 0 20px;
-  min-width: 230px;
-  font-size: 26px;
-}
-#rezerwacja > .bot > .view > .etap.data > .body .tcell {
-  height: 64px;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .thead > .tcell {
-  padding-bottom: 10px;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell {
-  -webkit-box-shadow: 0 0 0 1px #e8e6e7 inset;
-          box-shadow: 0 0 0 1px #e8e6e7 inset;
-  -webkit-transition: border .3s linear;
-  transition: border .3s linear;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell > .text {
-  margin: 12px 0 0 12px;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable {
-  cursor: no-drop;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable > .text {
-  cursor: inherit;
-  opacity: 0.4;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable), #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable) * {
-  cursor: pointer;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable):hover {
-  border-color: #080d35;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text {
-  position: relative;
-}
-#rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text::after {
-  content: '';
-  position: absolute;
-  margin-top: 3px;
-  width: 17px;
-  height: 2px;
-  top: 100%;
-  left: 0;
-  background-color: #080d35;
-}
-#rezerwacja > .bot > .view > .etap.form > .title {
-  margin-bottom: 38px;
-  font-size: 22px;
-}
-#rezerwacja > .bot > .view > .etap.form > form.form {
-  max-width: 640px;
-}
-#rezerwacja > .bot > .view > .etap.form > form.form > .label {
-  margin: 16px 0;
-  font-size: 16px;
-}
-#rezerwacja > .bot > .view > .etap.form > form.form > .input {
-  margin-bottom: 10px;
-  padding: 0 28px;
-  height: 46px;
-  font-size: 14px;
-  border: solid 1px #e8e6e7;
-}
-#rezerwacja > .bot > .view > .etap.form > form.form > .textarea {
-  padding: 30px 20px;
-  height: 170px;
-  border: solid 1px #e8e6e7;
-  line-height: 26px;
-  resize: none;
-}
-#rezerwacja > .bot > .view > .etap.summary .button {
-  height: 46px;
-  padding: 0 46px;
-  border-radius: 23px;
-}
-#rezerwacja > .bot > .view > .etap.summary > .title {
-  margin-bottom: 20px;
-  max-width: 100%;
-  font-size: 34px;
-}
-#rezerwacja > .bot > .view > .etap.summary > .subtitle {
-  margin-bottom: 80px;
-  max-width: 100%;
-  font-size: 25px;
-}
-#rezerwacja > .bot > .view > .etap.summary > .table {
-  padding: 32px;
-  width: 100%;
-  max-width: 720px;
-  border: solid 1px #e8e6e7;
-}
-#rezerwacja > .bot > .view > .etap.summary > .table .title {
-  margin-bottom: 20px;
-  font-size: 22px;
-}
-#rezerwacja > .bot > .view > .etap.summary > .table .subtitle {
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-#rezerwacja > .bot > .view > .etap.summary > .table > .tcell.right {
-  border-left: solid 1px #e8e6e7;
-}
-#rezerwacja > .bot > .view > .etap.summary > .button {
-  margin-top: 70px;
-}
-#rezerwacja > .bot > .side {
-  padding: 26px 30px 50px;
-}
-#rezerwacja > .bot > .side > .segment {
-  min-width: 294px;
-  padding: 0 20px;
-}
-#rezerwacja > .bot > .side > .top {
-  height: 140px;
-  margin-bottom: 20px;
-}
-#rezerwacja > .bot > .side > .top > .title {
-  line-height: 33px;
-  font-size: 22px;
-}
-#rezerwacja > .bot > .side > .top > .cena {
-  margin-top: 13px;
-  font-size: 16px;
-}
-#rezerwacja > .bot > .side > .bot {
-  height: 100px;
-  margin-bottom: 50px;
-}
-#rezerwacja > .bot > .side > .bot > .text {
-  line-height: 34px;
-}
-#rezerwacja > .bot > .side > .button {
-  min-width: 194px;
-  height: 44px;
-  padding: 0 35px;
-  border-radius: 22px;
-  line-height: 24px;
-  font-size: 16px;
-}
-#rezerwacja > .bot > .side > .button > .icon {
-  font-size: 30px;
-}
+  margin: 100px 0 150px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\000034}}
+  #rezerwacja > .popup {
+    position: fixed;
+    padding: 50px 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.8); }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000314}}
+    #rezerwacja > .popup > .box {
+      position: relative;
+      padding: 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000318}}
+      #rezerwacja > .popup > .box > .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000327}}
+      #rezerwacja > .popup > .box > .head {
+        margin: 20px 0 30px;
+        font-size: 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000335}}
+      #rezerwacja > .popup > .box > .body > .pora {
+        padding: 0 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000342}}
+        #rezerwacja > .popup > .box > .body > .pora > .item {
+          margin-top: 10px;
+          padding: 5px 0;
+          border: solid 1px #000; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000355}}
+    #rezerwacja > .popup:not(.open) {
+      display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000362}}
+  #rezerwacja > .top {
+    font-size: 30px;
+    margin-bottom: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000368}}
+  #rezerwacja > .bot {
+    position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000371}}
+    #rezerwacja > .bot > .view {
+      margin-right: 20px;
+      overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000381}}
+      #rezerwacja > .bot > .view > .etap.data > .head > .today {
+        width: 140px;
+        font-size: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000387}}
+      #rezerwacja > .bot > .view > .etap.data > .head > .button {
+        height: 42px;
+        padding: 0 20px;
+        border-radius: 21px;
+        font-size: 12px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000397}}
+      #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav {
+        height: 30px;
+        padding: 0 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003105}}
+        #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.prev {
+          border-radius: 20px 0 0 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003110}}
+        #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.next {
+          border-radius: 0 20px 20px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003117}}
+      #rezerwacja > .bot > .view > .etap.data > .head > .month > .name {
+        padding: 0 20px;
+        min-width: 230px;
+        font-size: 26px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003130}}
+      #rezerwacja > .bot > .view > .etap.data > .body .tcell {
+        height: 64px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003137}}
+      #rezerwacja > .bot > .view > .etap.data > .body > .thead > .tcell {
+        padding-bottom: 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003146}}
+      #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell {
+        -webkit-box-shadow: 0 0 0 1px #e8e6e7 inset;
+                box-shadow: 0 0 0 1px #e8e6e7 inset;
+        -webkit-transition: border .3s linear;
+        transition: border .3s linear; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003150}}
+        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell > .text {
+          margin: 12px 0 0 12px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003155}}
+        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable {
+          cursor: no-drop; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003158}}
+          #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable > .text {
+            cursor: inherit;
+            opacity: 0.4; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003168}}
+        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable), #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable) * {
+          cursor: pointer; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003175}}
+        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable):hover {
+          border-color: #080d35; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003182}}
+        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text {
+          position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003185}}
+          #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text::after {
+            content: '';
+            position: absolute;
+            margin-top: 3px;
+            width: 17px;
+            height: 2px;
+            top: 100%;
+            left: 0;
+            background-color: #080d35; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003211}}
+      #rezerwacja > .bot > .view > .etap.form > .title {
+        margin-bottom: 38px;
+        font-size: 22px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003217}}
+      #rezerwacja > .bot > .view > .etap.form > form.form {
+        max-width: 640px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003220}}
+        #rezerwacja > .bot > .view > .etap.form > form.form > .label {
+          margin: 16px 0;
+          font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003225}}
+        #rezerwacja > .bot > .view > .etap.form > form.form > .input {
+          margin-bottom: 10px;
+          padding: 0 28px;
+          height: 46px;
+          font-size: 14px;
+          border: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003234}}
+        #rezerwacja > .bot > .view > .etap.form > form.form > .textarea {
+          padding: 30px 20px;
+          height: 170px;
+          border: solid 1px #e8e6e7;
+          line-height: 26px;
+          resize: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003249}}
+      #rezerwacja > .bot > .view > .etap.summary .button {
+        height: 46px;
+        padding: 0 46px;
+        border-radius: 23px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003256}}
+      #rezerwacja > .bot > .view > .etap.summary > .title {
+        margin-bottom: 20px;
+        max-width: 100%;
+        font-size: 34px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003263}}
+      #rezerwacja > .bot > .view > .etap.summary > .subtitle {
+        margin-bottom: 80px;
+        max-width: 100%;
+        font-size: 25px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003270}}
+      #rezerwacja > .bot > .view > .etap.summary > .table {
+        padding: 32px;
+        width: 100%;
+        max-width: 720px;
+        border: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003276}}
+        #rezerwacja > .bot > .view > .etap.summary > .table .title {
+          margin-bottom: 20px;
+          font-size: 22px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003282}}
+        #rezerwacja > .bot > .view > .etap.summary > .table .subtitle {
+          margin-bottom: 20px;
+          font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003290}}
+        #rezerwacja > .bot > .view > .etap.summary > .table > .tcell.right {
+          border-left: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003299}}
+      #rezerwacja > .bot > .view > .etap.summary > .button {
+        margin-top: 70px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003310}}
+    #rezerwacja > .bot > .side {
+      padding: 26px 30px 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003313}}
+      #rezerwacja > .bot > .side > .segment {
+        min-width: 294px;
+        padding: 0 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003319}}
+      #rezerwacja > .bot > .side > .top {
+        height: 140px;
+        margin-bottom: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003323}}
+        #rezerwacja > .bot > .side > .top > .title {
+          line-height: 33px;
+          font-size: 22px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003329}}
+        #rezerwacja > .bot > .side > .top > .cena {
+          margin-top: 13px;
+          font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003336}}
+      #rezerwacja > .bot > .side > .bot {
+        height: 100px;
+        margin-bottom: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003340}}
+        #rezerwacja > .bot > .side > .bot > .text {
+          line-height: 34px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003347}}
+      #rezerwacja > .bot > .side > .button {
+        min-width: 194px;
+        height: 44px;
+        padding: 0 35px;
+        border-radius: 22px;
+        line-height: 24px;
+        font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003359}}
+        #rezerwacja > .bot > .side > .button > .icon {
+          font-size: 30px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_blog\.scss}line{font-family:\0000311}}
 #blog > .inner > .wrapper > .element {
   position: relative;
-  padding: 0;
-}
-#blog > .inner > .wrapper > .element > .box {
-  width: initial;
-  margin: 0 10px;
-  padding: 10px 20px 0;
-}
-#blog > .inner > .wrapper > .element > .box > .pic {
-  background-position: top;
-}
-#blog > .inner > .wrapper > .element > .box > .button {
-  position: absolute;
-}
+  padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_blog\.scss}line{font-family:\0000315}}
+  #blog > .inner > .wrapper > .element > .box {
+    width: initial;
+    margin: 0 10px;
+    padding: 10px 20px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_blog\.scss}line{font-family:\0000320}}
+    #blog > .inner > .wrapper > .element > .box > .pic {
+      background-position: top; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_blog\.scss}line{font-family:\0000341}}
+    #blog > .inner > .wrapper > .element > .box > .button {
+      position: absolute; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\000031}}
 #spotkania {
   margin-top: 60px;
-  padding: 50px 0;
-}
-#spotkania > .kafelki {
-  min-height: 1000px;
-  padding: 0;
-}
-#spotkania > .kafelki > .item > .box {
-  padding: 50px;
-}
-#spotkania > .kafelki > .item > .box > .head {
-  position: relative;
-  padding: 40px 20px;
-  height: 365px;
-}
-#spotkania > .kafelki > .item > .box > .head > .status {
-  position: absolute;
-  height: 40px;
-  top: 0;
-  right: 0;
-  font-size: 30px;
-}
-#spotkania > .kafelki > .item > .box > .head > .status > .icon {
-  padding: 0 10px;
-}
-#spotkania > .kafelki > .item > .box > .head > .status > .icon:not(.wait) {
-  display: none;
-}
-#spotkania > .kafelki > .item > .box > .head > .title {
-  margin-bottom: 20px;
-  font-size: 32px;
-}
-#spotkania > .kafelki > .item > .box > .head > .subtitle {
-  margin-bottom: 56px;
-  font-size: 24px;
-}
-#spotkania > .kafelki > .item > .box > .head > .box {
-  width: 160px;
-  height: 50px;
-  border: solid 2px rgba(255, 255, 255, 0.5);
-  font-size: 24px;
-}
-#spotkania > .kafelki > .item > .box > .body > .line {
-  padding: 10px 30px;
-  min-height: 60px;
-  height: initial;
-  font-size: 14px;
-}
-#spotkania > .kafelki > .item > .box > .body > .line > * {
-  line-height: 30px;
-}
-#spotkania > .kafelki > .item > .box > .body > .line:nth-child(even) {
-  border: solid 2px #ededed;
-  background-color: #f6f6f8;
-}
-#spotkania > .kafelki > .item > .box > .foot {
-  margin: 15px 0;
-}
-#spotkania > .kafelki > .item > .box > .foot > .button {
-  margin: 15px 0;
-  padding: 0 30px;
-  height: 50px;
-  border-radius: 25px;
-}
-#spotkania > .kafelki > .item.accepted > .box > .head {
-  background-color: #35b896;
-}
-#spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon {
-  display: block;
-}
-#spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon:not(.accept) {
-  display: none;
-}
-#spotkania > .kafelki > .item.outdate > .box > .head {
-  background-color: #848494;
-}
-#spotkania > .kafelki > .item.outdate > .box > .head > .status > .icon.outdate {
-  display: block;
-}
+  padding: 50px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\000035}}
+  #spotkania > .kafelki {
+    min-height: 1000px;
+    padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000311}}
+    #spotkania > .kafelki > .item > .box {
+      padding: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000314}}
+      #spotkania > .kafelki > .item > .box > .head {
+        position: relative;
+        padding: 40px 20px;
+        height: 365px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000319}}
+        #spotkania > .kafelki > .item > .box > .head > .status {
+          position: absolute;
+          height: 40px;
+          top: 0;
+          right: 0;
+          font-size: 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000326}}
+          #spotkania > .kafelki > .item > .box > .head > .status > .icon {
+            padding: 0 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000329}}
+            #spotkania > .kafelki > .item > .box > .head > .status > .icon:not(.wait) {
+              display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000338}}
+        #spotkania > .kafelki > .item > .box > .head > .title {
+          margin-bottom: 20px;
+          font-size: 32px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000344}}
+        #spotkania > .kafelki > .item > .box > .head > .subtitle {
+          margin-bottom: 56px;
+          font-size: 24px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000350}}
+        #spotkania > .kafelki > .item > .box > .head > .box {
+          width: 160px;
+          height: 50px;
+          border: solid 2px rgba(255, 255, 255, 0.5);
+          font-size: 24px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000362}}
+      #spotkania > .kafelki > .item > .box > .body > .line {
+        padding: 10px 30px;
+        min-height: 60px;
+        height: initial;
+        font-size: 14px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000368}}
+        #spotkania > .kafelki > .item > .box > .body > .line > * {
+          line-height: 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000373}}
+        #spotkania > .kafelki > .item > .box > .body > .line:nth-child(even) {
+          border: solid 2px #ededed;
+          background-color: #f6f6f8; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000383}}
+      #spotkania > .kafelki > .item > .box > .foot {
+        margin: 15px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\0000386}}
+        #spotkania > .kafelki > .item > .box > .foot > .button {
+          margin: 15px 0;
+          padding: 0 30px;
+          height: 50px;
+          border-radius: 25px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\00003102}}
+    #spotkania > .kafelki > .item.accepted > .box > .head {
+      background-color: #35b896; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\00003107}}
+      #spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon {
+        display: block; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\00003110}}
+        #spotkania > .kafelki > .item.accepted > .box > .head > .status > .icon:not(.accept) {
+          display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\00003127}}
+    #spotkania > .kafelki > .item.outdate > .box > .head {
+      background-color: #848494; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_spotkania\.scss}line{font-family:\00003130}}
+      #spotkania > .kafelki > .item.outdate > .box > .head > .status > .icon.outdate {
+        display: block; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000311}}
 #single > .single > .inner > .wrapper > .box > .desc {
-  padding-left: 80px;
-}
+  padding-left: 80px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000316}}
 #single > .single > .inner > .wrapper > .box:nth-child(1) {
-  padding: 0;
-}
+  padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000327}}
 #single > .single > .inner > .wrapper2 > .element {
-  padding: 0;
-}
-#single > .single > .inner > .wrapper2 > .element > .box {
-  width: auto;
-  margin: 20px 10px;
-  padding: 10px 18px;
-}
+  padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000330}}
+  #single > .single > .inner > .wrapper2 > .element > .box {
+    width: auto;
+    margin: 20px 10px;
+    padding: 10px 18px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000345}}
 #single > .popup {
   position: fixed;
   top: 0;
@@ -679,21 +680,33 @@ body.admin .main-nav {
   bottom: 0;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-}
-#single > .popup:not(.open) {
-  display: none;
-}
-#single > .popup > .box {
-  margin: 50px;
-}
-#single > .popup > .box > .top {
-  margin-bottom: 20px;
-}
-#single > .popup > .box > .top > .close {
-  width: 40px;
-  height: 40px;
-}
-#single > .popup > .box > .mid {
-  width: 100%;
-}
+  overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000355}}
+  #single > .popup:not(.open) {
+    display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000360}}
+  #single > .popup > .box {
+    margin: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000363}}
+    #single > .popup > .box > .top {
+      margin-bottom: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000366}}
+      #single > .popup > .box > .top > .close {
+        width: 40px;
+        height: 40px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_single\.scss}line{font-family:\0000378}}
+    #single > .popup > .box > .mid {
+      width: 100%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_footer\.scss}line{font-family:\000031}}
+footer > .footer > .inner > .box > .copy {
+  line-height: 1.5em; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_footer\.scss}line{font-family:\000036}}
+footer > .footer > .inner > .box > .copy,
+footer > .footer > .inner > .box > .author {
+  color: #999997; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_kalendarz\.scss}line{font-family:\000031}}
+#kalendarz {
+  padding-top: 100px; }
