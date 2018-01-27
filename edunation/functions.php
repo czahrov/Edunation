@@ -54,6 +54,16 @@ add_action( 'print_page_title', function( $arg ){
 	
 } );
 
+add_action( 'body_markup', function( $arg ){
+	$marks = array();
+	
+	if( is_admin_bar_showing() ) $marks[] = 'admin';
+	if( isMobile() ) $marks[] = 'mobile';
+	
+	echo implode( " ", $marks );
+	
+} );
+
 date_default_timezone_set( 'Europe/Warsaw' );
 
 class DateManager{
@@ -668,3 +678,16 @@ function sliderOpinie(){
 	return $ret;
 }
 
+// Sprawdza czy klient korzysta z urządzenia mobilnego
+function isMobile(){
+	static $ret = null;
+	
+	if( $ret === null ){
+		$pattern = "~Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini~i";
+		preg_match( $pattern, $_SERVER[ 'HTTP_USER_AGENT' ], $match );
+		$ret = count( $match ) !== 0;
+		
+	}
+	
+	return $ret;
+}

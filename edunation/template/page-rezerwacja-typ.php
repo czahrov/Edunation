@@ -1,5 +1,5 @@
 <!--NAVIGATION -->
-<body id="blog">
+<body id="blog" class='<?php do_action( 'body_markup' ); ?>'>
 	<header>
 		<nav class="main-nav">
 			<?php get_template_part("template/menu"); ?>

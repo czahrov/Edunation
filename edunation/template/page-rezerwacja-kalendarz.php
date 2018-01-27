@@ -1,5 +1,5 @@
 <!--NAVIGATION -->
-<body class='spaceTop <?php echo is_admin_bar_showing()?( 'admin' ):( '' ); ?>'>
+<body class='spaceTop <?php do_action( 'body_markup' ); ?>'>
 	<header>
 		<?php get_template_part("template/menu"); ?>
 	</header>
