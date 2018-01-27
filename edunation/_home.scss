@@ -50,7 +50,11 @@
 								style: italic;
 								size: 16px;
 							};
-							line-height: 1.7em;
+							
+							&, & *{
+								line-height: 1.7em;
+								
+							}
 							
 						}
 						
