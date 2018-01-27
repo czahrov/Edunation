@@ -2,11 +2,14 @@
 add_theme_support('post-thumbnails');
 
 if( !is_admin() ){
+	$infix = isset( $_COOKIE[ 'sprytne' ] )?( "" ):( ".min" );
+	$buster = isset( $_COOKIE[ 'sprytne' ] )?( time() ):( false );
+	
 	wp_enqueue_style( "fonts", get_template_directory_uri() . "/css/fonts.css", array() );
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
 	wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
-	wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array() );
-	wp_enqueue_style( "override", get_template_directory_uri() . "/override.css", array(), time() );
+	wp_enqueue_style( "style", get_template_directory_uri() . "/style{$infix}.css", array(), $buster );
+	wp_enqueue_style( "override", get_template_directory_uri() . "/override{$infix}.css", array(), $buster );
 	
 	wp_enqueue_script( "jQ", get_template_directory_uri() . "/js/jquery.js" );
 	wp_enqueue_script( "jQGSAP", get_template_directory_uri() . "/js/jquery.gsap.min.js" );
@@ -16,8 +19,8 @@ if( !is_admin() ){
 	wp_enqueue_script( "ScrollTo", get_template_directory_uri() . "/js/ScrollToPlugin.min.js" );
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
 	wp_enqueue_script( "JQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
-	wp_enqueue_script( "main", get_template_directory_uri() . "/js/main.js" );
-	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm.js", array(), time() );
+	wp_enqueue_script( "main", get_template_directory_uri() . "/js/main{$infix}.js", array(), $buster );
+	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm{$infix}.js", array(), $buster );
 
 }
 
@@ -107,6 +110,15 @@ class DateManager{
 	
 	/* konstruktor - jako argument przyjmuje adres URI pliku z terminami spotkań */
 	public function __construct( $uri = null ){
+		$meta = get_post_meta( get_page_by_title( 'Godziny pracy' )->ID );
+		
+		$this->_work = array(
+			'start' => sscanf( $meta[ 'work_start' ][0], "%u:%u" ),
+			'end' => sscanf( $meta[ 'work_end' ][0], "%u:%u" ),
+			'step' => $meta[ 'work_unit' ][0],
+			
+		);
+		
 		if( $uri !== null ){
 			$this->_furi = $uri;
 		}
@@ -350,8 +362,8 @@ class DateManager{
 	/* Funkcja generująca listę dostępnych terminów dla danego dnia */
 	public function getSlots( $year, $month, $day, $duration ){
 		$now = date_create()->getTimestamp();
-		$startTime = date_create( sprintf( "%s/%s/%s %s:%s", (int)$month, (int)$day, (int)$year, (int)$this->_work[ 'start' ][0], (int)$this->_work[ 'start' ][1] ) )->getTimestamp();
-		$endTime = date_create( sprintf( "%s/%s/%s %s:%s", (int)$month, (int)$day, (int)$year, (int)$this->_work[ 'end' ][0], (int)$this->_work[ 'end' ][1] ) )->getTimestamp();
+		$startTime = date_create( sprintf( "%s/%s/%s %u:%u", (int)$month, (int)$day, (int)$year, (int)$this->_work[ 'start' ][0], (int)$this->_work[ 'start' ][1] ) )->getTimestamp();
+		$endTime = date_create( sprintf( "%s/%s/%s %u:%u", (int)$month, (int)$day, (int)$year, (int)$this->_work[ 'end' ][0], (int)$this->_work[ 'end' ][1] ) )->getTimestamp();
 		$step = (int)$this->_work[ 'step' ] * 60;
 		$possible = array();
 		
