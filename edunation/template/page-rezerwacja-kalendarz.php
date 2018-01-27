@@ -63,22 +63,22 @@
 			<div class='top text-center'>
 				Grafik online
 			</div>
-			<div class='bot flex flex-justify-end'>
+			<div class='bot flex flex-column flex-row-mm flex-justify-end'>
 				<div class='view grow flex'>
 					<div class='etap data hide base1 no-shrink flex flex-column'>
-						<div class='head flex flex-items-center flex-justify-start'>
+						<div class='head flex flex-items-center flex-justify-center flex-justify-start-mm flex-wrap'>
 							<div class='today regular alt'>
 								<?php echo date( 'd.m.Y' ); ?>
 							</div>
 							<div class='button pointer bold uppercase bg-blue-dark font-light flex flex-items-center'>
 								dzisiaj
 							</div>
-							<div class='month grow flex flex-items-center flex-justify-center'>
+							<div class='month grow flex base1 base0-mm flex-wrap flex-items-center flex-justify-center'>
 								<div class='nav prev pointer bg-blue-dark font-light flex flex-items-center'>
 									<div class='icon fa fa-chevron-left'></div>
 									
 								</div>
-								<div class='name regular alt flex flex-items-center flex-justify-center'></div>
+								<div class='name regular alt flex base1 base0-ms flex-items-center flex-justify-center'></div>
 								<div class='nav next pointer bg-blue-dark font-light flex flex-items-center'>
 									<div class='icon fa fa-chevron-right'></div>
 									
@@ -168,7 +168,7 @@
 					</div>
 					
 				</div>
-				<div class='side bg-blue-dark font-dark flex flex-column flex-items-center flex-self-start'>
+				<div class='side bg-blue-dark font-dark flex no-shrink flex-column flex-items-center flex-self-stretch flex-self-start-mm'>
 					<div class='segment top bg-light flex flex-column flex-items-center flex-justify-center'>
 						<div class='title bold'>
 							<?php echo $data[ 'title' ]; ?>

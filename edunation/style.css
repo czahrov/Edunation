@@ -167,7 +167,7 @@ ul.navigation > li:last-child > a::after {
 	display: none;
 }
 .header-main {
-	height: 330px;
+	min-height: 330px;
 	position: relative;
 	overflow: hidden;
 	padding-top: 90px;
@@ -176,6 +176,7 @@ ul.navigation > li:last-child > a::after {
 	height: auto;
 	max-height: 100%;
 	width: auto;
+	max-width: 100%;
 	position: relative;
 	float: right;
 }
@@ -1092,6 +1093,7 @@ MEDIA
 	position: relative;
 	height: 100%;
 	width: auto;
+	max-width: initial;
 	bottom: initial;
 	right: initial;
 	float: right;
@@ -1143,7 +1145,7 @@ ul.navigation > li > a {
 }
 
 ul.navigation > li {
-	padding-left: 37px;
+	padding-left: 20px;
 	height: auto;
 	background: transparent;
 }

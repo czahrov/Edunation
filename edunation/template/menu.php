@@ -17,6 +17,7 @@
 			<li><a href="<?php echo home_url( '#mummy' ); ?>">Mummy Daddy!</a></li>
 			<li><a href="<?php echo home_url( '#busines-english' ); ?>">Business English</a></li>
 			<li><a href="<?php echo home_url( '#general-english' ); ?>">General English</a></li>
+			<li><a href="<?php echo home_url( 'blog' ); ?>">Blog</a></li>
 			<li class='last'><a href="<?php echo home_url( 'rezerwacja' ); ?>" class="font-secondary-bold">Rezerwuj online</a></li>
 			<li class='call pointer'>
 				<a href='tel:+48889747241' class='flex flex-column flex-items-center'>

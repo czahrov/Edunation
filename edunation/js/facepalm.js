@@ -160,23 +160,28 @@
 			
 			/* przewijanie strony */
 			(function( link ){
-				
 				link.click( function( e ){
 					var hash = $(this).attr( 'href' ).match( /#(.+)/ );
 					var menu_h = $( 'body .main-nav' ).first().outerHeight( true );
+					console.log( hash );
 					
 					if( hash !== null ){
 						var item = $( '[id="'+ hash[1] +'"]' );
+						console.log( item );
 						
 						if( item.length > 0 ){
 							e.preventDefault();
-							var posY = item.first().offset().top - menu_h;
+							var posY = function(){
+								return item.first().offset().top - menu_h;
+								
+							};
 							
+							console.log( posY() );
 							TweenLite.to(
-								$( 'html' ),
+								$( 'html, body' ),
 								.5,
 								{
-									scrollTop: posY,
+									scrollTop: posY(),
 									ease: Power2.easeInOut,
 								}
 							);
@@ -195,7 +200,7 @@
 				
 				/* popup movie */
 				(function( root, play, popup, box, close, iframe ){
-					var duration = .5;
+					var duration = 1;
 					var vid_handle;
 					
 					root
@@ -326,8 +331,8 @@
 			(function( slider, nav, pagin, view, slides ){
 				var current = 0;
 				var lock = false;
-				var delay = 3000;
-				var duration = .5;
+				var delay = 5000;
+				var duration = 1;
 				var itrv;
 				var tout;
 				var distance = function(){
@@ -375,7 +380,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -469,8 +474,8 @@
 			(function( slider, nav, pagin, view, slides ){
 				var current = 0;
 				var lock = false;
-				var delay = 3000;
-				var duration = .5;
+				var delay = 5000;
+				var duration = 1;
 				var itrv;
 				var tout;
 				var distance = function(){
@@ -518,7 +523,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -613,8 +618,8 @@
 				var current = 0;
 				var lock = false;
 				var itrv;
-				var delay = 3000;
-				var duration = 0.3;
+				var delay = 5000;
+				var duration = 0.5;
 				var active = false;
 				var distance = function(){
 					return slides.first().outerWidth( true );
@@ -680,7 +685,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -774,8 +779,8 @@
 				var current = 0;
 				var lock = false;
 				var itrv;
-				var delay = 3000;
-				var duration = 0.3;
+				var delay = 5000;
+				var duration = 0.5;
 				var active = false;
 				var distance = function(){
 					return slides.first().outerWidth( true );
@@ -841,7 +846,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -935,8 +940,8 @@
 				var current = 0;
 				var lock = false;
 				var itrv;
-				var delay = 3000;
-				var duration = 0.3;
+				var delay = 5000;
+				var duration = 0.5;
 				var active = false;
 				var distance = function(){
 					return slides.first().outerWidth( true );
@@ -1002,7 +1007,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -1096,8 +1101,8 @@
 				var current = 0;
 				var lock = false;
 				var itrv;
-				var delay = 3000;
-				var duration = 0.3;
+				var delay = 5000;
+				var duration = 0.5;
 				var active = false;
 				var distance = function(){
 					return slides.first().outerWidth( true );
@@ -1163,7 +1168,7 @@
 								duration,
 								{
 									scrollLeft: distance() * current,
-									ease: Power2.easeInOut,
+									ease: Linear.easeNone,
 									
 								}
 							), 'start'
@@ -1541,7 +1546,7 @@
 							days.slice( range.end + 1 ).addClass( 'next disable' );
 							
 							/* odznaczanie weekendów jako dni nieaktwnych */
-							days.filter( '[wd=6],[wd=0]' ).addClass( 'disable' );
+							// days.filter( '[wd=6],[wd=0]' ).addClass( 'disable' );
 							
 							/* oznaczanie nieaktywnych dni obecnego miesiąca ( te które już minęły ) */
 							if( now.getMonth() === customDate.getMonth() ){
@@ -1599,7 +1604,7 @@
 										try{
 											// console.log( data );
 											var slots = JSON.parse( data );
-											console.log( slots );
+											// console.log( slots );
 											
 											$.each( slots, function( index, value ){
 												var t = new Date( value * 1000 );

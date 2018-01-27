@@ -68,11 +68,6 @@ body{
 				
 			}
 			
-			.last + .call{
-				margin-top: 30px;
-				
-			}
-			
 		}
 		
 	}
@@ -152,4 +147,11 @@ body{
 	
 }
 
-
+ul.navigation > li{
+	
+	@media ( min-width: map-get( $bpw, laptop ) ){
+		min-height: initial;
+		
+	}
+	
+}
