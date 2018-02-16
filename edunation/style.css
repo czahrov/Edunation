@@ -75,11 +75,12 @@ ul.navigation > li > a {
 }
 ul.navigation > li.last > a {
 	font-size: 16px;
-	padding: 17px 20px 16px 20px;
+	padding: 17px 20px;
 	background-color: #34E0CA;
 	text-transform: uppercase;
 	height: 46px;
 	border-bottom: 0;
+	border-radius: 50px;
 }
 /* MENU EFEKTy */
 
@@ -107,7 +108,7 @@ ul.navigation > li > a:focus::after {
 	-moz-transform: translateY(0px);
 	-webkit-transform: translateY(0px);
 }
-ul.navigation > li:last-child > a::after {
+ul.navigation > li.last > a::after {
 	display: none;
 }
 
