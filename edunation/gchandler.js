@@ -1,0 +1,231 @@
+$(function(){
+	var CLIENT_ID = '330101275125-74jvdti5ufedltb82rsuel31dqiu7qf2.apps.googleusercontent.com';
+	var API_KEY = 'AIzaSyC2wgUJzQlqo924FvzKNOhaucbP9YRq4HM';
+	var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+	var SCOPES = "https://www.googleapis.com/auth/calendar";
+	var AUTH_BTN = $( '#login' );
+	var OUT_BTN = $( '#logout' );
+	var GCAL_ID = 'kaczanowskii@gmail.com';
+	
+	// On load, called to load the auth2 library and API client library.
+	function handleClientLoad(){
+		gapi.load('client:auth2', initClient);
+	}
+	
+	// Initializes the API client library and sets up sign-in state listeners.
+	function initClient(){
+		gapi.client.init({
+			apiKey: API_KEY,
+			clientId: CLIENT_ID,
+			discoveryDocs: DISCOVERY_DOCS,
+			scope: SCOPES,
+			
+		})
+		.then(function(){
+			// Listen for sign-in state changes.
+			gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+			
+			// Handle the initial sign-in state.
+			updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+			AUTH_BTN.click( function(){
+				console.log( 'login' );
+				handleAuthClick();
+				
+			} );
+			
+			OUT_BTN.click( function(){
+				console.log( 'logout' );
+				handleSignoutClick();
+				
+			} );
+			
+		});
+	}
+	
+	// Called when the signed in status changes, to update the UI appropriately. After a sign-in, the API is called.
+	function updateSigninStatus(isSignedIn){
+		if (isSignedIn){
+			window.authorised = true;
+			AUTH_BTN.hide();
+			OUT_BTN.show();
+			/* custom functions here */
+			
+		}
+		else{
+			window.authorised = false;
+			AUTH_BTN.show();
+			OUT_BTN.hide();
+			
+		}
+	}
+	
+	// Sign in the user upon button click.
+	function handleAuthClick(event){
+		gapi.auth2.getAuthInstance().signIn();
+		
+	}
+	
+	// Sign out the user upon button click.
+	function handleSignoutClick(event){
+		gapi.auth2.getAuthInstance().signOut();
+		
+	}
+	
+	// Loader
+	if( typeof window.gapi === 'undefined' ){
+		$.getScript(
+			'https://apis.google.com/js/api.js',
+			function( data, status ){
+				if( status === 'success' ) handleClientLoad();
+				
+			}
+		);
+		
+	}
+	
+	// funkcja formatująca zapis różnicy czasu
+	function formatTimezone( diff ){
+		var diff_t = -diff;
+		var h = Math.floor( Math.abs( diff_t ) / 60 );
+		var m = Math.abs( diff_t ) - h * 60;
+		var ret = '';
+		ret += diff_t > 0?( '+' ):( '-' );
+		ret += h < 10?( '0' ):( '' );
+		ret += h;
+		ret += m < 10?( '0' ):( '' );
+		ret += m;
+		
+		return ret;
+	}
+	
+	/* publiczny interface */
+	window.gch = {
+		freeBusy: function( timeMin, timeMax ){
+			gapi.client.calendar.freebusy.query({
+				"items": [
+					{
+						id: GCAL_ID,
+					}
+				],
+				"timeMin": new Date( timeMin ).toISOString(),
+				"timeMax": new Date( timeMax ).toISOString(),
+				// "timeZone": formatTimezone( new Date().getTimezoneOffset() ),
+				"timeZone": 'Europe/Warsaw',
+				
+			})
+			.then( function( response ){
+				// console.log( response );
+				window.freeBusy = response.result.calendars;
+				
+				/* window.freeBusy
+				{
+					"kaczanowskii@gmail.com": {
+						"busy": [{
+							"start": "2018-02-17T08:45:00+01:00",
+							"end": "2018-02-17T11:30:00+01:00"
+						},
+						{
+							"start": "2018-02-17T14:00:00+01:00",
+							"end": "2018-02-17T17:00:00+01:00"
+						},
+						{
+							"start": "2018-02-17T18:30:00+01:00",
+							"end": "2018-02-17T19:30:00+01:00"
+						},
+						{
+							"start": "2018-02-17T20:00:00+01:00",
+							"end": "2018-02-17T21:00:00+01:00"
+						}]
+					}
+				}
+				*/
+				
+			} );
+			
+		},
+		addEvent: function( timeStart, timeEnd, title, description ){
+			var event = {
+				end:{
+					dateTime: new Date( timeEnd ).toISOString(),
+					timeZone: 'Europe/Warsaw',
+				},
+				start:{
+					dateTime: new Date( timeStart ).toISOString(),
+					timeZone: 'Europe/Warsaw',
+				},
+				summary: title,
+				description: description,
+				attendees:[
+					{
+						// email: 'worhacz.dawid@gmail.com',
+						email: GCAL_ID,
+					},
+					
+				],
+				
+			}
+			
+			var request = gapi.client.calendar.events.insert({
+				calendarId: 'primary',
+				sendNotifications: true,
+				resource: event,
+				
+			})
+			.then( function( resp ){
+				console.log( resp );
+				
+			} );
+			
+		},
+		
+	};
+	
+	/* calendar event color ids
+		"event": {
+		"1": {
+			"background": "#a4bdfc",
+			"foreground": "#1d1d1d"
+		},
+		"2": {
+			"background": "#7ae7bf",
+			"foreground": "#1d1d1d"
+		},
+		"3": {
+			"background": "#dbadff",
+			"foreground": "#1d1d1d"
+		},
+		"4": {
+			"background": "#ff887c",
+			"foreground": "#1d1d1d"
+		},
+		"5": {
+			"background": "#fbd75b",
+			"foreground": "#1d1d1d"
+		},
+		"6": {
+			"background": "#ffb878",
+			"foreground": "#1d1d1d"
+		},
+		"7": {
+			"background": "#46d6db",
+			"foreground": "#1d1d1d"
+		},
+		"8": {
+			"background": "#e1e1e1",
+			"foreground": "#1d1d1d"
+		},
+		"9": {
+			"background": "#5484ed",
+			"foreground": "#1d1d1d"
+		},
+		"10": {
+			"background": "#51b749",
+			"foreground": "#1d1d1d"
+		},
+		"11": {
+			"background": "#dc2127",
+			"foreground": "#1d1d1d"
+		}
+	*/
+	
+});
