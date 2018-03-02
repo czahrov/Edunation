@@ -21,6 +21,7 @@ if( !is_admin() ){
 	wp_enqueue_script( "JQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
 	wp_enqueue_script( "main", get_template_directory_uri() . "/js/main{$infix}.js", array(), $buster );
 	wp_enqueue_script( "facepalm", get_template_directory_uri() . "/js/facepalm{$infix}.js", array(), $buster );
+	wp_enqueue_script( "gch", get_template_directory_uri() . "/js/gchandler{$infix}.js", array(), $buster );
 
 }
 

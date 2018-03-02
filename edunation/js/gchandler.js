@@ -22,11 +22,15 @@ $(function(){
 			
 		})
 		.then(function(){
+			// inicjalizacja kalendarza
+			$( '#rezerwacja > .bot > .view > .etap.date' ).triggerHandler( 'init' );
+			
 			// Listen for sign-in state changes.
 			gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 			
 			// Handle the initial sign-in state.
 			updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+			
 			AUTH_BTN.click( function(){
 				console.log( 'login' );
 				handleAuthClick();
@@ -83,21 +87,6 @@ $(function(){
 		
 	}
 	
-	// funkcja formatująca zapis różnicy czasu
-	function formatTimezone( diff ){
-		var diff_t = -diff;
-		var h = Math.floor( Math.abs( diff_t ) / 60 );
-		var m = Math.abs( diff_t ) - h * 60;
-		var ret = '';
-		ret += diff_t > 0?( '+' ):( '-' );
-		ret += h < 10?( '0' ):( '' );
-		ret += h;
-		ret += m < 10?( '0' ):( '' );
-		ret += m;
-		
-		return ret;
-	}
-	
 	/* publiczny interface */
 	window.gch = {
 		freeBusy: function( timeMin, timeMax ){
@@ -109,13 +98,14 @@ $(function(){
 				],
 				"timeMin": new Date( timeMin ).toISOString(),
 				"timeMax": new Date( timeMax ).toISOString(),
-				// "timeZone": formatTimezone( new Date().getTimezoneOffset() ),
 				"timeZone": 'Europe/Warsaw',
 				
 			})
 			.then( function( response ){
-				// console.log( response );
 				window.freeBusy = response.result.calendars;
+				
+				// wypełnianie kalendarza
+				$( '#rezerwacja > .bot > .view > .etap.date' ).triggerHandler( 'fill' );
 				
 				/* window.freeBusy
 				{

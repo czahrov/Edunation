@@ -415,187 +415,172 @@ body.mobile .main-nav .call {
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000372}}
     #rezerwacja > .bot > .view {
       overflow: hidden; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000381}}
-      #rezerwacja > .bot > .view > .etap.data > .head > * {
-        margin: 10px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000386}}
-      #rezerwacja > .bot > .view > .etap.data > .head > .today {
-        width: 140px;
-        font-size: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000392}}
-      #rezerwacja > .bot > .view > .etap.data > .head > .button {
-        height: 42px;
-        padding: 0 20px;
-        border-radius: 21px;
-        font-size: 12px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003102}}
-      #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav {
-        height: 30px;
-        padding: 0 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003110}}
-        #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.prev {
-          border-radius: 20px 0 0 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003115}}
-        #rezerwacja > .bot > .view > .etap.data > .head > .month > .nav.next {
-          border-radius: 0 20px 20px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003122}}
-      #rezerwacja > .bot > .view > .etap.data > .head > .month > .name {
-        margin: 10px 0;
-        padding: 0 20px;
-        min-width: 230px;
-        font-size: 22px;
-        -webkit-box-ordinal-group: 0;
-            -ms-flex-order: -1;
-                order: -1; }
-        @media (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003122}}
-          #rezerwacja > .bot > .view > .etap.data > .head > .month > .name {
-            -webkit-box-ordinal-group: 1;
-                -ms-flex-order: 0;
-                    order: 0; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003142}}
-      #rezerwacja > .bot > .view > .etap.data > .body .tcell {
-        height: 64px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003149}}
-      #rezerwacja > .bot > .view > .etap.data > .body > .thead > .tcell {
-        padding-bottom: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003158}}
-      #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell {
-        -webkit-box-shadow: 0 0 0 1px #e8e6e7 inset;
-                box-shadow: 0 0 0 1px #e8e6e7 inset;
-        -webkit-transition: border .3s linear;
-        transition: border .3s linear; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003162}}
-        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell > .text {
-          margin: 12px 0 0 12px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003167}}
-        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable {
-          cursor: no-drop; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003170}}
-          #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.disable > .text {
-            cursor: inherit;
-            opacity: 0.4; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000375}}
+      #rezerwacja > .bot > .view > .etap {
+        width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000382}}
+        #rezerwacja > .bot > .view > .etap.date > .head > * {
+          margin: 10px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000387}}
+        #rezerwacja > .bot > .view > .etap.date > .head > .today {
+          width: 140px;
+          font-size: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000393}}
+        #rezerwacja > .bot > .view > .etap.date > .head > .button {
+          height: 42px;
+          padding: 0 20px;
+          border-radius: 21px;
+          font-size: 12px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003103}}
+        #rezerwacja > .bot > .view > .etap.date > .head > .month > .nav {
+          height: 30px;
+          padding: 0 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003111}}
+          #rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.prev {
+            border-radius: 20px 0 0 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003116}}
+          #rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.next {
+            border-radius: 0 20px 20px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003123}}
+        #rezerwacja > .bot > .view > .etap.date > .head > .month > .name {
+          margin: 10px 0;
+          padding: 0 20px;
+          min-width: 230px;
+          font-size: 22px;
+          -webkit-box-ordinal-group: 0;
+              -ms-flex-order: -1;
+                  order: -1; }
+          @media (min-width: 768px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003123}}
+            #rezerwacja > .bot > .view > .etap.date > .head > .month > .name {
+              -webkit-box-ordinal-group: 1;
+                  -ms-flex-order: 0;
+                      order: 0; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003143}}
+        #rezerwacja > .bot > .view > .etap.date > .body .cell {
+          min-height: 60px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003148}}
+        #rezerwacja > .bot > .view > .etap.date > .body > .side {
+          border-right: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003153}}
+          #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour {
+            position: relative;
+            padding: 12px;
+            border: solid #e8e6e7;
+            border-width: 1px 0 0 1px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003159}}
+            #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour:last-child {
+              border-width: 1px 0 1px 1px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003164}}
+            #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: -1px;
+              width: 100vw;
+              border-bottom: solid 1px #e8e6e7; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003180}}
-        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable), #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable) * {
-          cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003187}}
-        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell:not(.disable):hover {
-          border-color: #080d35; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003194}}
-        #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text {
-          position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003197}}
-          #rezerwacja > .bot > .view > .etap.data > .body > .tbody > .tcell.today > .text::after {
-            content: '';
-            position: absolute;
-            margin-top: 3px;
-            width: 17px;
-            height: 2px;
-            top: 100%;
-            left: 0;
-            background-color: #080d35; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003223}}
-      #rezerwacja > .bot > .view > .etap.form > .title {
-        margin-bottom: 38px;
-        font-size: 22px; }
+        #rezerwacja > .bot > .view > .etap.date > .body > .content {
+          width: 100%;
+          overflow: auto; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003184}}
+          #rezerwacja > .bot > .view > .etap.date > .body > .content > .day {
+            min-width: 100px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003189}}
+            #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.name {
+              border: solid #e8e6e7;
+              border-width: 1px 1px 0 1px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003195}}
+            #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day {
+              position: relative;
+              height: 960px;
+              border: solid 1px #e8e6e7;
+              overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003201}}
+              #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin {
+                position: absolute;
+                margin: 0 10px;
+                left: 0;
+                right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003207}}
+                #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy {
+                  background-color: gray;
+                  border: 1px white;
+                  border-style: dashed none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003212}}
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy, #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy * {
+                    cursor: not-allowed; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003217}}
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy .range {
+                    color: #fff; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003222}}
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy::before {
+                    content: "\f05e"; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003229}}
-      #rezerwacja > .bot > .view > .etap.form > form.form {
-        max-width: 640px; }
+                #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free {
+                  background-color: #44d926; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003232}}
-        #rezerwacja > .bot > .view > .etap.form > form.form > .label {
-          margin: 16px 0;
-          font-size: 16px; }
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free, #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free * {
+                    cursor: pointer; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003237}}
-        #rezerwacja > .bot > .view > .etap.form > form.form > .input {
-          margin-bottom: 10px;
-          padding: 0 28px;
-          height: 46px;
-          font-size: 14px;
-          border: solid 1px #e8e6e7; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003246}}
-        #rezerwacja > .bot > .view > .etap.form > form.form > .textarea {
-          padding: 30px 20px;
-          height: 170px;
-          border: solid 1px #e8e6e7;
-          line-height: 26px;
-          resize: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003261}}
-      #rezerwacja > .bot > .view > .etap.summary .button {
-        min-height: 46px;
-        padding: 10px 46px;
-        border-radius: 23px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003268}}
-      #rezerwacja > .bot > .view > .etap.summary > .title {
-        margin-bottom: 20px;
-        max-width: 100%;
-        font-size: 34px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003275}}
-      #rezerwacja > .bot > .view > .etap.summary > .subtitle {
-        margin-bottom: 80px;
-        max-width: 100%;
-        font-size: 25px; }
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free .range {
+                    color: navy; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003242}}
+                  #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free::before {
+                    content: "\f067"; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003249}}
+                #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin::before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  color: white;
+                  font: normal normal normal 14px/1 FontAwesome;
+                  font-size: 20px;
+                  -webkit-transform: translate(-50%, 0%);
+                          transform: translate(-50%, 0%); }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003267}}
+            #rezerwacja > .bot > .view > .etap.date > .body > .content > .day:nth-child(even) {
+              background-color: #eee; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003282}}
-      #rezerwacja > .bot > .view > .etap.summary > .table {
-        padding: 32px;
-        width: 100%;
-        max-width: 720px;
-        border: solid 1px #e8e6e7; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003288}}
-        #rezerwacja > .bot > .view > .etap.summary > .table .title {
+        #rezerwacja > .bot > .view > .etap.summary .button {
+          min-height: 46px;
+          padding: 10px 46px;
+          border-radius: 23px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003289}}
+        #rezerwacja > .bot > .view > .etap.summary > .title {
           margin-bottom: 20px;
-          font-size: 22px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003294}}
-        #rezerwacja > .bot > .view > .etap.summary > .table .subtitle {
-          margin-bottom: 20px;
-          font-size: 16px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003302}}
-        #rezerwacja > .bot > .view > .etap.summary > .table > .tcell.right {
-          border-left: solid 1px #e8e6e7; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003311}}
-      #rezerwacja > .bot > .view > .etap.summary > .button {
-        margin-top: 70px; }
+          max-width: 100%;
+          font-size: 34px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003296}}
+        #rezerwacja > .bot > .view > .etap.summary > .subtitle {
+          margin-bottom: 80px;
+          max-width: 100%;
+          font-size: 25px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003303}}
+        #rezerwacja > .bot > .view > .etap.summary > .table {
+          padding: 32px;
+          width: 100%;
+          max-width: 720px;
+          border: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003309}}
+          #rezerwacja > .bot > .view > .etap.summary > .table .title {
+            margin-bottom: 20px;
+            font-size: 22px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003315}}
+          #rezerwacja > .bot > .view > .etap.summary > .table .subtitle {
+            margin-bottom: 20px;
+            font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003323}}
+          #rezerwacja > .bot > .view > .etap.summary > .table > .tcell.right {
+            border-left: solid 1px #e8e6e7; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003332}}
+        #rezerwacja > .bot > .view > .etap.summary > .button {
+          margin-top: 70px; }
       @media (min-width: 768px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\0000372}}
         #rezerwacja > .bot > .view {
           margin-right: 20px; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003327}}
-    #rezerwacja > .bot > .side {
-      min-width: 260px;
-      padding: 26px 30px 50px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003331}}
-      #rezerwacja > .bot > .side > .segment {
-        width: 100%;
-        padding: 0 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003337}}
-      #rezerwacja > .bot > .side > .top {
-        height: 140px;
-        margin-bottom: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003341}}
-        #rezerwacja > .bot > .side > .top > .title {
-          line-height: 33px;
-          font-size: 22px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003347}}
-        #rezerwacja > .bot > .side > .top > .cena {
-          margin-top: 13px;
-          font-size: 16px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003354}}
-      #rezerwacja > .bot > .side > .bot {
-        height: 100px;
-        margin-bottom: 50px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003358}}
-        #rezerwacja > .bot > .side > .bot > .text {
-          line-height: 34px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003365}}
-      #rezerwacja > .bot > .side > .button {
-        min-width: 194px;
-        height: 44px;
-        padding: 0 35px;
-        border-radius: 22px;
-        line-height: 24px;
-        font-size: 16px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_rezerwacja\.scss}line{font-family:\00003377}}
-        #rezerwacja > .bot > .side > .button > .icon {
-          font-size: 30px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/Praca\/Poligon\/Edunation\/themes\/edunation\/_blog\.scss}line{font-family:\0000311}}
 #blog > .inner > .wrapper > .element {

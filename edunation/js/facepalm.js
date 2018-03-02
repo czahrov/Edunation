@@ -1494,330 +1494,189 @@
 				$( '#rezerwacja .side' ) );
 				
 				/* kalendarz */
-				(function( cal, days, monthReset, monthBar, meetingTyp, meetingInfo, meetingDay, meetingTime, meetingButton, registerButton, popup, popupPora, popupTime ){
-					/* informacje o wybranym szkoleniu */
-					meeting = {
-						type: meetingTyp.text().trim(),
-						price: parseFloat( meetingInfo.text().match( /(\d+(?:\.\d+)?)\s*zł/ )[1] ),
-						duration:  parseInt( meetingInfo.text().match( /(\d+)\s*min/ )[1] ),
-						
-					};
+				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, days ){
+					// aktualna data
+					var now;
+					// aktualny dzień tygodnia 0-6 [ niedziela - sobota ]
+					var now_wd;
+					// początek tygodnia - poniedziałek, godzina 06:00
+					var range_start;
+					// koniec tygodnia - niedziela, godzina 22:00
+					var range_end;
 					
-					/* bieżąca data */
-					var now = new Date();
-					/* uproszczona data początku obecnego miesiąca */
-					var nowDay = new Date( now.getFullYear(), now.getMonth() );
-					/* data do manipulowania */
-					var customDate = new Date( now.getFullYear(), now.getMonth() );
-					/* nazwy miesięcy */
-					var nazwy = [ 'styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień' ];
-					
-					meetingDay.parent().hide();
-					meetingButton.hide();
-					registerButton.hide();
-					
-					cal.on({
-						fill: function( e ){
-							/* ustawianie wyświetlanego miesiąca i roku */
-							month = customDate.getMonth();
-							year = customDate.getFullYear();
-							
-							/* wyświetlanie nazwy miesiąca */
-							monthBar
-							.children( '.name' )
-							.text( function(){
-								return nazwy[ month ] + ', ' + customDate.getFullYear();
-								
-							} );
-							
-							/* czyszczenie klas */
-							days.removeClass( 'prev next current disable today' );
-							
-							/* określanie zakresu aktualnie wyświetlanego miesiąca */
-							var range = {
-								start: days.filter( '[wd='+ customDate.getDay() +']:first' ).index(),
-								end: days.filter( '[wd='+ customDate.getDay() +']:first' ).index() + new Date( customDate.getFullYear(), customDate.getMonth() + 1, 0 ).getDate() - 1,
-								
-							};
-							
-							/* oznaczenie dni poprzedniego, obecnego i następnego miesiaca */
-							days.slice( 0, range.start ).addClass( 'prev disable' );
-							days.slice( range.start, range.end + 1 ).addClass( 'current' );
-							days.slice( range.end + 1 ).addClass( 'next disable' );
-							
-							/* odznaczanie weekendów jako dni nieaktwnych */
-							// days.filter( '[wd=6],[wd=0]' ).addClass( 'disable' );
-							
-							/* oznaczanie nieaktywnych dni obecnego miesiąca ( te które już minęły ) */
-							if( now.getMonth() === customDate.getMonth() ){
-								days.slice( range.start, range.start + now.getDate() - 1 ).addClass( 'disable' );
-							}
-							
-							/* oznaczanie minionych miesięcy */
-							if( customDate.getTime() < nowDay.getTime() ){
-								days.slice( range.start, range.end + 1 ).addClass( 'disable' );
-							}
-							
-							/* wypisywanie dni i ustawianie atrybutów*/
-							var tDate = new Date( customDate.getFullYear(), customDate.getMonth(), 1 - range.start );
-							var element = days.first();
-							for( i = 0; i < 42; i++ ){
-								element
-								.attr({
-									d: tDate.getDate(),
-									m: tDate.getMonth(),
-									y: tDate.getFullYear()
-								})
-								.children( '.text' )
-								.text( tDate.getDate() );
-								element = element.next();
-								tDate.setDate( tDate.getDate() + 1 );
-								
-							}
-							
-							/* oznaczanie dnia obecnego */
-							days.filter( '[d='+ now.getDate() +'][m='+ now.getMonth() +'][y='+ now.getFullYear() +']' ).addClass( 'today' );
-							
-						},
-						next: function( e ){
-							customDate.setMonth( customDate.getMonth() + 1 );
-							cal.triggerHandler( 'fill' );
-							
-						},
-						prev: function( e ){
-							customDate.setMonth( customDate.getMonth() - 1 );
-							cal.triggerHandler( 'fill' );
-							
-						},
-						reset: function( e ){
-							customDate = new Date( nowDay.getTime() );
-							cal.triggerHandler( 'fill' );
-							
-						},
-						time: function( e, mode ){
-							if( mode === 'open' ){
-
-								/* pobieranie dostępnych godzin */
-								$.get(
-									'../register?slots=' + [ meeting.date.day, parseInt( meeting.date.month )+1, meeting.date.year, meeting.duration ].join( ';' ),
-									function( data ){
-										try{
-											// console.log( data );
-											var slots = JSON.parse( data );
-											// console.log( slots );
-											
-											$.each( slots, function( index, value ){
-												var t = new Date( value * 1000 );
-												var th = t.getHours();
-												var tm = t.getMinutes();
-												var pora;
-												
-												if( th < 12 ){
-													pora = 'rano';
-													
-												}
-												else if( th < 17){
-													pora = 'popoludnie';
-													
-												}
-												else{
-													pora = 'wieczor';
-													
-												}
-												
-												var proto = popupPora
-												.filter( '[class*="'+ pora +'"]' )
-												.children( '.hide' );
-												
-												proto
-												.clone()
-												.attr({
-													h: th,
-													m: tm,
-													
-												})
-												.html( function(){
-													var p1 = th.toString().length < 2?( '0' + th ):( th );
-													var p2 = tm.toString().length < 2?( '0' + tm ):( tm );
-													return p1 + ':' + p2;
-													
-												} )
-												.removeClass( 'hide' )
-												.appendTo( proto.parent() );
-												
-											} );
-											
-											popup.addClass( 'open' );
-											
-										}
-										catch( err ){
-											
-										}
-									}
-								);
-								
-								
-							}
-							else if( mode === 'close' ){
-								popup
-								.find( '.body .item:not(.hide)' )
-								.remove();
-								
-								popup.removeClass( 'open' );
-								
-							}
-							
-						},
-						
-					});
-					
-					cal.triggerHandler( 'fill' );
-					
-					cal.find( '.tbody' ).on( 'click', '.tcell.prev', function( e ){
-						cal.triggerHandler( 'prev' );
-						
-					} );
-					
-					cal.find( '.tbody' ).on( 'click', '.tcell.next', function( e ){
-						cal.triggerHandler( 'next' );
-						
-					} );
-					
-					cal.find( '.tbody' ).on( 'click', '.tcell.current:not(.disable)', function( e ){
-						meeting.date = {
-							day: $(this).attr( 'd' ),
-							month: $(this).attr( 'm' ),
-							year: $(this).attr( 'y' ),
-							
-						};
-						
-						cal.triggerHandler( 'time', [ 'open' ] );
-						
-						// console.log( meeting );
-						
-					} );
-					
-					/* zamykanie popupu */
-					popup
-					.add( popup.find( '.box > .close' ) )
-					.click(function( e ){
-						cal.triggerHandler( 'time', [ 'close' ] )
-						
-					});
-					
-					popup.children( '.box' ).click(function( e ){
-						e.stopPropagation();
-						
-					});
-					
-					/* ustawianie godziny */
-					popup
-					.find( '.box .body' )
-					.on( 'click', '.item:not(.hide)', function( e ){
-						meeting.date.hour = $(this).attr( 'h' );
-						meeting.date.minute = $(this).attr( 'm' );
-						var sDay = meeting.date.day.toString().length < 2?( "0" + meeting.date.day ):( meeting.date.day );
-						var sHour = meeting.date.hour.toString().length < 2?( "0" + meeting.date.hour ):( meeting.date.hour );
-						var sMinute = meeting.date.minute.toString().length < 2?( "0" + meeting.date.minute ):( meeting.date.minute );
-						
-						meetingDay.text( 'Termin: ' + sDay + ' ' + nazwy[ meeting.date.month ] );
-						meetingTime.text( 'Godzina: ' + sHour + '.' + sMinute );
-						
-						cal.triggerHandler( 'time', [ 'close' ] );
-						meetingDay.parent().slideDown();
-						meetingButton.slideDown();
-						
-					} );
-					
-					/* obsługa przycisków przewijania miesięcy */
-					monthBar.children( '.nav' ).click( function( e ){
-						if( $(this).hasClass( 'next' ) ){
-							cal.triggerHandler( 'next' );
-							
-						}
-						else if( $(this).hasClass( 'prev' ) ){
-							cal.triggerHandler( 'prev' );
-							
-						}
-						
-					} );
-					
-					/* resetowanie daty do aktualnego miesiąca */
-					monthReset.click( function( e ){
-						cal.triggerHandler( 'reset' );
-						
-					} );
-					
-				})
-				( $( '#rezerwacja .etap.data' ), 
-				$( '#rezerwacja .etap.data > .body > .tbody > .tcell' ), 
-				$( '#rezerwacja .etap.data > .head > .button' ), 
-				$( '#rezerwacja .etap.data > .head > .month' ), 
-				$( '#rezerwacja .side > .top > .title' ), 
-				$( '#rezerwacja .side > .top > .cena' ), 
-				$( '#rezerwacja .side > .bot > .dzien' ),  
-				$( '#rezerwacja .side > .bot > .godzina' ),  
-				$( '#rezerwacja .side > .button.form' ),
-				$( '#rezerwacja .side > .button.register' ),
-				$( '#rezerwacja > .popup' ), 
-				$( '#rezerwacja > .popup .body > .pora' ), 
-				$( '#rezerwacja > .popup .body .item' ) );
-				
-				/* walidacja formularza rejestracji */
-				(function( form, inputs, buttonRegister ){
-					var myForm = [
-						{
-							name: 'imie',
-							item: form.find( '.imie' ),
-							filterName: 'imie',
-						},
-						{
-							name: 'mail',
-							item: form.find( '.mail' ),
-							filterName: 'mail',
-						},
-						{
-							name: 'tel',
-							item: form.find( '.tel' ),
-							filterName: 'telefon',
-						},
-						{
-							name: 'msg',
-							item: form.find( '.msg' ),
-							filterName: 'tekst',
-						},
-						
-					];
-					
-					form
+					kalendarz
 					.on({
-						test: function( e ){
-							var test = addon.form.verify( myForm );
-							if( test === true ){
-								buttonRegister.show();
+						init: function( e ){
+							gch.freeBusy( range_start.toISOString(), range_end.toISOString() );
+							var date_start_text = range_start.toLocaleDateString();
+							var date_end_text = range_end.toLocaleDateString();
+							
+							if( range_start.getFullYear() !== range_end.getFullYear() ){
+								// tydzień na przełomie roku: dd.mm.yyyy - dd.mm.yyyy
+								date_range_text
+								.text( date_start_text + ' - ' + date_end_text );
+								
+							}else if( range_start.getMonth() !== range_end.getMonth() ){
+								// tydzień na przełomie miesięcy: dd.mm - dd.mm.yyyy
+								date_range_text
+								.text( date_start_text.match( /^\d+\.\d+/ )[0] + ' - ' + date_end_text );
 								
 							}
 							else{
-								buttonRegister.hide();
+								// standardowa data: dd - dd.mm.yyyy
+								date_range_text
+								.text( date_start_text.match( /^\d+/ )[0] + ' - ' + date_end_text );
 								
 							}
 							
-							return test;
+						},
+						fill: function( e ){
+							// czyszczenie
+							days.empty();
+							
+							console.log( window.freeBusy );
+							// dodawanie terminów
+							var free_duration_min = 30;
+							$.each( window.freeBusy[ 'kaczanowskii@gmail.com' ].busy, function( num, item ){
+								// obliczenia dla zajętych terminów
+								var busy_start_time = new Date( item.start );
+								if( busy_start_time.getHours() < 6 ) busy_start_time.setHours( 6 );
+								
+								var busy_end_time = new Date( item.end );
+								if( busy_end_time.getHours() > 22 || busy_end_time.getHours() < 6 ){
+									busy_end_time.setDate( busy_start_time.getDate() );
+									busy_end_time.setHours( 22 )
+								}
+								
+								var busy_duration_minuts = ( busy_end_time - busy_start_time ) / 60000;
+								var busy_day_offset = ( busy_start_time.getHours() - 6 ) * 60 + busy_start_time.getMinutes();
+								var busy_wd = busy_start_time.getDay();
+								var busy_range_start_text = busy_start_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
+								var busy_range_end_text = busy_end_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
+								var day = days.filter( '[wd="' + busy_wd + '"]' );
+								
+								//dodawanie wolnych terminów
+								var free_start_offset = 0;
+								var termin_prev = day.children( '.termin.busy' ).last();
+								var free_range_start_time = null;
+								if( termin_prev.length > 0 ){
+									free_start_offset = termin_prev.position().top + termin_prev.outerHeight( true );
+									free_range_start_time = new Date( busy_start_time );
+									free_range_start_time.setHours( 6 + Math.floor( free_start_offset / 60 ) );
+									free_range_start_time.setMinutes( free_start_offset%60 );
+									
+								}
+								else{
+									free_range_start_time = new Date( busy_start_time );
+									free_range_start_time.setHours( 6 );
+									free_range_start_time.setMinutes( 0 );
+									
+								}
+								
+								var free_duration = busy_day_offset - free_start_offset;
+								if( free_duration >= free_duration_min ){
+									var free_range_start_text = free_range_start_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
+									var free_range_end_text = busy_range_start_text;
+									
+									day
+									.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + free_start_offset + "px; height: " + free_duration + "px' start='" + free_range_start_time.toISOString() + "' end='" +  busy_start_time.toISOString() + "'><div class='range'>" + free_range_start_text + " - " + free_range_end_text + "</div></div>" );
+									
+								}
+								
+								// dodawanie zajętych terminów
+								day
+								.append( "<div class='termin busy bold alt flex flex-items-start flex-justify-center' style='top: " + busy_day_offset + "px; height: " + busy_duration_minuts + "px' start='" + busy_start_time.toISOString() + "' end='" + busy_end_time.toISOString() + "'><div class='range'>" + busy_range_start_text + " - " + busy_range_end_text + "</div></div>" );
+								
+							} );
+							
+							// dodawanie końcowych wolnych terminów
+							days.each( function(){
+								var last_busy = $(this).children( '.termin.busy' ).last();
+								
+								if( last_busy.length === 0 ){
+									// dzień nie posiada zaplanowanych terminów
+									var last_free_start = new Date( range_start );
+									last_free_start.setDate( last_free_start.getDate() + $( this ).index() );
+									var last_free_end = new Date( last_free_start );
+									last_free_end.setHours( 22 );
+									last_free_end.setMinutes( 0 );
+									
+								}
+								else{
+									// dzień posiada zaplanowane terminy
+									
+									var last_free_start = new Date( last_busy.attr( 'end' ) );
+									var last_free_end = new Date( last_busy.attr( 'end' ) );
+									last_free_end.setHours( 22 );
+									last_free_end.setMinutes( 0 );
+									
+								}
+								
+								var last_free_duration = ( last_free_end - last_free_start ) / ( 1000 * 60 );
+								
+								if( last_free_duration >= free_duration_min ){
+									var last_free_offset = ( last_free_start.getHours() - 6 ) * 60 + last_free_start.getMinutes();
+									
+									$(this)
+									.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + last_free_offset + "px; height: " + last_free_duration + "px' start='" + last_free_start.toISOString() + "' end='" + last_free_end.toISOString() + "'><div class='range'>" + last_free_start.toLocaleTimeString().match( /\d+:\d+/ )[0] + " - " + last_free_end.toLocaleTimeString().match( /\d+:\d+/ )[0] + "</div></div>" );
+									
+								}
+								
+							} );
+							
+						},
+						reset: function( e ){
+							now = new Date();
+							now_wd =  now.getDay();
+							range_start = new Date( now.getFullYear(), now.getMonth(), now.getDate(), 6 );
+							range_start.setDate( now.getDate() - now.getDay() + 1 );
+							range_end = new Date( now.getFullYear(), now.getMonth(), now.getDate(), 22 );
+							range_end.setDate( now.getDate() + 7 - now.getDay() );
+							
 						},
 						
 					});
 					
-					inputs.blur( function( e ){
-						form.triggerHandler( 'test' );
+					kalendarz.triggerHandler( 'reset' );
+					
+					week_next_btn
+					.click( function(){
+						range_start.setDate( range_start.getDate() + 7 );
+						range_end.setDate( range_end.getDate() + 7 );
+						kalendarz.triggerHandler( 'init' );
 						
 					} );
 					
+					week_prev_btn
+					.click( function(){
+						range_start.setDate( range_start.getDate() - 7 );
+						range_end.setDate( range_end.getDate() - 7 );
+						kalendarz.triggerHandler( 'init' );
+						
+					} );
+					
+					date_today_btn
+					.click( function(){
+						kalendarz.triggerHandler( 'reset' );
+						kalendarz.triggerHandler( 'init' );
+						
+					} );
+					
+					// inicjalizacja kalendarza przeniesiona do gchandler.js
+					// kalendarz.triggerHandler( 'init' );
+					
 				})
-				( $( '#rezerwacja .bot .etap.form form' ), 
-				$( '#rezerwacja .bot .etap.form form' ).find( 'input, textarea' ), 
-				$( '#rezerwacja .bot > .side > .button.register' ) );
+				(
+					$( '#rezerwacja > .bot > .view > .etap.date' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .head > .today' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .head > .button' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .name' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.next' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.prev' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day' )
+				);
 				
-				/* ekran podsumowanie */
+				/* ekran podsumowania */
 				(function( summary, title, subtitle, table, data, data_alt, name, info, google ){
 					
 					summary

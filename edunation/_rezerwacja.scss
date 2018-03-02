@@ -73,8 +73,9 @@
 			overflow: hidden;
 			
 			& > .etap{
+				width: 100%;
 				
-				&.data{
+				&.date{
 					
 					& > .head{
 						
@@ -139,70 +140,123 @@
 					
 					& > .body{
 						
-						.tcell{
-							height: 64px;
+						.cell{
+							min-height: 60px;
 							
 						}
 						
-						& > .thead{
+						& > .side{
+							border-right: solid 1px $color-gray;
 							
-							& > .tcell{
-								padding-bottom: 10px;
+							& > .cell{
 								
+								&.hour{
+									position: relative;
+									padding: 12px;
+									border: solid $color-gray;
+									border-width: 1px 0 0 1px;
+									
+									&:last-child{
+										border-width: 1px 0 1px 1px;
+										
+									}
+									
+									&::before{
+										content: '';
+										position: absolute;
+										left: 0;
+										bottom: -1px;
+										width: 100vw;
+										border-bottom: solid 1px $color-gray;
+										
+									}
+									
+								}
+							
 							}
 							
 						}
 						
-						& > .tbody{
+						& > .content{
+							width: 100%;
+							overflow: auto;
 							
-							& > .tcell{
-								box-shadow: 0 0 0 1px $color-gray inset;
-								transition: border .3s linear;
+							& > .day{
+								min-width: 100px;
 								
-								& > .text{
-									margin: 12px 0 0 12px;
+								& > .cell{
 									
-								}
-								
-								&.disable{
-									cursor: no-drop;
-									
-									& > .text{
-										cursor: inherit;
-										opacity: 0.4;
+									&.name{
+										border: solid $color-gray;
+										border-width: 1px 1px 0 1px;
 										
 									}
 									
-								}
-								
-								&:not( .disable ){
-									
-									&, & *{
-										cursor: pointer;
-										
-									}
-									
-								}
-								
-								&:not( .disable ):hover{
-									border-color: $color-blue-dark;
-									
-								}
-								
-								&.today{
-									
-									& > .text{
+									&.day{
 										position: relative;
+										height: 960px;
+										border: solid 1px $color-gray;
+										overflow: hidden;
 										
-										&::after{
-											content: '';
+										& > .termin{
 											position: absolute;
-											margin-top: 3px;
-											width: 17px;
-											height: 2px;
-											top: 100%;
+											margin: 0 10px;
 											left: 0;
-											background-color: $color-blue-dark;
+											right: 0;
+											
+											&.busy{
+												background-color: gray;
+												border: 1px white;
+												border-style: dashed none;
+												
+												&, & *{
+													cursor: not-allowed;
+													
+												}
+												
+												.range{
+													color: #fff;
+													
+												}
+												
+												&::before{
+													content: "\f05e";
+													
+												}
+												
+											}
+											
+											&.free{
+												background-color: hsl( 110, 70%, 50% );
+												
+												&, & *{
+													cursor: pointer;
+													
+												}
+												
+												.range{
+													color: navy;
+													
+												}
+												
+												&::before{
+													content: "\f067";
+													
+												}
+												
+											}
+											
+											&::before{
+												content: "";
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												color: white;
+												font: normal normal normal 14px/1 FontAwesome;
+												font-size: 20px;
+												transform: translate(-50%,0%);
+												
+											}
 											
 										}
 										
@@ -210,45 +264,12 @@
 									
 								}
 								
+								&:nth-child(even){
+									background-color: #eee;
+									
+								}
+								
 							}
-							
-						}
-						
-					}
-					
-				}
-				
-				&.form{
-					
-					& > .title{
-						margin-bottom: 38px;
-						font-size: 22px;
-						
-					}
-					
-					& > form.form{
-						max-width: 640px;
-						
-						& > .label{
-							margin: 16px 0;
-							font-size: 16px;
-						}
-						
-						& > .input{
-							margin-bottom: 10px;
-							padding: 0 28px;
-							height: 46px;
-							font-size: 14px;
-							border: solid 1px $color-gray;
-							
-						}
-						
-						& > .textarea{
-							padding: 30px 20px;
-							height: 170px;
-							border: solid 1px $color-gray;
-							line-height: 26px;
-							resize: none;
 							
 						}
 						
@@ -323,66 +344,7 @@
 			}
 			
 		}
-		
-		& > .side{
-			min-width: 260px;
-			padding: 26px 30px 50px;
 			
-			& > .segment{
-				width: 100%;
-				padding: 0 20px;
-				
-			}
-			
-			& > .top{
-				height: 140px;
-				margin-bottom: 20px;
-				
-				& > .title{
-					line-height: 33px;
-					font-size: 22px;
-					
-				}
-				
-				& > .cena{
-					margin-top: 13px;
-					font-size: 16px;
-				}
-				
-			}
-			
-			& > .bot{
-				height: 100px;
-				margin-bottom: 50px;
-				
-				& > .text{
-					line-height: 34px;
-					
-				}
-				
-			}
-			
-			& > .button{
-				min-width: 194px;
-				height: 44px;
-				padding: 0 35px;
-				border-radius: 22px;
-				line-height: 24px;
-				font-size: 16px;
-				
-				& > .title{
-					
-				}
-				
-				& > .icon{
-					font-size: 30px;
-					
-				}
-				
-			}
-			
-		}
-		
 	}
 	
 }
