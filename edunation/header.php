@@ -5,6 +5,13 @@
 		
 	} */
 	
+	if( get_post()->ID === 41 ){
+		$infix = DMODE?( '' ):( '.min' );
+		$buster = DMODE?( time() ):( false );
+		wp_enqueue_script( "gch", get_template_directory_uri() . "/js/gchandler{$infix}.js", array(), $buster );
+		
+	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="pl">

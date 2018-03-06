@@ -9,14 +9,21 @@
 			
 		}
 		else{		//podstrona
-			var subpage = path.match(/([\w\-]+)\/$/)[1];
-			var t = subpage.replace(/\-/g,'_');
-			if(typeof subpage === 'string' && subpage.length){
-				if(typeof root.page[t] === 'function'){
-					root.page[t]();
+			try{
+				var subpage = path.match(/([\w\-]+)\/$/)[1];
+				var t = subpage.replace(/\-/g,'_');
+				if(typeof subpage === 'string' && subpage.length){
+					if(typeof root.page[t] === 'function'){
+						root.page[t]();
+						
+					}
+					else if( typeof root.page.alternate === 'function' ) root.page.alternate();
 					
 				}
-				else if( typeof root.page.alternate === 'function' ) root.page.alternate();
+				
+			}
+			catch( err ){
+				console.error( err );
 				
 			}
 			
@@ -24,8 +31,8 @@
 		
 	},
 	root.bazar = {
-		// basePath: '/PiotrM/wp_edunation',		// ścieżka do podfolderu ze stroną (np: /adres/do/podfolderu, albo wartość pusta )
-		basePath: '',		// ścieżka do podfolderu ze stroną (np: /adres/do/podfolderu, albo wartość pusta )
+		basePath: '/PiotrM/wp_edunation',		// ścieżka do podfolderu ze stroną (np: /adres/do/podfolderu, albo wartość pusta )
+		// basePath: '',		// ścieżka do podfolderu ze stroną (np: /adres/do/podfolderu, albo wartość pusta )
 		logger: /logger/i.test(window.location.hash),		// czy wyświetlać komunikaty o wywoływaniu funkcji
 		mobile: /mobile/i.test(window.location.hash) || undefined,		// czy aktualnie używane urządzenie jest urządzeniem mobilnym
 		
@@ -1494,7 +1501,7 @@
 				$( '#rezerwacja .side' ) );
 				
 				/* kalendarz */
-				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, days ){
+				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, days, popup, slider, form, submit_btn ){
 					// aktualna data
 					var now;
 					// aktualny dzień tygodnia 0-6 [ niedziela - sobota ]
@@ -1503,6 +1510,8 @@
 					var range_start;
 					// koniec tygodnia - niedziela, godzina 22:00
 					var range_end;
+					// minimalny czas trwania przerwy ( w minutach ), by była traktowana jako slot na spotkani
+					var free_duration_min = 30;
 					
 					kalendarz
 					.on({
@@ -1536,7 +1545,6 @@
 							
 							console.log( window.freeBusy );
 							// dodawanie terminów
-							var free_duration_min = 30;
 							$.each( window.freeBusy[ 'kaczanowskii@gmail.com' ].busy, function( num, item ){
 								// obliczenia dla zajętych terminów
 								var busy_start_time = new Date( item.start );
@@ -1560,6 +1568,7 @@
 								var termin_prev = day.children( '.termin.busy' ).last();
 								var free_range_start_time = null;
 								if( termin_prev.length > 0 ){
+									// dzień posiada zaplanowane terminy
 									free_start_offset = termin_prev.position().top + termin_prev.outerHeight( true );
 									free_range_start_time = new Date( busy_start_time );
 									free_range_start_time.setHours( 6 + Math.floor( free_start_offset / 60 ) );
@@ -1567,20 +1576,33 @@
 									
 								}
 								else{
+									// dzień nie posiada zaplanowanych terminów
 									free_range_start_time = new Date( busy_start_time );
 									free_range_start_time.setHours( 6 );
 									free_range_start_time.setMinutes( 0 );
 									
 								}
 								
-								var free_duration = busy_day_offset - free_start_offset;
-								if( free_duration >= free_duration_min ){
-									var free_range_start_text = free_range_start_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
-									var free_range_end_text = busy_range_start_text;
+								if( busy_start_time >= new Date() ){
+									if( free_range_start_time < new Date() ){
+										free_range_start_time = new Date();
+										free_range_start_time.setMilliseconds( 0 );
+										free_range_start_time.setSeconds( 0 );
+										free_start_offset = Math.floor( free_range_start_time.getHours() - 6 ) * 60 + free_range_start_time.getMinutes();
+										
+									}
 									
-									day
-									.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + free_start_offset + "px; height: " + free_duration + "px' start='" + free_range_start_time.toISOString() + "' end='" +  busy_start_time.toISOString() + "'><div class='range'>" + free_range_start_text + " - " + free_range_end_text + "</div></div>" );
-									
+									// var free_duration = busy_day_offset - free_start_offset;
+									var free_duration = ( busy_start_time - free_range_start_time ) / ( 1000 * 60 );
+									if( free_duration >= free_duration_min ){
+										var free_range_start_text = free_range_start_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
+										var free_range_end_text = busy_range_start_text;
+										
+										day
+										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + free_start_offset + "px; height: " + free_duration + "px' start='" + free_range_start_time.toISOString() + "' end='" +  busy_start_time.toISOString() + "'><div class='range'>" + free_range_start_text + " - " + free_range_end_text + "</div></div>" );
+										
+									}
+								
 								}
 								
 								// dodawanie zajętych terminów
@@ -1612,13 +1634,23 @@
 									
 								}
 								
-								var last_free_duration = ( last_free_end - last_free_start ) / ( 1000 * 60 );
-								
-								if( last_free_duration >= free_duration_min ){
-									var last_free_offset = ( last_free_start.getHours() - 6 ) * 60 + last_free_start.getMinutes();
+								if( last_free_end >= new Date() ){
+									if( last_free_start < new Date() ){
+										last_free_start = new Date();
+										last_free_start.setMilliseconds( 0 );
+										last_free_start.setSeconds( 0 );
+										
+									}
 									
-									$(this)
-									.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + last_free_offset + "px; height: " + last_free_duration + "px' start='" + last_free_start.toISOString() + "' end='" + last_free_end.toISOString() + "'><div class='range'>" + last_free_start.toLocaleTimeString().match( /\d+:\d+/ )[0] + " - " + last_free_end.toLocaleTimeString().match( /\d+:\d+/ )[0] + "</div></div>" );
+									var last_free_duration = ( last_free_end - last_free_start ) / ( 1000 * 60 );
+									
+									if( last_free_duration >= free_duration_min ){
+										var last_free_offset = ( last_free_start.getHours() - 6 ) * 60 + last_free_start.getMinutes();
+										
+										$(this)
+										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + last_free_offset + "px; height: " + last_free_duration + "px' start='" + last_free_start.toISOString() + "' end='" + last_free_end.toISOString() + "'><div class='range'>" + last_free_start.toLocaleTimeString().match( /\d+:\d+/ )[0] + " - " + last_free_end.toLocaleTimeString().match( /\d+:\d+/ )[0] + "</div></div>" );
+										
+									}
 									
 								}
 								
@@ -1632,6 +1664,116 @@
 							range_start.setDate( now.getDate() - now.getDay() + 1 );
 							range_end = new Date( now.getFullYear(), now.getMonth(), now.getDate(), 22 );
 							range_end.setDate( now.getDate() + 7 - now.getDay() );
+							
+						},
+						popup: function( e, termin ){
+							var range_time_start = new Date( $( termin ).attr( 'start' ) );
+							var range_time_end = new Date( $( termin ).attr( 'end' ) );
+							var session_price = parseFloat( popup.find( '.price' ).attr( 'price' ) );
+							var session_duration = parseInt( popup.find( '.price' ).attr( 'duration' ) );
+							var roundTo = function( value, precision ){
+								return Math.ceil( value * Math.pow( 10, precision ) ) / Math.pow( 10, precision );
+								
+							};
+							var slider_fill = function( time_start, time_end ){
+								slider
+								.siblings( '.value' )
+								.text( new Date( time_start ).toLocaleTimeString().match( /\d+:\d+/ )[0] + ' - ' + new Date( time_end ).toLocaleTimeString().match( /\d+:\d+/ )[0] )
+								.siblings( '.calculate' )
+								.text( roundTo( ( time_end - time_start ) / ( 60 * 1000 ) / session_duration * session_price, 2 ) );
+								
+							};
+							
+							slider
+							.attr({
+								range_start: range_time_start.toISOString(),
+								range_end: range_time_end.toISOString(),
+								
+							});
+							
+							slider_fill( range_time_start, range_time_end );
+							
+							// slider.slider( 'destory' );
+							slider.slider({
+								range: true,
+								min: range_time_start.getTime(),
+								max: range_time_end.getTime(),
+								step: 5 * 60 * 1000,
+								values: [ range_time_start.getTime(), range_time_end.getTime() ],
+								slide: function( e, ui ){
+									slider_fill( ui.values[0], ui.values[1] );
+									
+								},
+								
+							});
+							
+							popup.addClass( 'open' );
+							
+						},
+						verify: function( e, field ){
+							var filters = {
+								person: '^[\\D]+$',
+								phone: '^(\\+\\d+\\s*)?(\\(\\d+\\)\\s*)?(\\d+(\\s|\\-)*)+$',
+								message: '^.*$',
+								
+							}
+							
+							// weryfikacja całego formularza
+							if( typeof field === 'undefined'){
+								$( form ).find( "input, textarea" ).each( function(){
+									if( new RegExp( filters[ $(this).attr( 'name' ) ], 'gm' ).test( $(this).val() ) ){
+										$(this)
+										.addClass( 'valid' )
+										.removeClass( 'invalid' );
+										
+									}
+									else{
+										$(this)
+										.addClass( 'invalid' )
+										.removeClass( 'valid' );
+										
+									}
+									
+								} );
+								
+								if( form.children( '.valid' ).length === form.children().length ){
+									console.log( 'weryfikacja zakończona pomyślnie' );
+									
+								}
+								
+							}
+							// weryfikacja konkretnego pola
+							else{
+								if( new RegExp( filters[ $( field ).attr( 'name' ) ], 'gm' ).test( $( field ).val() ) ){
+									$( field )
+									.addClass( 'valid' )
+									.removeClass( 'invalid' );
+									
+								}
+								else{
+									$( field )
+									.addClass( 'invalid' )
+									.removeClass( 'valid' );
+									
+								}
+								
+								
+							}
+							
+							
+						},
+						notify: function( e, status, msg ){
+							popup
+							.find( '.foot .msg' )
+							.hide()
+							.removeClass( 'success fail' )
+							.addClass( status )
+							.html( msg )
+							.slideDown()
+							.one( 'click', function( e ){
+								$( this ).slideUp( 'slow' );
+								
+							} );
 							
 						},
 						
@@ -1662,6 +1804,48 @@
 						
 					} );
 					
+					days.on( 'click', '.termin.free', function( e ){
+						kalendarz.triggerHandler( 'popup', $(this) );
+						
+					} );
+					
+					popup.click( function( e ){
+						$( this ).removeClass( 'open' );
+						
+					} );
+					
+					popup.children( '.box' ).click( function( e ){
+						e.stopPropagation();
+						
+					} );
+					
+					submit_btn.click( function(){
+						kalendarz.triggerHandler( 'verify' );
+						
+						// formularz wypełniony poprawnie
+						if( form.children( '.input.valid' ).length === form.children().length ){
+							
+							gch.addEvent(
+								new Date( slider.slider( 'values', 0 ) ).toISOString(),
+								new Date( slider.slider( 'values', 1 ) ).toISOString(),
+								popup.find( '.head .type' ).text().trim() + ' [' + form.find( 'input[name="person"]' ).val() + ']',
+								'Telefon kontaktowy:\r\n' + form.find( 'input[name="phone"]' ).val() + '\r\n\r\nWiadomość:\r\n' + form.find( 'textarea' ).val()
+								
+							);
+							
+						}
+						
+					} );
+					
+					form
+					.find( 'input, textarea' )
+					.blur( function( e ){
+						kalendarz.triggerHandler( 'verify', $( this ) );
+						
+					} );
+					
+					
+					
 					// inicjalizacja kalendarza przeniesiona do gchandler.js
 					// kalendarz.triggerHandler( 'init' );
 					
@@ -1673,7 +1857,11 @@
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .name' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.next' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.prev' ),
-					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day' )
+					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day' ),
+					$( '#rezerwacja > .popup' ),
+					$( '#rezerwacja > .popup .body .slider' ),
+					$( '#rezerwacja > .popup .body .form' ),
+					$( '#rezerwacja > .popup .foot .submit' )
 				);
 				
 				/* ekran podsumowania */

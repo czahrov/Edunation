@@ -24,6 +24,58 @@
 		?>
 		<div id='rezerwacja' class='flex flex-column'>
 			<div class='popup flex flex-items-center flex-justify-center'>
+				<div class='box bg-blue-dark flex flex-column'>
+					<div class='segment head bg-light flex no-shrink flex-column'>
+						<div class='info text-center regular alt'>
+							Wybrane szkolenie:
+						</div>
+						<div class='type text-center bold'>
+							<?php echo $data[ 'title' ]; ?>
+						</div>
+						<div class='line price bg-light flex no-shrink flex-column' price=<?php printf( "%.2f", $data[ 'cena' ] ); ?> duration=<?php echo $data[ 'czas' ]; ?> >
+							<div class='info text-center regular alt'>
+								Cena szkolenia:
+							</div>
+							<div class='value cost text-center bold'>
+								<?php printf( "%.2f zł / %u min", $data[ 'cena' ], $data[ 'czas' ] ); ?>
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class='segment body flex flex-column'>
+						<div class='line time bg-light flex no-shrink flex-column'>
+							<div class='info text-center regular alt'>
+								Czas szkolenia:
+							</div>
+							<div class='value time text-center bold'></div>
+							<div class='slider'></div>
+							<div class='calculate info text-center bold'></div>
+							
+						</div>
+						<form class='line form fp_form bg-light flex no-shrink flex-column'>
+							<input class='input' type='text' name='person' placeholder='Imię i nazwisko *'>
+							<input class='input' type='text' name='phone' placeholder='Telefon kontaktowy *'>
+							<textarea class='input' name='message' placeholder='Wiadomość'></textarea>
+							
+						</form>
+						
+					</div>
+					<div class='segment foot no-shrink flex flex-column flex-items-center'>
+						<div id='login' class='btn pointer bg-light bold'>
+							Zaloguj do google
+						</div>
+						<div id='event' class='btn submit pointer bg-light bold'>
+							Wyślij zgłoszenie
+						</div>
+						<div id='logout' class='btn pointer bg-light bold'>
+							Wyloguj z google
+						</div>
+						<div class='msg'></div>
+						
+					</div>
+					
+				</div>
 				
 			</div>
 			<div class='top text-center'>
@@ -89,33 +141,6 @@
 							</div>
 							
 						</div>
-						
-					</div>
-					<div class='etap summary base1 no-shrink flex flex-column flex-items-center'>
-						<div class='title text-center'></div>
-						<div class='subtitle text-center'></div>
-						<div class='table flex flex-items-center flex-justify-around'>
-							<div class='tcell left text-center base3 flex flex-column'>
-								<div class='title bold'></div>
-								<div class='subtitle'></div>
-								
-							</div>
-							<div class='tcell right text-center grow flex flex-column'>
-								<div class='title bold'></div>
-								<div class='subtitle'></div>
-								<div class='subtitle'>
-									online
-								</div>
-								<div id='authorize-button' class='button bold pointer uppercase bg-blue-dark font-light flex-self-center flex flex-items-center'>
-									Dodaj do kalendarza Google
-								</div>
-								
-							</div>
-							
-						</div>
-						<a class='button bg-blue-dark font-light bold uppercase flex flex-items-center' href='<?php echo home_url(); ?>'>
-							Sprawdź inne usługi
-						</a>
 						
 					</div>
 					

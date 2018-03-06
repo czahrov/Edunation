@@ -13,37 +13,128 @@
 		background-color: transparentize( $color-dark, 0.2 );
 		
 		& > .box{
-			position: relative;
-			padding: 10px;
+			padding: 22px 28px;
+			max-height: 100%;
+			overflow: auto;
 			
-			& > .close{
-				position: absolute;
-				top: 0;
-				right: 0;
-				width: 40px;
-				height: 40px;
+			& > .segment{
+				padding: 8px;
+				width: 300px;
+				background:{
+					clip: content-box;
+					origin: content-box;
+				};
 				
-			}
-			
-			& > .head{
-				margin: 20px 0 30px;
-				font-size: 30px;
-				
-			}
-			
-			& > .body{
-				
-				& > .pora{
-					padding: 0 10px;
+				.line{
+					height: initial;
 					
-					& > .title{
+					&:not(:last-child){
+						margin-bottom: 10px;
 						
 					}
 					
-					& > .item{
-						margin-top: 10px;
-						padding: 5px 0;
-						border: solid 1px $color-dark;
+				}
+				
+				.info, .value{
+					padding: 5px 10px 10px;
+					
+				}
+				
+				.calculate::after{
+					content: ' zł';
+					
+				}
+				
+				.calculate::before{
+					content: 'Suma:';
+					padding-right: 5px;
+					
+				}
+				
+				.slider{
+					position: relative;
+					height: 10px;
+					margin: 20px;
+					background-color: silver;
+					
+				}
+				
+				.input{
+					padding: 10px 20px;
+					border: solid 1px $color-gray-light2;
+					line-height: 30px;
+					@extend .bold;
+					resize: none;
+					transition: background .3s linear;
+					
+					&.valid{
+						background-color: lightgreen;
+						
+					}
+					
+					&.invalid{
+						background-color: lightcoral;
+						
+					}
+					
+				}
+				
+				&.head{
+					
+					& > .type{
+						padding: 10px;
+						font-size: 22px;
+						
+					}
+					
+				}
+				
+				&.body{
+					overflow: auto;
+					
+					form{
+						
+						textarea{
+							height: 200px;
+							
+						}
+						
+					}
+					
+				}
+				
+				&.foot{
+					
+					& > .btn{
+						margin: 5px 0;
+						padding: 10px;
+						border-radius: 10px;
+						transition-property: background, font;
+						transition: 0.3s linear;
+						box-shadow: 0 0 0 2px #fff inset;
+						
+						&:hover{
+							background-color: transparent;
+							color: #fff;
+							
+						}
+						
+					}
+					
+					& > .msg{
+						line-height: 30px;
+						max-width: 300px;
+						cursor: pointer;
+						
+						&.success{
+							color: lightgreen;
+							
+						}
+						
+						&.fail{
+							color: lightcoral;
+							
+						}
 						
 					}
 					

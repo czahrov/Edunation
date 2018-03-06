@@ -47,18 +47,21 @@ $(function(){
 	}
 	
 	// Called when the signed in status changes, to update the UI appropriately. After a sign-in, the API is called.
-	function updateSigninStatus(isSignedIn){
-		if (isSignedIn){
+	function updateSigninStatus( isSignedIn ){
+		if ( isSignedIn ){
 			window.authorised = true;
 			AUTH_BTN.hide();
 			OUT_BTN.show();
 			/* custom functions here */
+			$( '#event' ).show();
 			
 		}
 		else{
 			window.authorised = false;
 			AUTH_BTN.show();
 			OUT_BTN.hide();
+			/* custom functions here */
+			$( '#event' ).hide();
 			
 		}
 	}
@@ -147,7 +150,6 @@ $(function(){
 				description: description,
 				attendees:[
 					{
-						// email: 'worhacz.dawid@gmail.com',
 						email: GCAL_ID,
 					},
 					
@@ -163,6 +165,18 @@ $(function(){
 			})
 			.then( function( resp ){
 				console.log( resp );
+				// sukces
+				if( resp.status === 200 ){
+					$( '#rezerwacja > .bot > .view > .etap.date' )
+					.triggerHandler( 'notify', [ 'success', 'Rezerwacja złożona pomyślnie.<br>Otrzymasz niebawem powiadomienie e-mail z informacją o statusie swojego zgłoszenia.' ] );
+					
+				}
+				// niepowodzenie
+				else if( resp.status === 400 ){
+					$( '#rezerwacja > .bot > .view > .etap.date' )
+					.triggerHandler( 'notify', [ 'fail', 'Wystąpił błąd. Proszę sprawdzić poprawność wprowadzonych danych i spróbować ponownie.' ] );
+					
+				}
 				
 			} );
 			
