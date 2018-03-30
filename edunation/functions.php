@@ -1,7 +1,8 @@
 <?php
 add_theme_support('post-thumbnails');
 
-define( 'DMODE', isset( $_COOKIE[ 'sprytne' ] ) === true );
+// define( 'DMODE', isset( $_COOKIE[ 'sprytne' ] ) === true );
+define( 'DMODE', true );
 
 if( !is_admin() ){
 	$infix = DMODE?( "" ):( ".min" );
@@ -30,6 +31,15 @@ if( !is_admin() ){
 	
 }
 
+register_sidebar( array(
+	'name' => 'About me',
+	'id' => 'about_me',
+	'description' => 'Panel do edycji zawartości elementu "About me" w blogu',
+	'before_widget' => "<div>",
+	'after_widget' => "</div>",
+	'class' => 'myWidget',
+	
+) );
 
 $args = array(
 	'numberposts' => 10,

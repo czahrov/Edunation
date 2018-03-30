@@ -1,12 +1,12 @@
 $(document).ready(function () {
-	$(".hamburger").click(function () {
+	/* $(".hamburger").click(function () {
 		$(this).toggleClass("open");
 		$(".navigation").toggleClass("closed");
 	});
 	$("ul.navigation > li > a").click(function () {
 		$(".hamburger").toggleClass("open");
 		$(".navigation").toggleClass("closed");
-	});
+	}); */
 
 	// paginacja
 	/* (function( ball ){

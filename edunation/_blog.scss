@@ -1,45 +1,367 @@
-#blog{
+#blog
+{
 	
-	& > .inner{
+	#oferta
+	{
+		background-color: $color-gray-light;
+		padding-top: 100px;
 		
-		& > .title{
+		& > .banner{
+			height: 280px;
+			background:{
+				size: cover;
+				position: top;
+				repeat: no-repeat;
+				
+			};
 			
 		}
 		
-		& > .wrapper{
+		& > .menu_bar{
+			background-color: #fff;
 			
-			& > .element{
-				position: relative;
-				padding: 0;
+			& > .menu{
 				
-				& > .box{
-					width: initial;
-					margin: 0 10px;
-					padding: 10px 20px 0;
+				& > .item{
+					padding: 0 10px;
+					height: 82px;
+					min-width: 130px;
+					transition: background .3s linear;
+					text-transform: uppercase;
 					
-					& > .pic{
-						background-position: top;
+					&:hover,
+					&.active{
+						background-color: $color-green2;
 						
 					}
 					
-					& > .title{
+				}
+				
+			}
+			
+		}
+		
+		& > .column{
+			
+			& > .main{
+				margin: 0 -15px;
+				
+				& > .item{
+					padding: 10px;
+					margin-top: 30px;
+					min-height: 570px;
+					background-color: #fff;
+					
+					& > .img{
+						height: 100%;
+						min-height: 400px;
+						margin-bottom: 30px;
+						background:{
+							position: center;
+							size: cover;
+							
+						};
+						
+						@media (min-width: map-get( $bpw, tablet ) ){
+							margin: 0 30px 0 0;
+							
+						}
 						
 					}
 					
-					& > .text{
+					& > .content{
+						
+						& > .title{
+							font-size: 33px;
+							margin-bottom: 24px;
+						}
+						
+						& > .info{
+							margin-bottom: 36px;
+							font-size: 17px;
+							line-height: 25px;
+							color: gray;
+							
+						}
+						
+						& > .excerpt{
+							margin-bottom: 36px;
+							font-size: 17px;
+							line-height: 25px;
+							
+						}
+						
+						& > .more{
+							height: 130px;
+							margin-bottom: 16px;
+							border-bottom: solid 1px #d9d9d9;
+							color: #35b896;
+							font-size: 20px;
+							
+						}
+						
+						& > .social{
+							
+							& > .icon{
+								width: 54px;
+								height: 54px;
+								color: silver;
+								border: solid 1px silver;
+								border-radius: 50%;
+								
+								@media ( min-width: map-get( $bpw, tablet ) ){
+									margin-right: 10px;
+									
+								}
+								
+							}
+							
+						}
 						
 					}
 					
-					& > .desc{
+					@media (min-width: map-get( $bpw, tablet ) ){
+						padding-right: 30px;
+						padding: 34px 43px;
 						
 					}
 					
-					& > .hitbox{
+				}
+				
+				& > .title{
+					font-size: 50px;
+					
+				}
+				
+				& > .info{
+					margin: 30px 0;
+					font-size: 20px;
+					
+				}
+				
+				& > .img{
+					
+				}
+				
+				& > .content{
+					padding: 30px 0;
+					font-size: 20px;
+					
+					& *{
+						line-height: 30px;
 						
 					}
 					
-					& > .button{
-						position: absolute;
+				}
+				
+				& > .social{
+					
+					& > .icon{
+						margin-right: 10px;
+						width: 50px;
+						height: 50px;
+						border: solid 1px silver;
+						border-radius: 50%;
+						
+					}
+					
+				}
+				
+				@media ( min-width: map-get( $bpw, tablet ) ){
+					margin: initial;
+					
+				}
+				
+			}
+			
+			& > .side{
+				margin: 0 -15px;
+				
+				& > .item{
+					padding: 34px 43px;
+					margin-top: 30px;
+					height: 570px;
+					background-color: #fff;
+					
+					@media ( min-width: map-get( $bpw, tablet ) ){
+						&:not(:last-child){
+							margin-right: 30px;
+							
+						}
+						
+					}
+					
+					@media ( min-width: map-get( $bpw, desktop ) ){
+						margin: 30px 0 0 30px;
+						
+						&:not(:last-child){
+							margin-right: 0;
+							
+						}
+						
+					}
+					
+				}
+				
+				@media ( min-width: map-get( $bpw, tablet ) ){
+					margin: initial;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	#single
+	{
+		background-color: $color-gray-light;
+		padding-top: 100px;
+		
+		& > .column{
+			
+			& > .main{
+				margin-bottom: 30px;
+				
+				& > .item{
+					padding: 34px 43px;
+					margin-top: 30px;
+					height: 570px;
+					background-color: #fff;
+					
+					& > .img{
+						height: 100%;
+						margin-right: 30px;
+						background:{
+							position: center;
+							size: cover;
+							
+						};
+						
+					}
+					
+					& > .content{
+						
+						& > .title{
+							font-size: 33px;
+							margin-bottom: 24px;
+						}
+						
+						& > .info{
+							margin-bottom: 36px;
+							font-size: 17px;
+							line-height: 25px;
+							color: gray;
+							
+						}
+						
+						& > .excerpt{
+							margin-bottom: 36px;
+							font-size: 17px;
+							line-height: 25px;
+							
+						}
+						
+						& > .more{
+							height: 130px;
+							margin-bottom: 16px;
+							border-bottom: solid 1px #d9d9d9;
+							color: #35b896;
+							font-size: 20px;
+							
+						}
+						
+						& > .social{
+							
+							& > .icon{
+								margin-right: 10px;
+								width: 54px;
+								height: 54px;
+								color: silver;
+								border: solid 1px silver;
+								border-radius: 50%;
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .title{
+					font-size: 50px;
+					
+				}
+				
+				& > .info{
+					margin: 30px 0;
+					font-size: 20px;
+					color: gray;
+					
+				}
+				
+				& > .img{
+					max-width: 100%;
+					
+				}
+				
+				& > .content{
+					padding: 30px 0;
+					font-size: 20px;
+					
+					& *{
+						line-height: 30px;
+						
+					}
+					
+				}
+				
+				& > .social{
+					
+					& > .icon{
+						width: 50px;
+						height: 50px;
+						border: solid 1px silver;
+						border-radius: 50%;
+						color: silver;
+						
+						@media ( min-width: map-get( $bpw, tablet ) ){
+							margin-right: 10px;
+							
+						}
+						
+					}
+					
+				}
+				
+				@media ( min-width: map-get( $bpw, tablet ) ){
+					padding-right: 30px;
+					
+				}
+				
+			}
+			
+			& > .side{
+				
+				& > .item{
+					padding: 34px 43px;
+					margin-bottom: 30px;
+					height: 570px;
+					background-color: #fff;
+					
+					&:not(:last-child){
+						
+						@media ( min-width: map-get( $bpw, tablet ) ){
+							margin-right: 30px;
+							
+						}
+						
+						@media ( min-width: map-get( $bpw, desktop ) ){
+							margin-right: initial;
+							
+						}
 						
 					}
 					

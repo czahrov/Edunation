@@ -168,7 +168,7 @@ $(function(){
 				// sukces
 				if( resp.status === 200 ){
 					$( '#rezerwacja > .bot > .view > .etap.date' )
-					.triggerHandler( 'notify', [ 'success', 'Rezerwacja złożona pomyślnie.<br>Otrzymasz niebawem powiadomienie e-mail z informacją o statusie swojego zgłoszenia.' ] );
+					.triggerHandler( 'notify', [ 'success', 'To było proste, prawda?<br>See you soon! :)' ] );
 					
 				}
 				// niepowodzenie

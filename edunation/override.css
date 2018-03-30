@@ -72,11 +72,16 @@ body.spaceTop {
     @media (min-width: 783px) {
       body.spaceTop.admin {
         padding-top: 122px; } }
-body.admin .main-nav {
-  margin-top: 46px; }
-  @media (min-width: 783px) {
-    body.admin .main-nav {
-      margin-top: 32px; } }
+body.admin {
+  /* .main-nav{
+  	margin-top: 46px;
+  	
+  	@media(min-width: 783px){
+  		margin-top: 32px;
+  		
+  	}
+  	
+  } */ }
 body.mobile .main-nav .call {
   display: block; }
   body.mobile .main-nav .call > a {
@@ -302,7 +307,7 @@ body.mobile .main-nav .call {
       overflow: auto; }
       #rezerwacja > .popup > .box > .segment {
         padding: 8px;
-        width: 300px;
+        /* width: 300px; */
         background-clip: content-box;
         background-origin: content-box; }
         #rezerwacja > .popup > .box > .segment .line {
@@ -421,7 +426,7 @@ body.mobile .main-nav .call {
               border-bottom: solid 1px #e8e6e7; }
         #rezerwacja > .bot > .view > .etap.date > .body > .content {
           width: 100%;
-          overflow: auto; }
+          overflow: hidden; }
           #rezerwacja > .bot > .view > .etap.date > .body > .content > .day {
             min-width: 100px; }
             #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.name {
@@ -498,17 +503,185 @@ body.mobile .main-nav .call {
         #rezerwacja > .bot > .view {
           margin-right: 20px; } }
 
-#blog > .inner > .wrapper > .element {
-  position: relative;
-  padding: 0; }
-  #blog > .inner > .wrapper > .element > .box {
-    width: initial;
-    margin: 0 10px;
-    padding: 10px 20px 0; }
-    #blog > .inner > .wrapper > .element > .box > .pic {
-      background-position: top; }
-    #blog > .inner > .wrapper > .element > .box > .button {
-      position: absolute; }
+#blog #oferta {
+  background-color: #f6f6f8;
+  padding-top: 100px; }
+  #blog #oferta > .banner {
+    height: 280px;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat; }
+  #blog #oferta > .menu_bar {
+    background-color: #fff; }
+    #blog #oferta > .menu_bar > .menu > .item {
+      padding: 0 10px;
+      height: 82px;
+      min-width: 130px;
+      -webkit-transition: background .3s linear;
+      transition: background .3s linear;
+      text-transform: uppercase; }
+      #blog #oferta > .menu_bar > .menu > .item:hover, #blog #oferta > .menu_bar > .menu > .item.active {
+        background-color: #34E0CA; }
+  #blog #oferta > .column > .main {
+    margin: 0 -15px; }
+    #blog #oferta > .column > .main > .item {
+      padding: 10px;
+      margin-top: 30px;
+      min-height: 570px;
+      background-color: #fff; }
+      #blog #oferta > .column > .main > .item > .img {
+        height: 100%;
+        min-height: 400px;
+        margin-bottom: 30px;
+        background-position: center;
+        background-size: cover; }
+        @media (min-width: 768px) {
+          #blog #oferta > .column > .main > .item > .img {
+            margin: 0 30px 0 0; } }
+      #blog #oferta > .column > .main > .item > .content > .title {
+        font-size: 33px;
+        margin-bottom: 24px; }
+      #blog #oferta > .column > .main > .item > .content > .info {
+        margin-bottom: 36px;
+        font-size: 17px;
+        line-height: 25px;
+        color: gray; }
+      #blog #oferta > .column > .main > .item > .content > .excerpt {
+        margin-bottom: 36px;
+        font-size: 17px;
+        line-height: 25px; }
+      #blog #oferta > .column > .main > .item > .content > .more {
+        height: 130px;
+        margin-bottom: 16px;
+        border-bottom: solid 1px #d9d9d9;
+        color: #35b896;
+        font-size: 20px; }
+      #blog #oferta > .column > .main > .item > .content > .social > .icon {
+        width: 54px;
+        height: 54px;
+        color: silver;
+        border: solid 1px silver;
+        border-radius: 50%; }
+        @media (min-width: 768px) {
+          #blog #oferta > .column > .main > .item > .content > .social > .icon {
+            margin-right: 10px; } }
+      @media (min-width: 768px) {
+        #blog #oferta > .column > .main > .item {
+          padding-right: 30px;
+          padding: 34px 43px; } }
+    #blog #oferta > .column > .main > .title {
+      font-size: 50px; }
+    #blog #oferta > .column > .main > .info {
+      margin: 30px 0;
+      font-size: 20px; }
+    #blog #oferta > .column > .main > .content {
+      padding: 30px 0;
+      font-size: 20px; }
+      #blog #oferta > .column > .main > .content * {
+        line-height: 30px; }
+    #blog #oferta > .column > .main > .social > .icon {
+      margin-right: 10px;
+      width: 50px;
+      height: 50px;
+      border: solid 1px silver;
+      border-radius: 50%; }
+    @media (min-width: 768px) {
+      #blog #oferta > .column > .main {
+        margin: initial; } }
+  #blog #oferta > .column > .side {
+    margin: 0 -15px; }
+    #blog #oferta > .column > .side > .item {
+      padding: 34px 43px;
+      margin-top: 30px;
+      height: 570px;
+      background-color: #fff; }
+      @media (min-width: 768px) {
+        #blog #oferta > .column > .side > .item:not(:last-child) {
+          margin-right: 30px; } }
+      @media (min-width: 1280px) {
+        #blog #oferta > .column > .side > .item {
+          margin: 30px 0 0 30px; }
+          #blog #oferta > .column > .side > .item:not(:last-child) {
+            margin-right: 0; } }
+    @media (min-width: 768px) {
+      #blog #oferta > .column > .side {
+        margin: initial; } }
+#blog #single {
+  background-color: #f6f6f8;
+  padding-top: 100px; }
+  #blog #single > .column > .main {
+    margin-bottom: 30px; }
+    #blog #single > .column > .main > .item {
+      padding: 34px 43px;
+      margin-top: 30px;
+      height: 570px;
+      background-color: #fff; }
+      #blog #single > .column > .main > .item > .img {
+        height: 100%;
+        margin-right: 30px;
+        background-position: center;
+        background-size: cover; }
+      #blog #single > .column > .main > .item > .content > .title {
+        font-size: 33px;
+        margin-bottom: 24px; }
+      #blog #single > .column > .main > .item > .content > .info {
+        margin-bottom: 36px;
+        font-size: 17px;
+        line-height: 25px;
+        color: gray; }
+      #blog #single > .column > .main > .item > .content > .excerpt {
+        margin-bottom: 36px;
+        font-size: 17px;
+        line-height: 25px; }
+      #blog #single > .column > .main > .item > .content > .more {
+        height: 130px;
+        margin-bottom: 16px;
+        border-bottom: solid 1px #d9d9d9;
+        color: #35b896;
+        font-size: 20px; }
+      #blog #single > .column > .main > .item > .content > .social > .icon {
+        margin-right: 10px;
+        width: 54px;
+        height: 54px;
+        color: silver;
+        border: solid 1px silver;
+        border-radius: 50%; }
+    #blog #single > .column > .main > .title {
+      font-size: 50px; }
+    #blog #single > .column > .main > .info {
+      margin: 30px 0;
+      font-size: 20px;
+      color: gray; }
+    #blog #single > .column > .main > .img {
+      max-width: 100%; }
+    #blog #single > .column > .main > .content {
+      padding: 30px 0;
+      font-size: 20px; }
+      #blog #single > .column > .main > .content * {
+        line-height: 30px; }
+    #blog #single > .column > .main > .social > .icon {
+      width: 50px;
+      height: 50px;
+      border: solid 1px silver;
+      border-radius: 50%;
+      color: silver; }
+      @media (min-width: 768px) {
+        #blog #single > .column > .main > .social > .icon {
+          margin-right: 10px; } }
+    @media (min-width: 768px) {
+      #blog #single > .column > .main {
+        padding-right: 30px; } }
+  #blog #single > .column > .side > .item {
+    padding: 34px 43px;
+    margin-bottom: 30px;
+    height: 570px;
+    background-color: #fff; }
+    @media (min-width: 768px) {
+      #blog #single > .column > .side > .item:not(:last-child) {
+        margin-right: 30px; } }
+    @media (min-width: 1280px) {
+      #blog #single > .column > .side > .item:not(:last-child) {
+        margin-right: initial; } }
 
 #spotkania {
   margin-top: 60px;

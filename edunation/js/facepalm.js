@@ -320,6 +320,28 @@
 				
 			}
 			
+			// hamburger menu
+			(function( hamburger, menu ){
+				hamburger.click( function( e ){
+					$( this ).toggleClass( 'open' );
+					
+					if( $( this ).hasClass( 'open' ) ){
+						menu.slideDown();
+						
+					}
+					else{
+						menu.slideUp();
+						
+					}
+					
+				} );
+				
+			})
+			(
+				$( '.hamburger'),
+				$( 'ul.navigation')
+			);
+			
 		},
 		alternate: function(){
 			var addon = root.addon;
@@ -1501,7 +1523,7 @@
 				$( '#rezerwacja .side' ) );
 				
 				/* kalendarz */
-				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, days, popup, slider, form, submit_btn ){
+				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, view, days, popup, slider, form, submit_btn ){
 					// aktualna data
 					var now;
 					// aktualny dzień tygodnia 0-6 [ niedziela - sobota ]
@@ -1779,6 +1801,37 @@
 						
 					});
 					
+					view
+					.swipe({
+						swipeLeft: function( e ){
+							var self = $(this);
+							
+							TweenLite.to(
+								view,
+								0.3,
+								{
+									scrollLeft: self.prop( 'scrollLeft' ) + self.width(),
+									
+								}
+							);
+							
+						},
+						swipeRight: function( e ){
+							var self = $(this);
+							
+							TweenLite.to(
+								view,
+								0.3,
+								{
+									scrollLeft: self.prop( 'scrollLeft' ) - self.width(),
+									
+								}
+							);
+							
+						},
+						
+					});
+					
 					kalendarz.triggerHandler( 'reset' );
 					
 					week_next_btn
@@ -1857,6 +1910,7 @@
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .name' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.next' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .head > .month > .nav.prev' ),
+					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day' ),
 					$( '#rezerwacja > .popup' ),
 					$( '#rezerwacja > .popup .body .slider' ),

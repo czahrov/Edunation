@@ -3,75 +3,105 @@
 	Template Name: Blog
 	*/
 	get_header();
-?>
+	?>
 <!--NAVIGATION -->
 <body id="blog">
 	<header>
 		<nav class="main-nav">
 			<?php get_template_part("template/menu"); ?>
 		</nav>
-		
 	</header>
-<!--BLOG-->
-	
-	
-	<div id='blog' class="blog">
-		<div class="inner grid padding">
-			<div class="title font-basic-medium">Szybko, bez stresu, on the go!</div>
-			<div class="wrapper flex flex-wrap">
+	<!--BLOG-->
+	<div id='oferta'>
+		<div class='banner' style='background-image:url(<?php echo get_the_post_thumbnail_url(); ?>);'></div>
+		<div class='menu_bar'>
+			<div class='menu grid flex flex-items-center-mm flex-column flex-row-mm'>
+				<a class='item regular alt inline-flex flex-items-center flex-justify-center <?php if( !isset( $_GET['cat'] ) ) echo 'active'; ?>' href='<?php echo home_url( 'blog' ); ?>'>Wszystkie</a>
 				<?php
-				$posts = get_posts( array(
-					'numberposts' => -1,
-					
-				) );
-					
-			    foreach ( $posts as $post ):				
-					$title = $post->post_title;
-					$meta = get_post_meta( $post->ID );
-					echo "<!--";
-					// print_r( $meta );
-					echo "-->";
-					$cena = $meta[ 'cena' ][0];
-					$duration = $meta[ 'czas_trwania' ][0];
-					$motywator = $meta[ 'motywator' ][0];
-					$url = get_permalink( $post->ID );
-					$img_alt = 'https://placeimg.com/100/100/person';
-					$img = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' );
-					
+					$cats = get_terms( array(
+						'taxonomy' => 'category',
+						'parent' => 16,
+						'hide_empty' => false,
+						
+					) );
+					foreach( $cats as $item ):
 				?>
-				
-				<div class="element base1 base3-ml no-shrink">
-					<div class="box flex flex-column flex-items-center">
-						<div class="pic bgimg full" style="background-image: url('<?php echo empty( $img )?( $img_alt ):( $img ); ?>');"></div>
-						<div class="title font-secondary-bold">
-							<?php echo $title; ?>
+				<a class='item regular alt inline-flex flex-items-center flex-justify-center <?php if( $_GET['cat'] === $item->name ) echo 'active'; ?>' href='<?php echo home_url( "blog?cat={$item->slug}" ); ?>'>
+					<?php echo $item->name; ?>
+				</a>
+				<?php endforeach; ?>
+			</div>
+			
+		</div>
+		<div class='column grid flex flex-column flex-row-ds'>
+			<div class='main grow'>
+				<?php
+					$cat_slug = isset( $_GET[ 'cat' ] )?( $_GET[ 'cat' ] ):( 'blog' );
+					
+					$posts = get_posts( array(
+						'category_name' => $cat_slug,
+						'numberposts' => -1,
+						
+					) );
+					foreach( $posts as $post ):
+				?>
+				<div class='item flex flex-column flex-row-mm'>
+					<div class='img base2' style='background-image:url( <?php echo get_the_post_thumbnail_url(); ?> )'></div>
+					<div class='content text-center text-left-mm base2 flex flex-column'>
+						<div class='title'>
+							<?php echo $post->post_title; ?>
 						</div>
-						<div class="text font-secondary-regular">
-							<?php printf( "%u min | %.2f zł", $duration, $cena ); ?>
-							<?php //echo $cena; ?>
+						<div class='info'>
+							<?php
+								printf(
+									"Dodane przez: %s<br>Dodane %s<br>w kategorii %s",
+									get_the_author_meta( 'display_name', $post->post_author ),
+									date_i18n( "F d, Y", strtotime( $post->post_date ) ),
+									implode( ", ", wp_get_post_categories( $post->ID, array(
+										'fields' => 'names',
+										'exclude' => array( get_category_by_slug( 'blog' )->cat_ID ),
+										
+									) ) )
+									
+								);
+								
+							?>
 						</div>
-						<div class="desc font-secondary-regular">
-							<?php echo $motywator ?>
+						<div class='excerpt'>
+							<?php echo $post->post_excerpt; ?>
 						</div>
-						<a class='hitbox' href='<?php echo $url; ?>'></a>
-						<a class="button flex flex-items-center flex-justify-center font-secondary-bold" href='<?php echo home_url( sprintf( "rezerwacja/?type=%s", $post->ID ) ); ?>'>
-							zarezerwuj
-						</a>
+						<div class='more flex flex-items-center flex-justify-center'>
+							<?php
+								printf(
+									"<a href='%s'>Kontynuuj czytanie</a>",
+									get_the_permalink( $post->ID )
+								);
+								
+							?>
+						</div>
+						<div class='social flex flex-justify-around flex-justify-start-mm'>
+							<a class='icon flex flex-items-center flex-justify-center' href='https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink( $post->ID ); ?>' target='_blank'>
+								<div class='fa fa-facebook'></div>
+							</a>
+							<a class='icon flex flex-items-center flex-justify-center' href='https://twitter.com/intent/tweet?text=<?php the_permalink( $post->ID ); ?>' target='_blank'>
+								<div class='fa fa-twitter'></div>
+							</a>
+							<a class='icon flex flex-items-center flex-justify-center' href='https://plus.google.com/share?url=<?php the_permalink( $post->ID ); ?>' target='_blank'>
+								<div class='fa fa-google-plus'></div>
+							</a>
+							
+						</div>
 						
 					</div>
 					
 				</div>
-				
-				  <?php endforeach; 
-					wp_reset_postdata()?>
-			
-
+				<?php endforeach; ?>
 			</div>
+			<?php get_template_part( 'template/sidebar', 'blog' ); ?>
+			
 		</div>
+		
 	</div>
-	
-	
 	<div class="line"></div>
-
-<!-- FOOTER -->
-<?php get_footer();?>
+	<!-- FOOTER -->
+	<?php get_footer();?>

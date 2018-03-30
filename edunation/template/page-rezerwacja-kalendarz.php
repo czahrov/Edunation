@@ -26,16 +26,10 @@
 			<div class='popup flex flex-items-center flex-justify-center'>
 				<div class='box bg-blue-dark flex flex-column'>
 					<div class='segment head bg-light flex no-shrink flex-column'>
-						<div class='info text-center regular alt'>
-							Wybrane szkolenie:
-						</div>
 						<div class='type text-center bold'>
 							<?php echo $data[ 'title' ]; ?>
 						</div>
 						<div class='line price bg-light flex no-shrink flex-column' price=<?php printf( "%.2f", $data[ 'cena' ] ); ?> duration=<?php echo $data[ 'czas' ]; ?> >
-							<div class='info text-center regular alt'>
-								Cena szkolenia:
-							</div>
 							<div class='value cost text-center bold'>
 								<?php printf( "%.2f zł / %u min", $data[ 'cena' ], $data[ 'czas' ] ); ?>
 							</div>
@@ -55,7 +49,7 @@
 						</div>
 						<form class='line form fp_form bg-light flex no-shrink flex-column'>
 							<input class='input' type='text' name='person' placeholder='Imię i nazwisko *'>
-							<input class='input' type='text' name='phone' placeholder='Telefon kontaktowy *'>
+							<input class='input' type='tel' name='phone' placeholder='Telefon kontaktowy *'>
 							<textarea class='input' name='message' placeholder='Wiadomość'></textarea>
 							
 						</form>
@@ -66,7 +60,7 @@
 							Zaloguj do google
 						</div>
 						<div id='event' class='btn submit pointer bg-light bold'>
-							Wyślij zgłoszenie
+							Rezerwuj!
 						</div>
 						<div id='logout' class='btn pointer bg-light bold'>
 							Wyloguj z google

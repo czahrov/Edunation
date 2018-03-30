@@ -19,7 +19,7 @@
 			
 			& > .segment{
 				padding: 8px;
-				width: 300px;
+				/* width: 300px; */
 				background:{
 					clip: content-box;
 					origin: content-box;
@@ -270,7 +270,7 @@
 						
 						& > .content{
 							width: 100%;
-							overflow: auto;
+							overflow: hidden;
 							
 							& > .day{
 								min-width: 100px;
