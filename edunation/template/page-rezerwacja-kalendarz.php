@@ -104,7 +104,14 @@
 								<div class='cell'></div>
 								<?php for( $i=6; $i<=21; $i++ ): ?>
 								<div class='cell hour regular alt flex flex-items-center'>
-									<?php printf( "%2u:00", $i ); ?>
+									<?php
+										printf(
+											'%2u:00 %s',
+											$i>12?( $i - 12 ):( $i ),
+											$i<13?( 'AM' ):( 'PM' )
+											
+										);
+									?>
 								</div>
 								<?php endfor; ?>
 								

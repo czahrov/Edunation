@@ -417,13 +417,17 @@ body.mobile .main-nav .call {
                       order: 0; } }
         #rezerwacja > .bot > .view > .etap.date > .body .cell {
           min-height: 60px; }
+          @media (max-width: 767px) {
+            #rezerwacja > .bot > .view > .etap.date > .body .cell {
+              min-height: 40px; } }
         #rezerwacja > .bot > .view > .etap.date > .body > .side {
           border-right: solid 1px #e8e6e7; }
           #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour {
             position: relative;
             padding: 12px;
             border: solid #e8e6e7;
-            border-width: 1px 0 0 1px; }
+            border-width: 1px 0 0 1px;
+            white-space: nowrap; }
             #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour:last-child {
               border-width: 1px 0 1px 1px; }
             #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour::before {
@@ -443,7 +447,7 @@ body.mobile .main-nav .call {
               border-width: 1px 1px 0 1px; }
             #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day {
               position: relative;
-              height: 960px;
+              /* height: 960px; */
               border: solid 1px #e8e6e7;
               overflow: hidden; }
               #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin {
@@ -471,14 +475,18 @@ body.mobile .main-nav .call {
                     content: "\f067"; }
                 #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin::before {
                   content: "";
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
                   color: white;
                   font: normal normal normal 14px/1 FontAwesome;
                   font-size: 20px;
-                  -webkit-transform: translate(-50%, 0%);
-                          transform: translate(-50%, 0%); }
+                  -webkit-transform: translate(-10px, 0);
+                          transform: translate(-10px, 0); }
+                  @media (min-width: 768px) {
+                    #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin::before {
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      -webkit-transform: translate(-50%, 0%);
+                              transform: translate(-50%, 0%); } }
             #rezerwacja > .bot > .view > .etap.date > .body > .content > .day:nth-child(even) {
               background-color: #eee; }
         #rezerwacja > .bot > .view > .etap.summary .button {

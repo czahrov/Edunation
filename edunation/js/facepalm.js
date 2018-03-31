@@ -1566,6 +1566,12 @@
 							// czyszczenie
 							days.empty();
 							
+							// zmienna do przeliczania pikseli na procenty ( dla minut )
+							var min_factor = function(){
+								return 100 / $( days.first() ).outerHeight();
+							}
+							console.log( min_factor() );
+							
 							console.log( window.freeBusy );
 							// dodawanie terminów
 							$.each( window.freeBusy[ 'kaczanowskii@gmail.com' ].busy, function( num, item ){
@@ -1622,7 +1628,7 @@
 										var free_range_end_text = busy_range_start_text;
 										
 										day
-										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + free_start_offset + "px; height: " + free_duration + "px' start='" + free_range_start_time.toISOString() + "' end='" +  busy_start_time.toISOString() + "'><div class='range'>" + free_range_start_text + " - " + free_range_end_text + "</div></div>" );
+										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + free_start_offset * min_factor() + "%; height: " + free_duration * min_factor() + "%' start='" + free_range_start_time.toISOString() + "' end='" +  busy_start_time.toISOString() + "'><div class='range'>" + free_range_start_text + " - " + free_range_end_text + "</div></div>" );
 										
 									}
 								
@@ -1630,7 +1636,7 @@
 								
 								// dodawanie zajętych terminów
 								day
-								.append( "<div class='termin busy bold alt flex flex-items-start flex-justify-center' style='top: " + busy_day_offset + "px; height: " + busy_duration_minuts + "px' start='" + busy_start_time.toISOString() + "' end='" + busy_end_time.toISOString() + "'><div class='range'>" + busy_range_start_text + " - " + busy_range_end_text + "</div></div>" );
+								.append( "<div class='termin busy bold alt flex flex-items-start flex-justify-center' style='top: " + busy_day_offset * min_factor() + "%; height: " + busy_duration_minuts * min_factor() + "%' start='" + busy_start_time.toISOString() + "' end='" + busy_end_time.toISOString() + "'><div class='range'>" + busy_range_start_text + " - " + busy_range_end_text + "</div></div>" );
 								
 							} );
 							
@@ -1671,7 +1677,7 @@
 										var last_free_offset = ( last_free_start.getHours() - 6 ) * 60 + last_free_start.getMinutes();
 										
 										$(this)
-										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + last_free_offset + "px; height: " + last_free_duration + "px' start='" + last_free_start.toISOString() + "' end='" + last_free_end.toISOString() + "'><div class='range'>" + last_free_start.toLocaleTimeString().match( /\d+:\d+/ )[0] + " - " + last_free_end.toLocaleTimeString().match( /\d+:\d+/ )[0] + "</div></div>" );
+										.append( "<div class='termin free bold alt flex flex-items-start flex-justify-center' style='top: " + last_free_offset * min_factor() + "%; height: " + last_free_duration * min_factor() + "%' start='" + last_free_start.toISOString() + "' end='" + last_free_end.toISOString() + "'><div class='range'>" + last_free_start.toLocaleTimeString().match( /\d+:\d+/ )[0] + " - " + last_free_end.toLocaleTimeString().match( /\d+:\d+/ )[0] + "</div></div>" );
 										
 									}
 									
@@ -1833,7 +1839,7 @@
 								view,
 								0.3,
 								{
-									scrollLeft: self.prop( 'scrollLeft' ) + self.width(),
+									scrollLeft: self.prop( 'scrollLeft' ) + self.outerWidth(),
 									
 								}
 							);
@@ -1847,7 +1853,7 @@
 								view,
 								0.3,
 								{
-									scrollLeft: self.prop( 'scrollLeft' ) - self.width(),
+									scrollLeft: self.prop( 'scrollLeft' ) - self.outerWidth(),
 									
 								}
 							);
