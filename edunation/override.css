@@ -289,6 +289,15 @@ body.mobile .main-nav .call {
               box-shadow: 0 0 0 3px #34E0CA; }
 #home .contact > .box > .inner > .text {
   font-size: 18px; }
+#home .header-main .grid {
+  position: relative; }
+  @media (max-width: 767px) {
+    #home .header-main .grid .img-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 440px;
+      width: 100%; } }
 
 #rezerwacja {
   margin: 100px 0 150px; }
