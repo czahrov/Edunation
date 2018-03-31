@@ -1534,6 +1534,7 @@
 					var range_end;
 					// minimalny czas trwania przerwy ( w minutach ), by była traktowana jako slot na spotkani
 					var free_duration_min = 30;
+					var lock = false;
 					
 					kalendarz
 					.on({
@@ -1802,8 +1803,30 @@
 					});
 					
 					view
-					.swipe({
-						swipeLeft: function( e ){
+					.on({
+						mousewheel: function( e ){
+							// console.log( e.deltaFactor * e.deltaX );
+							var distanceX = e.deltaFactor * e.deltaX;
+							if( !lock && Math.abs( distanceX ) >= 200 ){
+								lock = true;
+								if( e.deltaX > 0 ){
+									view.triggerHandler( 'slideRight' );
+									
+								}
+								else{
+									view.triggerHandler( 'slideLeft' );
+									
+								}
+								
+								window.setTimeout( function(){
+									lock = false;
+								}, 500 );
+								
+							}
+							
+						},
+						slideRight: function( e ){
+							// console.log( 'slideRight' );
 							var self = $(this);
 							
 							TweenLite.to(
@@ -1816,7 +1839,8 @@
 							);
 							
 						},
-						swipeRight: function( e ){
+						slideLeft: function( e ){
+							// console.log( 'slideLeft' );
 							var self = $(this);
 							
 							TweenLite.to(
@@ -1827,6 +1851,17 @@
 									
 								}
 							);
+							
+						},
+						
+					})
+					.swipe({
+						swipeLeft: function( e ){
+							$(this).triggerHandler( 'slideRight' );
+							
+						},
+						swipeRight: function( e ){
+							$(this).triggerHandler( 'slideLeft' );
 							
 						},
 						
