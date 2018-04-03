@@ -692,3 +692,65 @@ function isMobile(){
 	
 	return $ret;
 }
+
+/* generuje kod HTML pojedynczego komentarza */
+add_action( 'print_comment', function( $comment ){
+	$nick = $comment->comment_author;
+	$date = get_comment_date( 'F d, Y, \o H:i:s', $comment->comment_ID );
+	$content = $comment->comment_content;
+	$reply = get_comment_reply_link( array(
+		'depth' => 1,
+		'max_depth' => get_option( 'thread_comments_depth' ),
+		
+	), $comment->comment_ID );
+	
+	echo <<<EOT
+	<div id="#comment-{$comment->comment_ID}" class="comment-aded col-12">
+		<p class="comm-nick">
+			$nick
+		</p>
+		<p class="comm-date">
+			$date
+		</p>
+		<p class="comm-msg">
+			$content
+		</p>
+		<button class="button-answer">
+			$reply
+		</button>
+	</div>
+EOT;
+	
+} );
+
+
+/* wypisuje komentarze */
+function commentPrinter( $postID = 0, $postParent = 0, $commTree = array() ){
+	if( empty( $commTree ) ){
+		$commTree = get_comments( array(
+			'post_id' => $postID,
+			'parent' => $postParent,
+			
+		) );
+		
+	}
+	
+	foreach( $commTree as $comm ){
+		$subTree = get_comments( array(
+			'post_id' => $postID,
+			'parent' => $comm->comment_ID,
+			
+		) );
+		
+		do_action( 'print_comment', $comm );
+		
+		if( !empty( $subTree ) ){
+			echo "<div class='anwser'>";
+			commentPrinter( $postID, $comm->comment_ID, $subTree );
+			echo "</div>";
+			
+		}
+		
+	}
+	
+}

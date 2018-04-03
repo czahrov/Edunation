@@ -1,4 +1,5 @@
-#single{
+#single
+{
 	
 	& > .single{
 		
@@ -79,6 +80,207 @@
 				width: 100%;
 				
 			}
+			
+		}
+		
+	}
+	
+	#respond
+	{
+		width: 100%;
+		margin-top: 50px;
+		
+		#reply-title
+		{
+			
+			div{
+				font-size: 25px;
+				padding: 10px 0;
+				
+				&:nth-child(1){
+					font-size: 40px;
+					
+				}
+				
+				&:nth-child(2){
+					border-bottom: solid 3px #367a63;
+					
+				}
+				
+			}
+			
+		}
+		
+		#comment
+		{
+			width: 100%;
+			height: 300px;
+			border: solid 2px black;
+			background-color: transparent;
+			margin-top: 50px;
+			padding: 10px;
+			resize: none;
+			
+		}
+		
+		#commentform
+		{
+			
+			.comment-form-author{
+				background:{
+					image: url( img/form_icon_person.png );
+					position: 8px center;
+					repeat: no-repeat;
+					
+				};
+				
+				@media( min-width: 768px ){
+					padding-right: 10px;
+					
+				}
+				
+			}
+			
+			.comment-form-email{
+				background:{
+					image: url( img/form_icon_mail.png );
+					position: 15px center;
+					repeat: no-repeat;
+					
+				};
+				
+				@media( min-width: 768px ){
+					padding-left: 10px;
+					
+				}
+				
+			}
+			
+			.comment-form-author,
+			.comment-form-email{
+				display: block;
+				margin-top: 20px;
+				
+				input{
+					padding: 10px 10px 10px 40px;
+					width: 100%;
+					height: 40px;
+					border: solid 2px black;
+					background-color: transparent;
+					
+				}
+				
+				@media( min-width: 768px ){
+					width: 50%;
+					float: left;
+					
+					&::after{
+						content: '';
+						clear: both;
+						display: table;
+						
+					}
+					
+				}
+				
+			}
+			
+			.form-submit{
+				
+				input{
+					margin-top: 20px;
+					padding: 10px;
+					height: 40px;
+					width: 100%;
+					border: solid 2px black;
+					background-color: #367a63;
+					color: #fff;
+					cursor: pointer;
+					
+					@media( min-width: 768px ){
+						float: left;
+						width: initial;
+						
+						&::after{
+							content: '';
+							clear: both;
+							display: table;
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	#comment_view
+	{
+		margin-top: 50px;
+		width: 100%;
+		
+		.comment-nr{
+			padding-bottom: 20px;
+			
+		}
+		
+		.comment-aded{
+			margin-bottom: 20px;
+			
+			.comm-nick{
+				display: inline-block;
+				font-size: 13px;
+				
+				&::after{
+					content: '/';
+					padding: 0 5px;
+					
+				}
+				
+			}
+			
+			.comm-date{
+				display: inline-block;
+				font-size: 13px;
+				
+			}
+			
+			.comm-msg{
+				padding: 10px 0;
+				font-weight: bold;
+				font-size: 20px;
+				
+			}
+			
+			.button-answer{
+				width: 100%;
+				max-width: 150px;
+				margin-left: auto;
+				display: block;
+				
+				font-size: 16px;
+				background-color: #34E0CA;
+				text-transform: uppercase;
+				padding: 10px 0;
+				border-bottom: 0;
+				border-radius: 50px;
+				@extends .bold.alt;
+				
+				&, & *{
+					cursor: pointer;
+					
+				}
+				
+			}
+			
+		}
+		
+		.anwser{
+			padding-left: 20px;
 			
 		}
 		

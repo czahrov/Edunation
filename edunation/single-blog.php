@@ -52,6 +52,14 @@
 						</a>
 						
 				</div>
+				<?php get_template_part( 'template/segment-comment', 'form' ); ?>
+				<?php
+					if( comments_open() ){
+						get_template_part( 'template/segment-comment', 'view' );
+						
+					}
+				?>
+				
 				
 			</div>
 			<?php get_template_part( 'template/sidebar', 'blog' ); ?>
