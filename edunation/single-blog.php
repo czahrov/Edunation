@@ -41,15 +41,15 @@
 					<?php echo apply_filters( 'the_content', $post->post_content ); ?>
 				</div>
 				<div class='social flex flex-self-stretch flex-justify-around flex-justify-start-mm'>
-						<a class='icon flex flex-items-center flex-justify-center' href='https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink( $post->ID ); ?>' target='_blank'>
-							<div class='fa fa-facebook '></div>
-						</a>
-						<a class='icon flex flex-items-center flex-justify-center' href='https://twitter.com/intent/tweet?text=<?php the_permalink( $post->ID ); ?>' target='_blank'>
-							<div class='fa fa-twitter '></div>
-						</a>
-						<a class='icon flex flex-items-center flex-justify-center' href='https://plus.google.com/share?url=<?php the_permalink( $post->ID ); ?>' target='_blank'>
-							<div class='fa fa-google-plus '></div>
-						</a>
+					<a class='icon flex flex-items-center flex-justify-center' href='https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink( $post->ID ); ?>' target='_blank'>
+						<div class='fa fa-facebook'></div>
+					</a>
+					<a class='icon flex flex-items-center flex-justify-center' href="whatsapp://send?text=<?php echo urlencode( $post->post_title ); ?>" data-action="share/whatsapp/share">
+						<i class="fa fa-whatsapp"></i>
+					</a>
+					<a class='icon flex flex-items-center flex-justify-center' href="fb-messenger://share/?link=<?php echo urlencode( the_permalink( $post->ID ) ); ?>">
+						<div class='fa fa-facebook'></div>
+					</a>
 						
 				</div>
 				<?php get_template_part( 'template/segment-comment', 'form' ); ?>

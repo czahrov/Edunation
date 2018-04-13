@@ -383,7 +383,7 @@
 							<textarea placeholder="Wiadomość" name='msg'></textarea>
 						</div>
 						<div class="font-secondary-bold send uppercase pointer flex flex-items-center flex-justify-center">wyślij</div>
-						<div class='status flex flex-items-center'>
+						<div class='status base1 flex flex-items-center'>
 							<div class='icon ok fa fa-check-circle'></div>
 							<div class='icon info fa fa-info-circle'></div>
 							<div class='icon fail fa fa-times-circle'></div>

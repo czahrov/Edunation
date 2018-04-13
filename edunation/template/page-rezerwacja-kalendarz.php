@@ -72,8 +72,8 @@
 				</div>
 				
 			</div>
-			<div class='top text-center'>
-				Grafik online
+			<div class='top text-center bold alt'>
+				Twój English? Wystarczy "+"
 			</div>
 			<div class='bot flex flex-column flex-row-mm flex-justify-end'>
 				<div class='view grow flex'>

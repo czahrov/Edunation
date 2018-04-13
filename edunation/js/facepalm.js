@@ -336,6 +336,18 @@
 					
 				} );
 				
+				menu
+				.find( 'a' )
+				.filter( function(){
+					return /#/.test( $(this).attr( 'href' ) );
+					
+				} )
+				.click( function( e ){
+					hamburger.removeClass( 'open' );
+					menu.slideUp();
+					
+				} );
+				
 			})
 			(
 				$( '.hamburger'),

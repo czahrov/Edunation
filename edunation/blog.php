@@ -54,9 +54,7 @@
 						<div class='info'>
 							<?php
 								printf(
-									"Dodane przez: %s<br>Dodane %s<br>w kategorii %s",
-									get_the_author_meta( 'display_name', $post->post_author ),
-									date_i18n( "F d, Y", strtotime( $post->post_date ) ),
+									"w %s",
 									implode( ", ", wp_get_post_categories( $post->ID, array(
 										'fields' => 'names',
 										'exclude' => array( get_category_by_slug( 'blog' )->cat_ID ),
@@ -83,11 +81,11 @@
 							<a class='icon flex flex-items-center flex-justify-center' href='https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink( $post->ID ); ?>' target='_blank'>
 								<div class='fa fa-facebook'></div>
 							</a>
-							<a class='icon flex flex-items-center flex-justify-center' href='https://twitter.com/intent/tweet?text=<?php the_permalink( $post->ID ); ?>' target='_blank'>
-								<div class='fa fa-twitter'></div>
+							<a class='icon flex flex-items-center flex-justify-center' href="whatsapp://send?text=<?php echo urlencode( $post->post_title ); ?>" data-action="share/whatsapp/share">
+								<i class="fa fa-whatsapp"></i>
 							</a>
-							<a class='icon flex flex-items-center flex-justify-center' href='https://plus.google.com/share?url=<?php the_permalink( $post->ID ); ?>' target='_blank'>
-								<div class='fa fa-google-plus'></div>
+							<a class='icon flex flex-items-center flex-justify-center' href="fb-messenger://share/?link=<?php echo urlencode( the_permalink( $post->ID ) ); ?>">
+								<div class='fa fa-facebook'></div>
 							</a>
 							
 						</div>
