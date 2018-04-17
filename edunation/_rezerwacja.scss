@@ -1,6 +1,6 @@
 #rezerwacja
 {
-	margin: 100px 0 150px;
+	margin: 50px 0;
 	
 	& > .popup{
 		position: fixed;
@@ -15,6 +15,7 @@
 		& > .box{
 			padding: 22px 28px;
 			max-height: 100%;
+			min-height: 300px;
 			overflow: auto;
 			
 			& > .segment{
@@ -101,6 +102,15 @@
 						
 					}
 					
+					.range{
+						
+						input{
+							text-align: center;
+							
+						}
+						
+					}
+					
 				}
 				
 				&.foot{
@@ -121,24 +131,25 @@
 						
 					}
 					
-					& > .msg{
-						line-height: 30px;
-						max-width: 300px;
-						cursor: pointer;
+				}
+				
+				&.msg{
+					line-height: 30px;
+					max-width: 300px;
+					cursor: pointer;
+					
+					&.success{
+						color: lightgreen;
 						
-						&.success{
-							color: lightgreen;
-							
-						}
-						
-						&.fail{
-							color: lightcoral;
-							
-						}
+					}
+					
+					&.fail{
+						color: lightcoral;
 						
 					}
 					
 				}
+				
 				
 			}
 			
@@ -232,10 +243,10 @@
 					& > .body{
 						
 						.cell{
-							min-height: 60px;
+							height: 40px;
 							
-							@media(max-width: 767px){
-								min-height: 40px;
+							@media(min-width: 768px){
+								min-height: 60px;
 								
 							}
 							
@@ -243,6 +254,7 @@
 						
 						& > .side{
 							border-right: solid 1px $color-gray;
+							/* overflow: hidden; */
 							
 							& > .cell{
 								
@@ -272,11 +284,53 @@
 							
 							}
 							
+							@media(max-width: 767px){
+								/* flex-basis: 0; */
+								
+							}
+							
 						}
 						
 						& > .content{
 							width: 100%;
 							overflow: hidden;
+							position: relative;
+							
+							#swipe_hint
+							{
+								position: absolute;
+								z-index: 100;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								
+								.bg{
+									position: absolute;
+									top: 0;
+									left: 0;
+									right: 0;
+									bottom: 0;
+									opacity: .7;
+									filter: blur(10px);
+									background-color: #080d35;
+									
+								}
+								
+								img{
+									display: inline-block;
+									z-index: 1;
+									margin: 50px auto auto;
+									width: 100px;
+									
+								}
+								
+								&:not(.open){
+									display: none;
+									
+								}
+								
+							}
 							
 							& > .day{
 								min-width: 100px;
@@ -302,7 +356,7 @@
 											right: 0;
 											
 											&.busy{
-												background-color: gray;
+												background-color: #070D35;
 												border: 1px white;
 												border-style: dashed none;
 												
@@ -317,14 +371,14 @@
 												}
 												
 												&::before{
-													content: "\f05e";
+													/* content: "\f05e"; */
 													
 												}
 												
 											}
 											
 											&.free{
-												background-color: hsl( 110, 70%, 50% );
+												background-color: #34E0C9;
 												
 												&, & *{
 													cursor: pointer;
@@ -361,6 +415,12 @@
 											}
 											
 										}
+										
+									}
+									
+									&::after{
+										content: attr( wd_name );
+										padding: 0 5px;
 										
 									}
 									

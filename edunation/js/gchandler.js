@@ -6,6 +6,7 @@ $(function(){
 	var AUTH_BTN = $( '#login' );
 	var OUT_BTN = $( '#logout' );
 	var GCAL_ID = 'kaczanowskii@gmail.com';
+	// var GCAL_ID = 'worhacz.dawid@gmail.com';
 	
 	// On load, called to load the auth2 library and API client library.
 	function handleClientLoad(){
@@ -150,7 +151,8 @@ $(function(){
 				description: description,
 				attendees:[
 					{
-						email: GCAL_ID,
+						// email: GCAL_ID,
+						email: "worhacz.dawid@gmail.com",
 					},
 					
 				],
@@ -167,8 +169,11 @@ $(function(){
 				console.log( resp );
 				// sukces
 				if( resp.status === 200 ){
+					$( '#rezerwacja > .popup > .box > .segment.foot' )
+					.slideUp();
+					
 					$( '#rezerwacja > .bot > .view > .etap.date' )
-					.triggerHandler( 'notify', [ 'success', 'To było proste, prawda?<br>See you soon! :)' ] );
+					.triggerHandler( 'notify', [ 'success', 'Great! It was easy, right? See you soon!<br><br>Niebawem otrzymasz potwierdzenie rezerwacji na Twój adres email.' ] );
 					
 				}
 				// niepowodzenie

@@ -1535,7 +1535,7 @@
 				$( '#rezerwacja .side' ) );
 				
 				/* kalendarz */
-				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, view, days, popup, slider, form, submit_btn ){
+				(function( kalendarz, date_today_text, date_today_btn, date_range_text, week_next_btn, week_prev_btn, view, days, popup, range, form, submit_btn, mail_btn ){
 					// aktualna data
 					var now;
 					// aktualny dzień tygodnia 0-6 [ niedziela - sobota ]
@@ -1547,6 +1547,171 @@
 					// minimalny czas trwania przerwy ( w minutach ), by była traktowana jako slot na spotkani
 					var free_duration_min = 30;
 					var lock = false;
+					var inputToDate = function( inputTime ){
+						var tDate = new Date( $(inputTime).attr('min_stamp') );
+						tDate.setHours( $(inputTime).val().match(/^\d+/)[0] );
+						tDate.setMinutes( $(inputTime).val().match(/\d+$/)[0] );
+						return tDate;
+						
+					}
+					
+					window.TerminManager = {
+						// początek dnia pracy dla podanej daty
+						day_start_time: function( dateTime ){
+							return new Date( new Date( dateTime ).getFullYear(), new Date( dateTime ).getMonth(), new Date( dateTime ).getDate(), 6 );
+							
+						},
+						// koniec dnia pracy dla podanej daty
+						day_end_time: function( dateTime ){
+							return new Date( new Date( dateTime ).getFullYear(), new Date( dateTime ).getMonth(), new Date( dateTime ).getDate(), 22 );
+							
+						},
+						// pierwszy dzień tygodnia aktualnie wyświetlanego tygodnia
+						week_start_day: null,
+						// tablica, w formie obiektu, z zajętymi terminami przyporządkowanymi do dni tygodni [ 0 - niedziela, 6 - sobota ]
+						terms: [],
+						// czyszczenie i przygotowanie do pracy
+						clear: function(){
+							this.terms = [
+								[],
+								[],
+								[],
+								[],
+								[],
+								[],
+								[],
+								
+							];
+							days.empty();
+							
+						},
+						// funkcja inicjująca
+						init: function(){
+							this.clear();
+							this.week_start_day = new Date( new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - new Date().getDay(), 6, 0, 0 );
+							
+						},
+						// funkcja zwracająca wartość matematyczną, która służy do przeliczania pikseli na procenty
+						min_factor: function(){
+							var hour_factor = $( '#rezerwacja > .bot > .view > .etap.date > .body > .side .cell.hour:first' ).outerHeight() / 60;
+							
+							return 100 / $( days.first() ).height() * hour_factor;
+							
+						},
+						// dodaje zajęty termin do tablicy
+						addBusy: function( startTime, endTime ){
+							this.terms[ new Date( startTime ).getDay() ][ new Date( startTime ).getTime() ] = new Date( endTime ).getTime();
+							
+						},
+						// funkcja generująca ( HTML ) pojedynczego terminu
+						// type		free/busy
+						printTermin: function( startTime, endTime, type ){
+							if( new Date( startTime ).getTime() < this.day_start_time( startTime ).getTime() ){
+								startTime = this.day_start_time( startTime );
+							}
+							
+							if( new Date( endTime ).getTime() > this.day_end_time( startTime ).getTime() ){
+								endTime = this.day_end_time( startTime );
+								
+							}
+							
+							if( type === 'free' ){
+								
+								if( new Date( endTime ) < new Date() ){
+									return false;
+									
+								}
+								
+								if( new Date( startTime ) < new Date() &&  new Date( endTime ) > new Date()  ){
+									startTime = new Date().getTime();
+									
+								}
+								
+							}
+							
+							var termin_offset = Math.floor( ( new Date( startTime ).getTime() - this.day_start_time( startTime ).getTime() ) / ( 60 * 1000 ) );
+							var termin_duration = Math.floor( ( new Date( endTime ).getTime() - new Date( startTime ).getTime() ) / ( 60 * 1000 ) );
+							
+							if( termin_duration < free_duration_min) return false;
+							
+							days
+							.filter( '[wd="' + new Date( startTime ).getDay() + '"]' )
+							.append( "<div class='termin " 
+							+ type 
+							+ " bold alt flex flex-items-start flex-justify-center' style='top: " 
+							+ termin_offset * this.min_factor() 
+							+ "%; height: " 
+							+ termin_duration * this.min_factor() 
+							+ "%' start='" 
+							+ new Date( startTime ).toISOString() 
+							+ "' end='" 
+							+ new Date( endTime ).toISOString() 
+							+ "' offset='"
+							+ termin_offset 
+							+ "' duration='" 
+							+ termin_duration 
+							+ "' offset='"
+							+ termin_offset
+							+ "' duration='"
+							+ termin_duration
+							+"'><div class='range'>" 
+							+ new Date( startTime ).toLocaleTimeString().match( /^\d+:\d+/ )[0] 
+							+ " - " 
+							+ new Date( endTime ).toLocaleTimeString().match( /^\d+:\d+/ )[0] 
+							+ "</div></div>" );
+							
+						},
+						// funkcja przechodząca po wszystkich terminach
+						printTerms: function(){
+							var self = this;
+							
+							for( var wd=0; wd<self.terms.length; wd++ ){
+								var prev_busy_start = null;
+								var prev_busy_end = null;
+								var counter = 0;
+								
+								for( term_start in self.terms[ wd ] ){
+									var start = parseInt( term_start );
+									var end = self.terms[ wd ][ term_start ];
+									
+									this.printTermin( start, end, 'busy' );
+									
+									if( prev_busy_start === null && start > self.day_start_time( start ).getTime() ){
+										this.printTermin( self.day_start_time( start ), new Date( start ), 'free' );
+										
+									}
+									else if( end < self.day_end_time( start ) ){
+										this.printTermin( prev_busy_end, new Date( start ), 'free' );
+										
+									}
+									
+									prev_busy_start = start;
+									prev_busy_end = end;
+									
+									counter++;
+								}
+								
+								if( prev_busy_end < self.day_end_time( prev_busy_start ) ){
+									this.printTermin( prev_busy_end, self.day_end_time( prev_busy_start ), 'free' );
+									
+								}
+								
+								if( counter === 0 ){
+									var t = new Date( parseInt( date_range_text.attr( 'start' ) ) ).setDate( new Date( parseInt( date_range_text.attr( 'start' ) ) ).getDate() + ( 6 - wd ) );
+									
+									// console.log( [ this.day_start_time( t ), this.day_end_time( t ) ] );
+									
+									this.printTermin( this.day_start_time( t ), this.day_end_time( t ), 'free' );
+									
+									// console.log( wd );
+									
+								}
+								
+							}
+							
+						},
+						
+					};
 					
 					kalendarz
 					.on({
@@ -1555,12 +1720,28 @@
 							var date_start_text = range_start.toLocaleDateString();
 							var date_end_text = range_end.toLocaleDateString();
 							
+							date_range_text
+							.attr({
+								start: range_start.getTime(),
+								end: range_end.getTime(),
+								
+							});
+							
+							for( var i = range_start.getTime(); i <= range_end.getTime(); i += 24*60*60*1000 ){
+								days
+								.filter('[wd="'+ new Date( i ).getDay() +'"]')
+								.siblings( '.name' )
+								.text( new Date( i ).toLocaleDateString().match(/^\d+\.\d+/)[0] );
+								
+							}
+							
 							if( range_start.getFullYear() !== range_end.getFullYear() ){
 								// tydzień na przełomie roku: dd.mm.yyyy - dd.mm.yyyy
 								date_range_text
 								.text( date_start_text + ' - ' + date_end_text );
 								
-							}else if( range_start.getMonth() !== range_end.getMonth() ){
+							}
+							else if( range_start.getMonth() !== range_end.getMonth() ){
 								// tydzień na przełomie miesięcy: dd.mm - dd.mm.yyyy
 								date_range_text
 								.text( date_start_text.match( /^\d+\.\d+/ )[0] + ' - ' + date_end_text );
@@ -1573,18 +1754,34 @@
 								
 							}
 							
+							if( window.sessionStorage.getItem('swipe_hint') !== "true" ){
+								window.sessionStorage.setItem( 'swipe_hint', true );
+								$(this).triggerHandler('animation');
+								
+							}
+							
 						},
 						fill: function( e ){
-							// czyszczenie
+							TerminManager.init();
+							
+							$.each( window.freeBusy[ 'kaczanowskii@gmail.com' ].busy, function( num, item ){
+								TerminManager.addBusy( item.start, item.end );
+								
+							});
+							
+							TerminManager.printTerms();
+							
+							/* // czyszczenie
 							days.empty();
+							$( '#rezerwacja > .popup > .box > .segment.foot' ).slideDown();
 							
 							// zmienna do przeliczania pikseli na procenty ( dla minut )
 							var min_factor = function(){
 								return 100 / $( days.first() ).outerHeight();
 							}
-							console.log( min_factor() );
+							// console.log( min_factor() );
 							
-							console.log( window.freeBusy );
+							// console.log( window.freeBusy );
 							// dodawanie terminów
 							$.each( window.freeBusy[ 'kaczanowskii@gmail.com' ].busy, function( num, item ){
 								// obliczenia dla zajętych terminów
@@ -1633,7 +1830,6 @@
 										
 									}
 									
-									// var free_duration = busy_day_offset - free_start_offset;
 									var free_duration = ( busy_start_time - free_range_start_time ) / ( 1000 * 60 );
 									if( free_duration >= free_duration_min ){
 										var free_range_start_text = free_range_start_time.toLocaleTimeString().match( /^\d+:\d+/ )[0];
@@ -1696,7 +1892,7 @@
 								}
 								
 							} );
-							
+							*/
 						},
 						reset: function( e ){
 							now = new Date();
@@ -1717,25 +1913,78 @@
 								
 							};
 							var slider_fill = function( time_start, time_end ){
-								slider
-								.siblings( '.value' )
-								.text( new Date( time_start ).toLocaleTimeString().match( /\d+:\d+/ )[0] + ' - ' + new Date( time_end ).toLocaleTimeString().match( /\d+:\d+/ )[0] )
-								.siblings( '.calculate' )
-								.text( roundTo( ( time_end - time_start ) / ( 60 * 1000 ) / session_duration * session_price, 2 ) );
+								try{
+									range
+									.siblings( '.value' )
+									.text( new Date( time_start ).toLocaleTimeString().match( /\d+:\d+/ )[0] + ' - ' + new Date( time_end ).toLocaleTimeString().match( /\d+:\d+/ )[0] )
+									.siblings( '.calculate' )
+									.text( roundTo( ( time_end - time_start ) / ( 60 * 1000 ) / session_duration * session_price, 2 ) );
+									
+								}
+								catch( err ){
+									console.error( {
+										input: [time_start, time_end],
+										error: err,
+										
+									} );
+									
+								}
 								
 							};
 							
-							slider
+							range
+							.children( 'input' )
 							.attr({
-								range_start: range_time_start.toISOString(),
-								range_end: range_time_end.toISOString(),
+								min: new Date( range_time_start ).toLocaleTimeString().match( /\d+:\d+/ )[0],
+								min_stamp: range_time_start.getTime(),
+								max: new Date( range_time_end ).toLocaleTimeString().match( /\d+:\d+/ )[0],
+								max_stamp: range_time_end.getTime(),
+								// step: 5*60,
 								
 							});
 							
 							slider_fill( range_time_start, range_time_end );
 							
+							range
+							.children( 'input' )
+							.on({
+								change: function( e ){
+									if( $(this).val() > $(this).attr('max') ) $(this).val( $(this).attr('max') );
+									if( $(this).val() < $(this).attr('min') ) $(this).val( $(this).attr('min') );
+									
+									if( $(this).hasClass('start') ){
+										$(this).siblings('.end').attr({
+											min: $(this).val(),
+											
+										});
+										
+									}
+									else{
+										$(this).siblings('.start').attr({
+											max: $(this).val(),
+											
+										});
+										
+									}
+									
+									slider_fill( inputToDate( range.children('input.start') ), inputToDate( range.children('input.end') ) );
+									
+								},
+								
+							})
+							.filter( '.start' )
+							.attr({
+								value: new Date( range_time_start ).toLocaleTimeString().match( /\d+:\d+/ )[0],
+								
+							})
+							.siblings( '.end' )
+							.attr({
+								value: new Date( range_time_end ).toLocaleTimeString().match( /\d+:\d+/ )[0],
+								
+							})
+							
 							// slider.slider( 'destory' );
-							slider.slider({
+							/* slider.slider({
 								range: true,
 								min: range_time_start.getTime(),
 								max: range_time_end.getTime(),
@@ -1746,7 +1995,7 @@
 									
 								},
 								
-							});
+							}); */
 							
 							popup.addClass( 'open' );
 							
@@ -1756,6 +2005,7 @@
 								person: '^[\\D]+$',
 								phone: '^(\\+\\d+\\s*)?(\\(\\d+\\)\\s*)?(\\d+(\\s|\\-)*)+$',
 								message: '^.*$',
+								mail: '(^[^@]+@.+\\..+$)|(^.{0}$)',
 								
 							}
 							
@@ -1805,16 +2055,133 @@
 						},
 						notify: function( e, status, msg ){
 							popup
-							.find( '.foot .msg' )
+							.find( '.segment.msg' )
 							.hide()
 							.removeClass( 'success fail' )
 							.addClass( status )
 							.html( msg )
-							.slideDown()
-							.one( 'click', function( e ){
+							.slideDown();
+							/* .one( 'click', function( e ){
 								$( this ).slideUp( 'slow' );
 								
-							} );
+							} ); */
+							
+						},
+						animation: function( e ){
+							var layer = $('#swipe_hint');
+							
+							var TL = new TimelineLite({
+								onStart: function(){
+									layer.addClass('open');
+									
+								},
+								onComplete: function(){
+									layer.removeClass('open')
+									
+								},
+								align: 'sequence',
+								
+							})
+							.add(
+								TweenLite.fromTo(
+									layer,
+									.3,
+									{
+										opacity: 0,
+									},
+									{
+										opacity: 1,
+									}
+								)
+								
+							)
+							.add(
+								TweenLite.fromTo(
+									layer.children( 'img' ),
+									.2,
+									{
+										opacity: 0,
+										xPercent: -50,
+									},
+									{
+										opacity: 1,
+									}
+								)
+								
+							)
+							.add(
+								TweenLite.to(
+									layer.children( 'img' ),
+									2,
+									{
+										xPercent: 50,
+									}
+								)
+								
+							)
+							.add(
+								TweenLite.to(
+									layer.children( 'img' ),
+									2,
+									{
+										xPercent: -50,
+									}
+								)
+								
+							)
+							.add(
+								TweenLite.to(
+									layer,
+									.3,
+									{
+										opacity: 0,
+									}
+								)
+								
+							)
+							
+						},
+						mail: function( e ){
+							$(this).triggerHandler( 'verify' );
+							if( form.children('.input').length === form.children('.input.valid').length ){
+								var data = form.serializeArray();
+								
+								data.push({
+									name: 'date',
+									value: new Date( parseInt( range.children('.start').attr('min_stamp') ) ).toLocaleDateString(),
+								});
+								
+								data.push({
+									name: 'time',
+									value: range.children('.start').val() + " - " + range.children('.end').val(),
+								});
+								
+								data.push({
+									name: 'type',
+									value: $( '#rezerwacja > .popup > .box > .segment.head > .type' ).text().trim(),
+								});
+								
+								console.log( data );
+								
+								$.post(
+									'../register-mail',
+									data,
+									function( data, status ){
+										// console.log( data );
+										var resp = JSON.parse( data );
+										
+										if( resp.status === 'success' ){
+											$( '#rezerwacja > .popup > .box > .segment.foot' )
+											.slideUp();
+										}
+										
+										$( '#rezerwacja > .bot > .view > .etap.date' )
+										.triggerHandler( 'notify', [ resp.status, resp.msg ] );
+										
+									}
+								);
+								
+							}
 							
 						},
 						
@@ -1847,39 +2214,72 @@
 							// console.log( 'slideRight' );
 							var self = $(this);
 							
-							TweenLite.to(
-								view,
-								0.3,
-								{
-									scrollLeft: self.prop( 'scrollLeft' ) + self.outerWidth(),
-									
-								}
-							);
+							if( self.prop('scrollLeft') === 0 ){
+								week_prev_btn.trigger('click');
+								
+								TweenLite.to(
+									view,
+									0.3,
+									{
+										scrollLeft: self.prop('scrollWidth') - self.width(),
+										
+									}
+								);
+								
+							}
+							else{
+								TweenLite.to(
+									view,
+									0.3,
+									{
+										scrollLeft: self.prop( 'scrollLeft' ) - self.outerWidth(),
+										
+									}
+								);
+								
+							}
+							
 							
 						},
 						slideLeft: function( e ){
 							// console.log( 'slideLeft' );
 							var self = $(this);
 							
-							TweenLite.to(
-								view,
-								0.3,
-								{
-									scrollLeft: self.prop( 'scrollLeft' ) - self.outerWidth(),
-									
-								}
-							);
+							if( self.prop('scrollLeft') + self.width() + 5 >= self.prop('scrollWidth') ){
+								week_next_btn.trigger('click');
+								
+								TweenLite.to(
+									view,
+									0.3,
+									{
+										scrollLeft: 0,
+										
+									}
+								);
+								
+							}
+							else{
+								TweenLite.to(
+									view,
+									0.3,
+									{
+										scrollLeft: self.prop( 'scrollLeft' ) + self.outerWidth(),
+										
+									}
+								);
+								
+							}
 							
 						},
 						
 					})
 					.swipe({
 						swipeLeft: function( e ){
-							$(this).triggerHandler( 'slideRight' );
+							$(this).triggerHandler( 'slideLeft' );
 							
 						},
 						swipeRight: function( e ){
-							$(this).triggerHandler( 'slideLeft' );
+							$(this).triggerHandler( 'slideRight' );
 							
 						},
 						
@@ -1930,10 +2330,14 @@
 						
 						// formularz wypełniony poprawnie
 						if( form.children( '.input.valid' ).length === form.children().length ){
+							var start = range.children('.start');
+							var end = range.children('.end');
 							
 							gch.addEvent(
-								new Date( slider.slider( 'values', 0 ) ).toISOString(),
-								new Date( slider.slider( 'values', 1 ) ).toISOString(),
+								// new Date( slider.slider( 'values', 0 ) ).toISOString(),
+								// new Date( slider.slider( 'values', 1 ) ).toISOString(),
+								inputToDate( start ).toISOString(),
+								inputToDate( end ).toISOString(),
 								popup.find( '.head .type' ).text().trim() + ' [' + form.find( 'input[name="person"]' ).val() + ']',
 								'Telefon kontaktowy:\r\n' + form.find( 'input[name="phone"]' ).val() + '\r\n\r\nWiadomość:\r\n' + form.find( 'textarea' ).val()
 								
@@ -1950,7 +2354,10 @@
 						
 					} );
 					
-					
+					mail_btn.click( function( e ){
+						kalendarz.triggerHandler( 'mail' );
+						
+					} );
 					
 					// inicjalizacja kalendarza przeniesiona do gchandler.js
 					// kalendarz.triggerHandler( 'init' );
@@ -1966,9 +2373,10 @@
 					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content' ),
 					$( '#rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day' ),
 					$( '#rezerwacja > .popup' ),
-					$( '#rezerwacja > .popup .body .slider' ),
+					$( '#rezerwacja > .popup .body .range' ),
 					$( '#rezerwacja > .popup .body .form' ),
-					$( '#rezerwacja > .popup .foot .submit' )
+					$( '#rezerwacja > .popup .foot .submit' ),
+					$( '#rezerwacja > .popup .foot #mail' )
 				);
 				
 				/* ekran podsumowania */

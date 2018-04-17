@@ -1,8 +1,8 @@
 <?php
 add_theme_support('post-thumbnails');
 
-// define( 'DMODE', isset( $_COOKIE[ 'sprytne' ] ) === true );
-define( 'DMODE', true );
+define( 'DMODE', isset( $_COOKIE[ 'sprytne' ] ) === true );
+// define( 'DMODE', true );
 
 register_sidebar( array(
 	'name' => 'About me',
@@ -723,7 +723,6 @@ EOT;
 	
 } );
 
-
 /* wypisuje komentarze */
 function commentPrinter( $postID = 0, $postParent = 0, $commTree = array() ){
 	if( empty( $commTree ) ){
@@ -754,3 +753,4 @@ function commentPrinter( $postID = 0, $postParent = 0, $commTree = array() ){
 	}
 	
 }
+

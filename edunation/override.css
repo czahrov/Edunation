@@ -300,7 +300,7 @@ body.mobile .main-nav .call {
       width: 100%; } }
 
 #rezerwacja {
-  margin: 100px 0 150px; }
+  margin: 50px 0; }
   #rezerwacja > .popup {
     position: fixed;
     padding: 50px 20px;
@@ -313,6 +313,7 @@ body.mobile .main-nav .call {
     #rezerwacja > .popup > .box {
       padding: 22px 28px;
       max-height: 100%;
+      min-height: 300px;
       overflow: auto; }
       #rezerwacja > .popup > .box > .segment {
         padding: 8px;
@@ -353,6 +354,8 @@ body.mobile .main-nav .call {
           overflow: auto; }
           #rezerwacja > .popup > .box > .segment.body form textarea {
             height: 200px; }
+          #rezerwacja > .popup > .box > .segment.body .range input {
+            text-align: center; }
         #rezerwacja > .popup > .box > .segment.foot > .btn {
           margin: 5px 0;
           padding: 10px;
@@ -366,13 +369,13 @@ body.mobile .main-nav .call {
           #rezerwacja > .popup > .box > .segment.foot > .btn:hover {
             background-color: transparent;
             color: #fff; }
-        #rezerwacja > .popup > .box > .segment.foot > .msg {
+        #rezerwacja > .popup > .box > .segment.msg {
           line-height: 30px;
           max-width: 300px;
           cursor: pointer; }
-          #rezerwacja > .popup > .box > .segment.foot > .msg.success {
+          #rezerwacja > .popup > .box > .segment.msg.success {
             color: lightgreen; }
-          #rezerwacja > .popup > .box > .segment.foot > .msg.fail {
+          #rezerwacja > .popup > .box > .segment.msg.fail {
             color: lightcoral; }
     #rezerwacja > .popup:not(.open) {
       display: none; }
@@ -416,12 +419,13 @@ body.mobile .main-nav .call {
                   -ms-flex-order: 0;
                       order: 0; } }
         #rezerwacja > .bot > .view > .etap.date > .body .cell {
-          min-height: 60px; }
-          @media (max-width: 767px) {
+          height: 40px; }
+          @media (min-width: 768px) {
             #rezerwacja > .bot > .view > .etap.date > .body .cell {
-              min-height: 40px; } }
+              min-height: 60px; } }
         #rezerwacja > .bot > .view > .etap.date > .body > .side {
-          border-right: solid 1px #e8e6e7; }
+          border-right: solid 1px #e8e6e7;
+          /* overflow: hidden; */ }
           #rezerwacja > .bot > .view > .etap.date > .body > .side > .cell.hour {
             position: relative;
             padding: 12px;
@@ -437,9 +441,37 @@ body.mobile .main-nav .call {
               bottom: -1px;
               width: 100vw;
               border-bottom: solid 1px #e8e6e7; }
+          @media (max-width: 767px) {
+            #rezerwacja > .bot > .view > .etap.date > .body > .side {
+              /* flex-basis: 0; */ } }
         #rezerwacja > .bot > .view > .etap.date > .body > .content {
           width: 100%;
-          overflow: hidden; }
+          overflow: hidden;
+          position: relative; }
+          #rezerwacja > .bot > .view > .etap.date > .body > .content #swipe_hint {
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; }
+            #rezerwacja > .bot > .view > .etap.date > .body > .content #swipe_hint .bg {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              opacity: .7;
+              -webkit-filter: blur(10px);
+                      filter: blur(10px);
+              background-color: #080d35; }
+            #rezerwacja > .bot > .view > .etap.date > .body > .content #swipe_hint img {
+              display: inline-block;
+              z-index: 1;
+              margin: 50px auto auto;
+              width: 100px; }
+            #rezerwacja > .bot > .view > .etap.date > .body > .content #swipe_hint:not(.open) {
+              display: none; }
           #rezerwacja > .bot > .view > .etap.date > .body > .content > .day {
             min-width: 100px; }
             #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.name {
@@ -456,7 +488,7 @@ body.mobile .main-nav .call {
                 left: 0;
                 right: 0; }
                 #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy {
-                  background-color: gray;
+                  background-color: #070D35;
                   border: 1px white;
                   border-style: dashed none; }
                   #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy, #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy * {
@@ -464,9 +496,9 @@ body.mobile .main-nav .call {
                   #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy .range {
                     color: #fff; }
                   #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.busy::before {
-                    content: "\f05e"; }
+                    /* content: "\f05e"; */ }
                 #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free {
-                  background-color: #44d926; }
+                  background-color: #34E0C9; }
                   #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free, #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free * {
                     cursor: pointer; }
                   #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell.day > .termin.free .range {
@@ -487,6 +519,9 @@ body.mobile .main-nav .call {
                       left: 50%;
                       -webkit-transform: translate(-50%, 0%);
                               transform: translate(-50%, 0%); } }
+            #rezerwacja > .bot > .view > .etap.date > .body > .content > .day > .cell::after {
+              content: attr(wd_name);
+              padding: 0 5px; }
             #rezerwacja > .bot > .view > .etap.date > .body > .content > .day:nth-child(even) {
               background-color: #eee; }
         #rezerwacja > .bot > .view > .etap.summary .button {
