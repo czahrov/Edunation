@@ -151,8 +151,8 @@ $(function(){
 				description: description,
 				attendees:[
 					{
-						// email: GCAL_ID,
-						email: "worhacz.dawid@gmail.com",
+						email: GCAL_ID,
+						// email: "worhacz.dawid@gmail.com",
 					},
 					
 				],
